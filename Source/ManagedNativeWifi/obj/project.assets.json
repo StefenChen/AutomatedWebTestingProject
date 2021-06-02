@@ -190,11 +190,11 @@
   "project": {
     "version": "2.1.0",
     "restore": {
-      "projectUniqueName": "C:\\資料存放區\\project\\ManagedNativeWifi\\Source\\ManagedNativeWifi\\ManagedNativeWifi.csproj",
+      "projectUniqueName": "C:\\資料存放區\\project\\AutomatedWeb\\Source\\ManagedNativeWifi\\ManagedNativeWifi.csproj",
       "projectName": "ManagedNativeWifi",
-      "projectPath": "C:\\資料存放區\\project\\ManagedNativeWifi\\Source\\ManagedNativeWifi\\ManagedNativeWifi.csproj",
+      "projectPath": "C:\\資料存放區\\project\\AutomatedWeb\\Source\\ManagedNativeWifi\\ManagedNativeWifi.csproj",
       "packagesPath": "C:\\Users\\StefenChen\\.nuget\\packages\\",
-      "outputPath": "C:\\資料存放區\\project\\ManagedNativeWifi\\Source\\ManagedNativeWifi\\obj\\",
+      "outputPath": "C:\\資料存放區\\project\\AutomatedWeb\\Source\\ManagedNativeWifi\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [

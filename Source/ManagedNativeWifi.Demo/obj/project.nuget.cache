@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eMVWdwgxv59Y/xu3c352g037MfrSM31HEsJ7+wMFlMZGUF8YnN4Z+Rn08e9ZvNNLccpLX0Ra9cB+mLw1oYBu3w==",
+  "dgSpecHash": "n6iKhzsUXpP8BjvWG7ddozDIC837+nS0zaESWS+Z0IFtiTzSDl8xqc4KrHslx7l4xfRoeeyjkWYTn5935np6Bg==",
   "success": true,
-  "projectFilePath": "C:\\資料存放區\\project\\ManagedNativeWifi\\Source\\ManagedNativeWifi.Demo\\ManagedNativeWifi.Demo.csproj",
+  "projectFilePath": "C:\\資料存放區\\project\\AutomatedWeb\\Source\\ManagedNativeWifi.Demo\\ManagedNativeWifi.Demo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\StefenChen\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\StefenChen\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",

@@ -69,8 +69,8 @@
     <Compile Include="BasicLIbrary\ConfigBase.cs" />
     <Compile Include="BasicLIbrary\MessageLog.cs" />
     <Compile Include="WebLibrary\BrowserOperation.cs" />
-    <Compile Include="WebLibrary\Driver.cs" />
-    <Compile Include="WebLibrary\DriverOperation.cs" />
+    <Compile Include="WebLibrary\Chrome.cs" />
+    <Compile Include="WebLibrary\ChromeOperation.cs" />
     <Compile Include="WebLibrary\JavaScriptCommand.cs" />
     <Compile Include="WebLibrary\WebElementOperation.cs" />
     <Compile Include="WebLibrary\WebGUIBase.cs" />

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LBV/gERVmGtbfhz3A5IPPRORxo/VmHX17YXBPsqAmNN6eNOO1LqkTag3woc5QNKZMjO+P70NCyvIY1AjciiEZg==",
+  "dgSpecHash": "HkaZTT4kQf+UbLgtRp0w9st5Wyy3BOU8ZvvEXm8m1ioB70ve/sV1Cf3R/JX9fSMcjFxJw+pA9/EDFgnqC1eJHA==",
   "success": true,
-  "projectFilePath": "C:\\資料存放區\\project\\ManagedNativeWifi\\Source\\ManagedNativeWifi\\ManagedNativeWifi.csproj",
+  "projectFilePath": "C:\\資料存放區\\project\\AutomatedWeb\\Source\\ManagedNativeWifi\\ManagedNativeWifi.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedNativeWifi.Test", "M
 		{EBFF4686-23E6-42BF-97CA-CF82641BCFA7} = {EBFF4686-23E6-42BF-97CA-CF82641BCFA7}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomatedTestingProject", "..\..\AutomatedWeb\Source\Automated_Testing_Project\AutomatedTestingProject.csproj", "{E9361E46-CD3E-4ABC-8E0F-ECCABD489FB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomatedTestingProject", "AutomatedTestingProject\AutomatedTestingProject.csproj", "{E9361E46-CD3E-4ABC-8E0F-ECCABD489FB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

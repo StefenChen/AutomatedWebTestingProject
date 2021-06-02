@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "USUCfPXWwEWjDBCHvky76Ok+XteWlWuDjUo6mVedOMQr1u36PNS0dCsaV3A/JXTVPly4IHcZxGA+dVryimB1lA==",
+  "dgSpecHash": "EcclYkh2f4oANK4i8qjQUU6T1KUaCTqLpS7fc69iiIkKRgrpY3NqduQAP9kO/x0+RF1bgrcZ2y5O0R6bE7UlOg==",
   "success": true,
-  "projectFilePath": "C:\\資料存放區\\project\\ManagedNativeWifi\\Source\\ManagedNativeWifi.Test\\ManagedNativeWifi.Test.csproj",
+  "projectFilePath": "C:\\資料存放區\\project\\AutomatedWeb\\Source\\ManagedNativeWifi.Test\\ManagedNativeWifi.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\StefenChen\\.nuget\\packages\\microsoft.codecoverage\\16.8.3\\microsoft.codecoverage.16.8.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
