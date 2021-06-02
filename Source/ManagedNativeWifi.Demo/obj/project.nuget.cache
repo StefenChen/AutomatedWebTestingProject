@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "eMVWdwgxv59Y/xu3c352g037MfrSM31HEsJ7+wMFlMZGUF8YnN4Z+Rn08e9ZvNNLccpLX0Ra9cB+mLw1oYBu3w==",
+  "success": true,
+  "projectFilePath": "C:\\資料存放區\\project\\ManagedNativeWifi\\Source\\ManagedNativeWifi.Demo\\ManagedNativeWifi.Demo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\StefenChen\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.directoryservices\\5.0.0\\system.directoryservices.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.directoryservices.accountmanagement\\5.0.0\\system.directoryservices.accountmanagement.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.directoryservices.protocols\\5.0.0\\system.directoryservices.protocols.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0\\system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.security.permissions\\5.0.0\\system.security.permissions.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
+    "C:\\Users\\StefenChen\\.nuget\\packages\\managednativewifi\\2.1.0\\managednativewifi.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
