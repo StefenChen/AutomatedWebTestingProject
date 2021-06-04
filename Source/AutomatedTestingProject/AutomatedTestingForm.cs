@@ -63,7 +63,7 @@ namespace AutomatedTestingProject
         {
             try
             {
-                automatedWebTesting.webGUIBase.browser.OpenNewWeb(tbOpenURL.Text, 10);
+                automatedWebTesting.webElementControl.browser.OpenNewWeb(tbOpenURL.Text, 10);
             }
             catch (Exception ex)
             {
@@ -92,7 +92,7 @@ namespace AutomatedTestingProject
                     break;
             }
 
-            if ((tempInputAccount = automatedWebTesting.webGUIBase.webElement.isElementExist(selector, 5)) != null)
+            if ((tempInputAccount = automatedWebTesting.webElementControl.webElement.isElementExist(selector, 5)) != null)
             {
                 MessageBox.Show(cbFindElement.Text+":" + tbFindElement.Text + "\r\nFind it!");
             }
@@ -143,13 +143,13 @@ namespace AutomatedTestingProject
                     break;
             }
 
-            if ((tempSubmitButton = automatedWebTesting.webGUIBase.webElement.isElementExist(selector, 5)) != null)
+            if ((tempSubmitButton = automatedWebTesting.webElementControl.webElement.isElementExist(selector, 5)) != null)
             {
                 try
                 {
                     if (cbButtonClick.Text == "ClassName")
                     {
-                        tempSubmitButton = automatedWebTesting.webGUIBase.webElement.FindAllElements(selector, 5)[Convert.ToInt32(tbClassIndexButtonClick.Text)];
+                        tempSubmitButton = automatedWebTesting.webElementControl.webElement.FindAllElements(selector, 5)[Convert.ToInt32(tbClassIndexButtonClick.Text)];
                     }
 
                     if (tempSubmitButton.Displayed)
@@ -170,7 +170,7 @@ namespace AutomatedTestingProject
 
         private void btnWebRefresh_Click(object sender, EventArgs e)
         {
-            if(!automatedWebTesting.webGUIBase.browser.WebRefresh())
+            if(!automatedWebTesting.webElementControl.browser.WebRefresh())
                 WriteMsg(sender.ToString(),"","Refresh Website Failed!");
         }
 
@@ -195,7 +195,7 @@ namespace AutomatedTestingProject
                     dir = "";
                     break;
             }
-            automatedWebTesting.webGUIBase.webElement.MoveAFixedDistanceWhenElementScroll(dir,
+            automatedWebTesting.webElementControl.webElement.MoveAFixedDistanceWhenElementScroll(dir,
                                                                         tbScrollElement.Text, 
                                                                         clbScrollElement.SelectedItem.ToString(),
                                                                         Convert.ToInt32(tbMovedPixels.Text),
@@ -212,24 +212,24 @@ namespace AutomatedTestingProject
         private void btnSwitchButtonClick_Click(object sender, EventArgs e)
         {
             //方法一
-            automatedWebTesting.webGUIBase.webElement.ClickSwitchButton(tbSwitchButtonClick.Text,
+            automatedWebTesting.webElementControl.webElement.ClickSwitchButton(tbSwitchButtonClick.Text,
                                                     Convert.ToInt32(tbSwitchButtonClassIndex.Text));
             //方法二
-            //tempSubmitButton = webGUIBase.webElement.FindAllElements(By.ClassName(tbSwitchButtonClick.Text), 5)[Convert.ToInt32(tbSwitchButtonClassIndex.Text)];
+            //tempSubmitButton = webElementControl.webElement.FindAllElements(By.ClassName(tbSwitchButtonClick.Text), 5)[Convert.ToInt32(tbSwitchButtonClassIndex.Text)];
             //tempSubmitButton.Click();
         }
 
         private void btnDropDownList_Click(object sender, EventArgs e)
         {
-            if (automatedWebTesting.webGUIBase.webElement.SelectDropdownMenu(tbDropDownListName.Text,
+            if (automatedWebTesting.webElementControl.webElement.SelectDropdownMenu(tbDropDownListName.Text,
                                                         Convert.ToInt32(tbSelectItem.Text)))
                 WriteMsg(sender, tbDropDownListName.Text, "Control Button Fail");
         }
 
         private void btnGetElementValue_Click_1(object sender, EventArgs e)
         {
-            IWebElement temp = automatedWebTesting.webGUIBase.webElement.isElementExist(By.Id(tbGetElementValue.Text), 5);
-            string tempStr = automatedWebTesting.webGUIBase.webElement.GetElementValue(temp);
+            IWebElement temp = automatedWebTesting.webElementControl.webElement.isElementExist(By.Id(tbGetElementValue.Text), 5);
+            string tempStr = automatedWebTesting.webElementControl.webElement.GetElementValue(temp);
             WriteMsg(sender, tbGetElementValue.Text + " Value", tempStr);
         }
 
@@ -256,11 +256,16 @@ namespace AutomatedTestingProject
             automatedWebTesting.networkCand.EnableInterface(tbInterfaceName.Text, false);
         }
 
-        private void btnResartDriver_Click(object sender, EventArgs e)
+		private void btnConnectWiFi_Click(object sender, EventArgs e)
+		{
+			automatedWebTesting.wifiControl.ConnectWifi();
+		}
+
+		private void btnResartDriver_Click(object sender, EventArgs e)
         {
             try
             {
-                automatedWebTesting.webGUIBase.driver.RestartDriver();
+                automatedWebTesting.webElementControl.driver.RestartDriver();
             }
             catch (Exception ex)
             {

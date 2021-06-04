@@ -14,8 +14,8 @@ namespace WebLibrary
     public class WebGUIBase
     {
         public DriverOperation driver;
-        public BrowserOperation browser;
-        public WebElementOperation webElement;
+		public BrowserOperation browser;
+		public WebElementOperation webElement;
 
         public WebGUIBase(CommonBase basicTool, Category type)
         {

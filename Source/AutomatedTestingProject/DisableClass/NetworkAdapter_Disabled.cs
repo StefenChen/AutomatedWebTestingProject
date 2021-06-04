@@ -7,7 +7,7 @@ using System.Net.NetworkInformation;
 using System.Management.Instrumentation;
 using System.Management;
 
-namespace WindowsControl
+namespace DisableClass
 {
     /// <summary>
     /// 後來使用發現很多問題，只能忍痛封印它

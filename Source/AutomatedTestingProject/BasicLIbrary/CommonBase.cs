@@ -15,6 +15,7 @@ namespace BasicLIbrary
         DriverOperation,
         BrowserOperation,
         WebElementOperation,
+		WifiControl,
     }
     public class CommonBase 
     {

@@ -96,6 +96,11 @@
             this.tbOpenURL = new System.Windows.Forms.TextBox();
             this.btnOpenURL = new System.Windows.Forms.Button();
             this.tpFunctionTesting2 = new System.Windows.Forms.TabPage();
+            this.gbConnectWiFi = new System.Windows.Forms.GroupBox();
+            this.lbWiFiName = new System.Windows.Forms.Label();
+            this.tbSsidiName = new System.Windows.Forms.TextBox();
+            this.btnTurnOnWiFi = new System.Windows.Forms.Button();
+            this.btnConnectWiFi = new System.Windows.Forms.Button();
             this.gbSettingNetworkInterface = new System.Windows.Forms.GroupBox();
             this.tbInterfaceName = new System.Windows.Forms.TextBox();
             this.btnDisableInterface = new System.Windows.Forms.Button();
@@ -114,6 +119,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnTurnOffWiFi = new System.Windows.Forms.Button();
+            this.lbSsidPasswd = new System.Windows.Forms.Label();
+            this.tbSsidPasswd = new System.Windows.Forms.TextBox();
+            this.btnSaveWiFiInfo = new System.Windows.Forms.Button();
             this.tbMainMenu.SuspendLayout();
             this.tpFunctionTesting1.SuspendLayout();
             this.gbGetElementValue.SuspendLayout();
@@ -128,6 +137,7 @@
             this.gbFindElement.SuspendLayout();
             this.gbURL.SuspendLayout();
             this.tpFunctionTesting2.SuspendLayout();
+            this.gbConnectWiFi.SuspendLayout();
             this.gbSettingNetworkInterface.SuspendLayout();
             this.gbMessageShow.SuspendLayout();
             this.SuspendLayout();
@@ -136,13 +146,13 @@
             // 
             this.tbMessageShow.BackColor = System.Drawing.Color.White;
             this.tbMessageShow.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbMessageShow.Location = new System.Drawing.Point(14, 35);
-            this.tbMessageShow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMessageShow.Location = new System.Drawing.Point(19, 44);
+            this.tbMessageShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMessageShow.Multiline = true;
             this.tbMessageShow.Name = "tbMessageShow";
             this.tbMessageShow.ReadOnly = true;
             this.tbMessageShow.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbMessageShow.Size = new System.Drawing.Size(374, 601);
+            this.tbMessageShow.Size = new System.Drawing.Size(497, 750);
             this.tbMessageShow.TabIndex = 1;
             this.tbMessageShow.WordWrap = false;
             // 
@@ -156,20 +166,20 @@
             this.tbMainMenu.Controls.Add(this.tpFunctionTesting2);
             this.tbMainMenu.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbMainMenu.ItemSize = new System.Drawing.Size(200, 40);
-            this.tbMainMenu.Location = new System.Drawing.Point(422, 23);
-            this.tbMainMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMainMenu.Location = new System.Drawing.Point(563, 29);
+            this.tbMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMainMenu.Name = "tbMainMenu";
             this.tbMainMenu.SelectedIndex = 0;
-            this.tbMainMenu.Size = new System.Drawing.Size(796, 641);
+            this.tbMainMenu.Size = new System.Drawing.Size(1061, 801);
             this.tbMainMenu.TabIndex = 5;
             // 
             // tpBasicFuntion
             // 
             this.tpBasicFuntion.Location = new System.Drawing.Point(4, 44);
-            this.tpBasicFuntion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpBasicFuntion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpBasicFuntion.Name = "tpBasicFuntion";
-            this.tpBasicFuntion.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tpBasicFuntion.Size = new System.Drawing.Size(788, 593);
+            this.tpBasicFuntion.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tpBasicFuntion.Size = new System.Drawing.Size(1053, 753);
             this.tpBasicFuntion.TabIndex = 1;
             this.tpBasicFuntion.Text = "基本功能";
             this.tpBasicFuntion.UseVisualStyleBackColor = true;
@@ -177,9 +187,9 @@
             // tpAutoTesting
             // 
             this.tpAutoTesting.Location = new System.Drawing.Point(4, 44);
-            this.tpAutoTesting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpAutoTesting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpAutoTesting.Name = "tpAutoTesting";
-            this.tpAutoTesting.Size = new System.Drawing.Size(788, 593);
+            this.tpAutoTesting.Size = new System.Drawing.Size(1053, 753);
             this.tpAutoTesting.TabIndex = 3;
             this.tpAutoTesting.Text = "自動化測項";
             this.tpAutoTesting.UseVisualStyleBackColor = true;
@@ -187,9 +197,9 @@
             // tpBasicPataSetting
             // 
             this.tpBasicPataSetting.Location = new System.Drawing.Point(4, 44);
-            this.tpBasicPataSetting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpBasicPataSetting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpBasicPataSetting.Name = "tpBasicPataSetting";
-            this.tpBasicPataSetting.Size = new System.Drawing.Size(788, 593);
+            this.tpBasicPataSetting.Size = new System.Drawing.Size(1053, 753);
             this.tpBasicPataSetting.TabIndex = 2;
             this.tpBasicPataSetting.Text = "默認參數設置";
             this.tpBasicPataSetting.UseVisualStyleBackColor = true;
@@ -197,9 +207,9 @@
             // tpAdvancedPataSetting
             // 
             this.tpAdvancedPataSetting.Location = new System.Drawing.Point(4, 44);
-            this.tpAdvancedPataSetting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpAdvancedPataSetting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpAdvancedPataSetting.Name = "tpAdvancedPataSetting";
-            this.tpAdvancedPataSetting.Size = new System.Drawing.Size(788, 593);
+            this.tpAdvancedPataSetting.Size = new System.Drawing.Size(1053, 753);
             this.tpAdvancedPataSetting.TabIndex = 4;
             this.tpAdvancedPataSetting.Text = "網卡IP相關參數設置";
             this.tpAdvancedPataSetting.UseVisualStyleBackColor = true;
@@ -218,10 +228,10 @@
             this.tpFunctionTesting1.Controls.Add(this.gbFindElement);
             this.tpFunctionTesting1.Controls.Add(this.gbURL);
             this.tpFunctionTesting1.Location = new System.Drawing.Point(4, 44);
-            this.tpFunctionTesting1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpFunctionTesting1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpFunctionTesting1.Name = "tpFunctionTesting1";
-            this.tpFunctionTesting1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tpFunctionTesting1.Size = new System.Drawing.Size(788, 593);
+            this.tpFunctionTesting1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tpFunctionTesting1.Size = new System.Drawing.Size(1053, 753);
             this.tpFunctionTesting1.TabIndex = 0;
             this.tpFunctionTesting1.Text = "開發功能測試1";
             this.tpFunctionTesting1.UseVisualStyleBackColor = true;
@@ -231,11 +241,11 @@
             this.gbGetElementValue.Controls.Add(this.lbGetElementValue);
             this.gbGetElementValue.Controls.Add(this.tbGetElementValue);
             this.gbGetElementValue.Controls.Add(this.btnGetElementValue);
-            this.gbGetElementValue.Location = new System.Drawing.Point(530, 472);
-            this.gbGetElementValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbGetElementValue.Location = new System.Drawing.Point(707, 590);
+            this.gbGetElementValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbGetElementValue.Name = "gbGetElementValue";
-            this.gbGetElementValue.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbGetElementValue.Size = new System.Drawing.Size(253, 120);
+            this.gbGetElementValue.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbGetElementValue.Size = new System.Drawing.Size(337, 150);
             this.gbGetElementValue.TabIndex = 35;
             this.gbGetElementValue.TabStop = false;
             this.gbGetElementValue.Text = "GetElementValue";
@@ -243,27 +253,27 @@
             // lbGetElementValue
             // 
             this.lbGetElementValue.AutoSize = true;
-            this.lbGetElementValue.Location = new System.Drawing.Point(11, 31);
-            this.lbGetElementValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGetElementValue.Location = new System.Drawing.Point(15, 39);
             this.lbGetElementValue.Name = "lbGetElementValue";
-            this.lbGetElementValue.Size = new System.Drawing.Size(72, 20);
+            this.lbGetElementValue.Size = new System.Drawing.Size(90, 25);
             this.lbGetElementValue.TabIndex = 34;
             this.lbGetElementValue.Text = "IDName";
             // 
             // tbGetElementValue
             // 
-            this.tbGetElementValue.Location = new System.Drawing.Point(83, 29);
-            this.tbGetElementValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbGetElementValue.Location = new System.Drawing.Point(111, 36);
+            this.tbGetElementValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGetElementValue.Name = "tbGetElementValue";
-            this.tbGetElementValue.Size = new System.Drawing.Size(154, 29);
+            this.tbGetElementValue.Size = new System.Drawing.Size(204, 34);
             this.tbGetElementValue.TabIndex = 33;
             this.tbGetElementValue.Text = "internetStatus";
             // 
             // btnGetElementValue
             // 
-            this.btnGetElementValue.Location = new System.Drawing.Point(78, 65);
+            this.btnGetElementValue.Location = new System.Drawing.Point(104, 81);
+            this.btnGetElementValue.Margin = new System.Windows.Forms.Padding(4);
             this.btnGetElementValue.Name = "btnGetElementValue";
-            this.btnGetElementValue.Size = new System.Drawing.Size(110, 45);
+            this.btnGetElementValue.Size = new System.Drawing.Size(147, 56);
             this.btnGetElementValue.TabIndex = 32;
             this.btnGetElementValue.Text = "GetValue";
             this.btnGetElementValue.UseVisualStyleBackColor = true;
@@ -276,56 +286,57 @@
             this.gbDropDownList.Controls.Add(this.lbDropDownListName);
             this.gbDropDownList.Controls.Add(this.tbDropDownListName);
             this.gbDropDownList.Controls.Add(this.btnDropDownList);
-            this.gbDropDownList.Location = new System.Drawing.Point(530, 343);
+            this.gbDropDownList.Location = new System.Drawing.Point(707, 429);
+            this.gbDropDownList.Margin = new System.Windows.Forms.Padding(4);
             this.gbDropDownList.Name = "gbDropDownList";
-            this.gbDropDownList.Size = new System.Drawing.Size(253, 127);
+            this.gbDropDownList.Padding = new System.Windows.Forms.Padding(4);
+            this.gbDropDownList.Size = new System.Drawing.Size(337, 159);
             this.gbDropDownList.TabIndex = 31;
             this.gbDropDownList.TabStop = false;
             this.gbDropDownList.Text = "DropDownList";
             // 
             // tbSelectItem
             // 
-            this.tbSelectItem.Location = new System.Drawing.Point(99, 71);
-            this.tbSelectItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSelectItem.Location = new System.Drawing.Point(132, 89);
+            this.tbSelectItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSelectItem.Name = "tbSelectItem";
-            this.tbSelectItem.Size = new System.Drawing.Size(32, 29);
+            this.tbSelectItem.Size = new System.Drawing.Size(41, 34);
             this.tbSelectItem.TabIndex = 44;
             this.tbSelectItem.Text = "1";
             // 
             // lbSelectItem
             // 
             this.lbSelectItem.AutoSize = true;
-            this.lbSelectItem.Location = new System.Drawing.Point(6, 75);
-            this.lbSelectItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSelectItem.Location = new System.Drawing.Point(8, 94);
             this.lbSelectItem.Name = "lbSelectItem";
-            this.lbSelectItem.Size = new System.Drawing.Size(89, 20);
+            this.lbSelectItem.Size = new System.Drawing.Size(110, 25);
             this.lbSelectItem.TabIndex = 40;
             this.lbSelectItem.Text = "SelectItem";
             // 
             // lbDropDownListName
             // 
             this.lbDropDownListName.AutoSize = true;
-            this.lbDropDownListName.Location = new System.Drawing.Point(6, 30);
-            this.lbDropDownListName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbDropDownListName.Location = new System.Drawing.Point(8, 38);
             this.lbDropDownListName.Name = "lbDropDownListName";
-            this.lbDropDownListName.Size = new System.Drawing.Size(72, 20);
+            this.lbDropDownListName.Size = new System.Drawing.Size(90, 25);
             this.lbDropDownListName.TabIndex = 32;
             this.lbDropDownListName.Text = "IDName";
             // 
             // tbDropDownListName
             // 
-            this.tbDropDownListName.Location = new System.Drawing.Point(78, 26);
-            this.tbDropDownListName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbDropDownListName.Location = new System.Drawing.Point(104, 32);
+            this.tbDropDownListName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbDropDownListName.Name = "tbDropDownListName";
-            this.tbDropDownListName.Size = new System.Drawing.Size(160, 29);
+            this.tbDropDownListName.Size = new System.Drawing.Size(212, 34);
             this.tbDropDownListName.TabIndex = 31;
             this.tbDropDownListName.Text = "_mssid1Sec";
             // 
             // btnDropDownList
             // 
-            this.btnDropDownList.Location = new System.Drawing.Point(139, 61);
+            this.btnDropDownList.Location = new System.Drawing.Point(185, 76);
+            this.btnDropDownList.Margin = new System.Windows.Forms.Padding(4);
             this.btnDropDownList.Name = "btnDropDownList";
-            this.btnDropDownList.Size = new System.Drawing.Size(104, 48);
+            this.btnDropDownList.Size = new System.Drawing.Size(139, 60);
             this.btnDropDownList.TabIndex = 30;
             this.btnDropDownList.Text = "DropDown";
             this.btnDropDownList.UseVisualStyleBackColor = true;
@@ -338,58 +349,57 @@
             this.gbSwitchButtonClick.Controls.Add(this.lbSwitchButtonClick);
             this.gbSwitchButtonClick.Controls.Add(this.tbSwitchButtonClick);
             this.gbSwitchButtonClick.Controls.Add(this.btnSwitchButtonClick);
-            this.gbSwitchButtonClick.Location = new System.Drawing.Point(268, 394);
-            this.gbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSwitchButtonClick.Location = new System.Drawing.Point(357, 492);
+            this.gbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbSwitchButtonClick.Name = "gbSwitchButtonClick";
-            this.gbSwitchButtonClick.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbSwitchButtonClick.Size = new System.Drawing.Size(210, 195);
+            this.gbSwitchButtonClick.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbSwitchButtonClick.Size = new System.Drawing.Size(280, 244);
             this.gbSwitchButtonClick.TabIndex = 29;
             this.gbSwitchButtonClick.TabStop = false;
             this.gbSwitchButtonClick.Text = "SwitchButtonClick";
             // 
             // tbSwitchButtonClassIndex
             // 
-            this.tbSwitchButtonClassIndex.Location = new System.Drawing.Point(97, 99);
-            this.tbSwitchButtonClassIndex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSwitchButtonClassIndex.Location = new System.Drawing.Point(129, 124);
+            this.tbSwitchButtonClassIndex.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSwitchButtonClassIndex.Name = "tbSwitchButtonClassIndex";
-            this.tbSwitchButtonClassIndex.Size = new System.Drawing.Size(34, 29);
+            this.tbSwitchButtonClassIndex.Size = new System.Drawing.Size(44, 34);
             this.tbSwitchButtonClassIndex.TabIndex = 37;
             this.tbSwitchButtonClassIndex.Text = "0";
             // 
             // lbSwitchButtonClassIndex
             // 
             this.lbSwitchButtonClassIndex.AutoSize = true;
-            this.lbSwitchButtonClassIndex.Location = new System.Drawing.Point(4, 102);
-            this.lbSwitchButtonClassIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSwitchButtonClassIndex.Location = new System.Drawing.Point(5, 128);
             this.lbSwitchButtonClassIndex.Name = "lbSwitchButtonClassIndex";
-            this.lbSwitchButtonClassIndex.Size = new System.Drawing.Size(89, 20);
+            this.lbSwitchButtonClassIndex.Size = new System.Drawing.Size(111, 25);
             this.lbSwitchButtonClassIndex.TabIndex = 36;
             this.lbSwitchButtonClassIndex.Text = "ClassIndex";
             // 
             // lbSwitchButtonClick
             // 
             this.lbSwitchButtonClick.AutoSize = true;
-            this.lbSwitchButtonClick.Location = new System.Drawing.Point(4, 33);
-            this.lbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSwitchButtonClick.Location = new System.Drawing.Point(5, 41);
             this.lbSwitchButtonClick.Name = "lbSwitchButtonClick";
-            this.lbSwitchButtonClick.Size = new System.Drawing.Size(172, 20);
+            this.lbSwitchButtonClick.Size = new System.Drawing.Size(213, 25);
             this.lbSwitchButtonClick.TabIndex = 28;
             this.lbSwitchButtonClick.Text = "SwitchBtn ClassName";
             // 
             // tbSwitchButtonClick
             // 
-            this.tbSwitchButtonClick.Location = new System.Drawing.Point(8, 64);
-            this.tbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSwitchButtonClick.Location = new System.Drawing.Point(11, 80);
+            this.tbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSwitchButtonClick.Name = "tbSwitchButtonClick";
-            this.tbSwitchButtonClick.Size = new System.Drawing.Size(192, 29);
+            this.tbSwitchButtonClick.Size = new System.Drawing.Size(255, 34);
             this.tbSwitchButtonClick.TabIndex = 27;
             this.tbSwitchButtonClick.Text = "button-group-cover";
             // 
             // btnSwitchButtonClick
             // 
-            this.btnSwitchButtonClick.Location = new System.Drawing.Point(61, 140);
+            this.btnSwitchButtonClick.Location = new System.Drawing.Point(81, 175);
+            this.btnSwitchButtonClick.Margin = new System.Windows.Forms.Padding(4);
             this.btnSwitchButtonClick.Name = "btnSwitchButtonClick";
-            this.btnSwitchButtonClick.Size = new System.Drawing.Size(103, 48);
+            this.btnSwitchButtonClick.Size = new System.Drawing.Size(137, 60);
             this.btnSwitchButtonClick.TabIndex = 26;
             this.btnSwitchButtonClick.Text = "Switch";
             this.btnSwitchButtonClick.UseVisualStyleBackColor = true;
@@ -413,41 +423,39 @@
             this.gbScrollElement.Controls.Add(this.label3);
             this.gbScrollElement.Controls.Add(this.label4);
             this.gbScrollElement.Controls.Add(this.label5);
-            this.gbScrollElement.Location = new System.Drawing.Point(268, 14);
-            this.gbScrollElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbScrollElement.Location = new System.Drawing.Point(357, 18);
+            this.gbScrollElement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbScrollElement.Name = "gbScrollElement";
-            this.gbScrollElement.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbScrollElement.Size = new System.Drawing.Size(249, 369);
+            this.gbScrollElement.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbScrollElement.Size = new System.Drawing.Size(332, 461);
             this.gbScrollElement.TabIndex = 21;
             this.gbScrollElement.TabStop = false;
             this.gbScrollElement.Text = "ScrollElement";
             // 
             // tbClassIndex
             // 
-            this.tbClassIndex.Location = new System.Drawing.Point(184, 131);
-            this.tbClassIndex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbClassIndex.Location = new System.Drawing.Point(245, 164);
+            this.tbClassIndex.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbClassIndex.Name = "tbClassIndex";
-            this.tbClassIndex.Size = new System.Drawing.Size(34, 29);
+            this.tbClassIndex.Size = new System.Drawing.Size(44, 34);
             this.tbClassIndex.TabIndex = 35;
             this.tbClassIndex.Text = "0";
             // 
             // lbClassIndex
             // 
             this.lbClassIndex.AutoSize = true;
-            this.lbClassIndex.Location = new System.Drawing.Point(160, 106);
-            this.lbClassIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbClassIndex.Location = new System.Drawing.Point(213, 132);
             this.lbClassIndex.Name = "lbClassIndex";
-            this.lbClassIndex.Size = new System.Drawing.Size(89, 20);
+            this.lbClassIndex.Size = new System.Drawing.Size(111, 25);
             this.lbClassIndex.TabIndex = 34;
             this.lbClassIndex.Text = "ClassIndex";
             // 
             // lbElementType
             // 
             this.lbElementType.AutoSize = true;
-            this.lbElementType.Location = new System.Drawing.Point(4, 106);
-            this.lbElementType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbElementType.Location = new System.Drawing.Point(5, 132);
             this.lbElementType.Name = "lbElementType";
-            this.lbElementType.Size = new System.Drawing.Size(107, 20);
+            this.lbElementType.Size = new System.Drawing.Size(133, 25);
             this.lbElementType.TabIndex = 33;
             this.lbElementType.Text = "ElementType";
             // 
@@ -459,19 +467,20 @@
             this.clbScrollElement.Items.AddRange(new object[] {
             "Id",
             "Class"});
-            this.clbScrollElement.Location = new System.Drawing.Point(14, 131);
-            this.clbScrollElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clbScrollElement.Location = new System.Drawing.Point(19, 164);
+            this.clbScrollElement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clbScrollElement.MultiColumn = true;
             this.clbScrollElement.Name = "clbScrollElement";
-            this.clbScrollElement.Size = new System.Drawing.Size(70, 76);
+            this.clbScrollElement.Size = new System.Drawing.Size(92, 91);
             this.clbScrollElement.TabIndex = 32;
             this.clbScrollElement.SelectedIndexChanged += new System.EventHandler(this.clbScrollElement_SelectedIndexChanged);
             // 
             // btnScrollElementLeft
             // 
-            this.btnScrollElementLeft.Location = new System.Drawing.Point(26, 242);
+            this.btnScrollElementLeft.Location = new System.Drawing.Point(35, 302);
+            this.btnScrollElementLeft.Margin = new System.Windows.Forms.Padding(4);
             this.btnScrollElementLeft.Name = "btnScrollElementLeft";
-            this.btnScrollElementLeft.Size = new System.Drawing.Size(57, 49);
+            this.btnScrollElementLeft.Size = new System.Drawing.Size(76, 61);
             this.btnScrollElementLeft.TabIndex = 27;
             this.btnScrollElementLeft.Text = "Left";
             this.btnScrollElementLeft.UseVisualStyleBackColor = true;
@@ -481,18 +490,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(83, 246);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(111, 308);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 40);
+            this.label6.Size = new System.Drawing.Size(58, 50);
             this.label6.TabIndex = 31;
             this.label6.Text = "⬅";
             // 
             // btnScrollElementRight
             // 
-            this.btnScrollElementRight.Location = new System.Drawing.Point(175, 242);
+            this.btnScrollElementRight.Location = new System.Drawing.Point(233, 302);
+            this.btnScrollElementRight.Margin = new System.Windows.Forms.Padding(4);
             this.btnScrollElementRight.Name = "btnScrollElementRight";
-            this.btnScrollElementRight.Size = new System.Drawing.Size(60, 49);
+            this.btnScrollElementRight.Size = new System.Drawing.Size(80, 61);
             this.btnScrollElementRight.TabIndex = 26;
             this.btnScrollElementRight.Text = "Right";
             this.btnScrollElementRight.UseVisualStyleBackColor = true;
@@ -500,9 +509,10 @@
             // 
             // btnScrollElementDown
             // 
-            this.btnScrollElementDown.Location = new System.Drawing.Point(100, 305);
+            this.btnScrollElementDown.Location = new System.Drawing.Point(133, 381);
+            this.btnScrollElementDown.Margin = new System.Windows.Forms.Padding(4);
             this.btnScrollElementDown.Name = "btnScrollElementDown";
-            this.btnScrollElementDown.Size = new System.Drawing.Size(62, 49);
+            this.btnScrollElementDown.Size = new System.Drawing.Size(83, 61);
             this.btnScrollElementDown.TabIndex = 25;
             this.btnScrollElementDown.Text = "Down";
             this.btnScrollElementDown.UseVisualStyleBackColor = true;
@@ -510,47 +520,46 @@
             // 
             // tbMovedPixels
             // 
-            this.tbMovedPixels.Location = new System.Drawing.Point(106, 65);
-            this.tbMovedPixels.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMovedPixels.Location = new System.Drawing.Point(141, 81);
+            this.tbMovedPixels.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMovedPixels.Name = "tbMovedPixels";
-            this.tbMovedPixels.Size = new System.Drawing.Size(56, 29);
+            this.tbMovedPixels.Size = new System.Drawing.Size(73, 34);
             this.tbMovedPixels.TabIndex = 24;
             this.tbMovedPixels.Text = "50";
             // 
             // lbMovedPixels
             // 
             this.lbMovedPixels.AutoSize = true;
-            this.lbMovedPixels.Location = new System.Drawing.Point(4, 67);
-            this.lbMovedPixels.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMovedPixels.Location = new System.Drawing.Point(5, 84);
             this.lbMovedPixels.Name = "lbMovedPixels";
-            this.lbMovedPixels.Size = new System.Drawing.Size(103, 20);
+            this.lbMovedPixels.Size = new System.Drawing.Size(130, 25);
             this.lbMovedPixels.TabIndex = 23;
             this.lbMovedPixels.Text = "MovedPixels";
             // 
             // lbScrollElement
             // 
             this.lbScrollElement.AutoSize = true;
-            this.lbScrollElement.Location = new System.Drawing.Point(4, 29);
-            this.lbScrollElement.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbScrollElement.Location = new System.Drawing.Point(5, 36);
             this.lbScrollElement.Name = "lbScrollElement";
-            this.lbScrollElement.Size = new System.Drawing.Size(55, 20);
+            this.lbScrollElement.Size = new System.Drawing.Size(69, 25);
             this.lbScrollElement.TabIndex = 22;
             this.lbScrollElement.Text = "Name";
             // 
             // tbScrollElement
             // 
-            this.tbScrollElement.Location = new System.Drawing.Point(61, 26);
-            this.tbScrollElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbScrollElement.Location = new System.Drawing.Point(81, 32);
+            this.tbScrollElement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbScrollElement.Name = "tbScrollElement";
-            this.tbScrollElement.Size = new System.Drawing.Size(175, 29);
+            this.tbScrollElement.Size = new System.Drawing.Size(232, 34);
             this.tbScrollElement.TabIndex = 21;
             this.tbScrollElement.Text = "scroll";
             // 
             // btnScrollElementUp
             // 
-            this.btnScrollElementUp.Location = new System.Drawing.Point(98, 183);
+            this.btnScrollElementUp.Location = new System.Drawing.Point(131, 229);
+            this.btnScrollElementUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnScrollElementUp.Name = "btnScrollElementUp";
-            this.btnScrollElementUp.Size = new System.Drawing.Size(62, 49);
+            this.btnScrollElementUp.Size = new System.Drawing.Size(83, 61);
             this.btnScrollElementUp.TabIndex = 20;
             this.btnScrollElementUp.Text = "Up";
             this.btnScrollElementUp.UseVisualStyleBackColor = true;
@@ -560,10 +569,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(107, 229);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(143, 286);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 40);
+            this.label3.Size = new System.Drawing.Size(52, 50);
             this.label3.TabIndex = 28;
             this.label3.Text = " ⬆";
             // 
@@ -571,10 +579,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(107, 263);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(143, 329);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 40);
+            this.label4.Size = new System.Drawing.Size(52, 50);
             this.label4.TabIndex = 29;
             this.label4.Text = " ⬇";
             // 
@@ -582,30 +589,30 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(129, 246);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(172, 308);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 40);
+            this.label5.Size = new System.Drawing.Size(68, 50);
             this.label5.TabIndex = 30;
             this.label5.Text = " ➞";
             // 
             // gbWebRefresh
             // 
             this.gbWebRefresh.Controls.Add(this.btnWebRefresh);
-            this.gbWebRefresh.Location = new System.Drawing.Point(530, 241);
-            this.gbWebRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbWebRefresh.Location = new System.Drawing.Point(707, 301);
+            this.gbWebRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbWebRefresh.Name = "gbWebRefresh";
-            this.gbWebRefresh.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbWebRefresh.Size = new System.Drawing.Size(150, 91);
+            this.gbWebRefresh.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbWebRefresh.Size = new System.Drawing.Size(200, 114);
             this.gbWebRefresh.TabIndex = 19;
             this.gbWebRefresh.TabStop = false;
             this.gbWebRefresh.Text = "WebRefresh";
             // 
             // btnWebRefresh
             // 
-            this.btnWebRefresh.Location = new System.Drawing.Point(12, 27);
+            this.btnWebRefresh.Location = new System.Drawing.Point(16, 34);
+            this.btnWebRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnWebRefresh.Name = "btnWebRefresh";
-            this.btnWebRefresh.Size = new System.Drawing.Size(127, 49);
+            this.btnWebRefresh.Size = new System.Drawing.Size(169, 61);
             this.btnWebRefresh.TabIndex = 17;
             this.btnWebRefresh.Text = "WebRefresh";
             this.btnWebRefresh.UseVisualStyleBackColor = true;
@@ -614,20 +621,21 @@
             // gbRestartDriver
             // 
             this.gbRestartDriver.Controls.Add(this.btnRestartDriver);
-            this.gbRestartDriver.Location = new System.Drawing.Point(530, 145);
-            this.gbRestartDriver.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbRestartDriver.Location = new System.Drawing.Point(707, 181);
+            this.gbRestartDriver.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRestartDriver.Name = "gbRestartDriver";
-            this.gbRestartDriver.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbRestartDriver.Size = new System.Drawing.Size(150, 91);
+            this.gbRestartDriver.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbRestartDriver.Size = new System.Drawing.Size(200, 114);
             this.gbRestartDriver.TabIndex = 18;
             this.gbRestartDriver.TabStop = false;
             this.gbRestartDriver.Text = "RestartDriver";
             // 
             // btnRestartDriver
             // 
-            this.btnRestartDriver.Location = new System.Drawing.Point(12, 27);
+            this.btnRestartDriver.Location = new System.Drawing.Point(16, 34);
+            this.btnRestartDriver.Margin = new System.Windows.Forms.Padding(4);
             this.btnRestartDriver.Name = "btnRestartDriver";
-            this.btnRestartDriver.Size = new System.Drawing.Size(127, 49);
+            this.btnRestartDriver.Size = new System.Drawing.Size(169, 61);
             this.btnRestartDriver.TabIndex = 17;
             this.btnRestartDriver.Text = "RestartDriver";
             this.btnRestartDriver.UseVisualStyleBackColor = true;
@@ -641,31 +649,30 @@
             this.gpButtonClick.Controls.Add(this.label2);
             this.gpButtonClick.Controls.Add(this.tbButtonClick);
             this.gpButtonClick.Controls.Add(this.btnButtonClick);
-            this.gpButtonClick.Location = new System.Drawing.Point(12, 443);
-            this.gpButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpButtonClick.Location = new System.Drawing.Point(16, 554);
+            this.gpButtonClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpButtonClick.Name = "gpButtonClick";
-            this.gpButtonClick.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gpButtonClick.Size = new System.Drawing.Size(245, 146);
+            this.gpButtonClick.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpButtonClick.Size = new System.Drawing.Size(327, 182);
             this.gpButtonClick.TabIndex = 16;
             this.gpButtonClick.TabStop = false;
             this.gpButtonClick.Text = "4.ButtonClick";
             // 
             // tbClassIndexButtonClick
             // 
-            this.tbClassIndexButtonClick.Location = new System.Drawing.Point(194, 24);
-            this.tbClassIndexButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbClassIndexButtonClick.Location = new System.Drawing.Point(259, 30);
+            this.tbClassIndexButtonClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbClassIndexButtonClick.Name = "tbClassIndexButtonClick";
-            this.tbClassIndexButtonClick.Size = new System.Drawing.Size(34, 29);
+            this.tbClassIndexButtonClick.Size = new System.Drawing.Size(44, 34);
             this.tbClassIndexButtonClick.TabIndex = 39;
             this.tbClassIndexButtonClick.Text = "0";
             // 
             // lbClassIndexButtonClick
             // 
             this.lbClassIndexButtonClick.AutoSize = true;
-            this.lbClassIndexButtonClick.Location = new System.Drawing.Point(100, 27);
-            this.lbClassIndexButtonClick.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbClassIndexButtonClick.Location = new System.Drawing.Point(133, 34);
             this.lbClassIndexButtonClick.Name = "lbClassIndexButtonClick";
-            this.lbClassIndexButtonClick.Size = new System.Drawing.Size(89, 20);
+            this.lbClassIndexButtonClick.Size = new System.Drawing.Size(111, 25);
             this.lbClassIndexButtonClick.TabIndex = 38;
             this.lbClassIndexButtonClick.Text = "ClassIndex";
             // 
@@ -677,37 +684,37 @@
             "Name",
             "XPath",
             "ClassName"});
-            this.cbButtonClick.Location = new System.Drawing.Point(8, 25);
-            this.cbButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbButtonClick.Location = new System.Drawing.Point(11, 31);
+            this.cbButtonClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbButtonClick.Name = "cbButtonClick";
-            this.cbButtonClick.Size = new System.Drawing.Size(80, 28);
+            this.cbButtonClick.Size = new System.Drawing.Size(105, 33);
             this.cbButtonClick.TabIndex = 20;
             this.cbButtonClick.Text = "Id";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 61);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(5, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 20);
+            this.label2.Size = new System.Drawing.Size(69, 25);
             this.label2.TabIndex = 15;
             this.label2.Text = "Btn ID";
             // 
             // tbButtonClick
             // 
-            this.tbButtonClick.Location = new System.Drawing.Point(67, 58);
-            this.tbButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbButtonClick.Location = new System.Drawing.Point(89, 72);
+            this.tbButtonClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbButtonClick.Name = "tbButtonClick";
-            this.tbButtonClick.Size = new System.Drawing.Size(162, 29);
+            this.tbButtonClick.Size = new System.Drawing.Size(215, 34);
             this.tbButtonClick.TabIndex = 10;
             this.tbButtonClick.Text = "pc-login-btn";
             // 
             // btnButtonClick
             // 
-            this.btnButtonClick.Location = new System.Drawing.Point(47, 92);
+            this.btnButtonClick.Location = new System.Drawing.Point(63, 115);
+            this.btnButtonClick.Margin = new System.Windows.Forms.Padding(4);
             this.btnButtonClick.Name = "btnButtonClick";
-            this.btnButtonClick.Size = new System.Drawing.Size(127, 45);
+            this.btnButtonClick.Size = new System.Drawing.Size(169, 56);
             this.btnButtonClick.TabIndex = 8;
             this.btnButtonClick.Text = "Click";
             this.btnButtonClick.UseVisualStyleBackColor = true;
@@ -717,20 +724,21 @@
             // 
             this.groupBox5.Controls.Add(this.btnConfigTest);
             this.groupBox5.Controls.Add(this.textBox1);
-            this.groupBox5.Location = new System.Drawing.Point(530, 14);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Location = new System.Drawing.Point(707, 18);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox5.Size = new System.Drawing.Size(150, 126);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(200, 158);
             this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Setting Config";
             // 
             // btnConfigTest
             // 
-            this.btnConfigTest.Location = new System.Drawing.Point(12, 67);
+            this.btnConfigTest.Location = new System.Drawing.Point(16, 84);
+            this.btnConfigTest.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfigTest.Name = "btnConfigTest";
-            this.btnConfigTest.Size = new System.Drawing.Size(127, 49);
+            this.btnConfigTest.Size = new System.Drawing.Size(169, 61);
             this.btnConfigTest.TabIndex = 5;
             this.btnConfigTest.Text = "ConfigTest";
             this.btnConfigTest.UseVisualStyleBackColor = true;
@@ -738,10 +746,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 26);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(16, 32);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(128, 29);
+            this.textBox1.Size = new System.Drawing.Size(169, 34);
             this.textBox1.TabIndex = 13;
             // 
             // gbKeyIn
@@ -749,11 +757,11 @@
             this.gbKeyIn.Controls.Add(this.lbKeyIn);
             this.gbKeyIn.Controls.Add(this.tbSendKey);
             this.gbKeyIn.Controls.Add(this.btnSendKeys);
-            this.gbKeyIn.Location = new System.Drawing.Point(12, 315);
-            this.gbKeyIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbKeyIn.Location = new System.Drawing.Point(16, 394);
+            this.gbKeyIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbKeyIn.Name = "gbKeyIn";
-            this.gbKeyIn.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbKeyIn.Size = new System.Drawing.Size(245, 123);
+            this.gbKeyIn.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbKeyIn.Size = new System.Drawing.Size(327, 154);
             this.gbKeyIn.TabIndex = 15;
             this.gbKeyIn.TabStop = false;
             this.gbKeyIn.Text = "3.KeyIn";
@@ -761,27 +769,27 @@
             // lbKeyIn
             // 
             this.lbKeyIn.AutoSize = true;
-            this.lbKeyIn.Location = new System.Drawing.Point(4, 34);
-            this.lbKeyIn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbKeyIn.Location = new System.Drawing.Point(5, 42);
             this.lbKeyIn.Name = "lbKeyIn";
-            this.lbKeyIn.Size = new System.Drawing.Size(54, 20);
+            this.lbKeyIn.Size = new System.Drawing.Size(67, 25);
             this.lbKeyIn.TabIndex = 14;
             this.lbKeyIn.Text = "String";
             // 
             // tbSendKey
             // 
-            this.tbSendKey.Location = new System.Drawing.Point(63, 32);
-            this.tbSendKey.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSendKey.Location = new System.Drawing.Point(84, 40);
+            this.tbSendKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSendKey.Name = "tbSendKey";
-            this.tbSendKey.Size = new System.Drawing.Size(169, 29);
+            this.tbSendKey.Size = new System.Drawing.Size(224, 34);
             this.tbSendKey.TabIndex = 10;
             this.tbSendKey.Text = "StevenUniverse";
             // 
             // btnSendKeys
             // 
-            this.btnSendKeys.Location = new System.Drawing.Point(46, 69);
+            this.btnSendKeys.Location = new System.Drawing.Point(61, 86);
+            this.btnSendKeys.Margin = new System.Windows.Forms.Padding(4);
             this.btnSendKeys.Name = "btnSendKeys";
-            this.btnSendKeys.Size = new System.Drawing.Size(127, 49);
+            this.btnSendKeys.Size = new System.Drawing.Size(169, 61);
             this.btnSendKeys.TabIndex = 8;
             this.btnSendKeys.Text = "SendKeys";
             this.btnSendKeys.UseVisualStyleBackColor = true;
@@ -793,11 +801,11 @@
             this.gbFindElement.Controls.Add(this.cbFindElement);
             this.gbFindElement.Controls.Add(this.tbFindElement);
             this.gbFindElement.Controls.Add(this.btnFindElement);
-            this.gbFindElement.Location = new System.Drawing.Point(12, 142);
-            this.gbFindElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbFindElement.Location = new System.Drawing.Point(16, 178);
+            this.gbFindElement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbFindElement.Name = "gbFindElement";
-            this.gbFindElement.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbFindElement.Size = new System.Drawing.Size(245, 169);
+            this.gbFindElement.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbFindElement.Size = new System.Drawing.Size(327, 211);
             this.gbFindElement.TabIndex = 14;
             this.gbFindElement.TabStop = false;
             this.gbFindElement.Text = "2.FindElement";
@@ -805,10 +813,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 70);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(5, 88);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 20);
+            this.label1.Size = new System.Drawing.Size(72, 25);
             this.label1.TabIndex = 13;
             this.label1.Text = "Target";
             // 
@@ -820,27 +827,28 @@
             "Name",
             "XPath",
             "ClassName"});
-            this.cbFindElement.Location = new System.Drawing.Point(7, 29);
-            this.cbFindElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbFindElement.Location = new System.Drawing.Point(9, 36);
+            this.cbFindElement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbFindElement.Name = "cbFindElement";
-            this.cbFindElement.Size = new System.Drawing.Size(167, 28);
+            this.cbFindElement.Size = new System.Drawing.Size(221, 33);
             this.cbFindElement.TabIndex = 19;
             this.cbFindElement.Text = "Id";
             // 
             // tbFindElement
             // 
-            this.tbFindElement.Location = new System.Drawing.Point(63, 67);
-            this.tbFindElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbFindElement.Location = new System.Drawing.Point(84, 84);
+            this.tbFindElement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbFindElement.Name = "tbFindElement";
-            this.tbFindElement.Size = new System.Drawing.Size(169, 29);
+            this.tbFindElement.Size = new System.Drawing.Size(224, 34);
             this.tbFindElement.TabIndex = 9;
             this.tbFindElement.Text = "pc-login-password";
             // 
             // btnFindElement
             // 
-            this.btnFindElement.Location = new System.Drawing.Point(47, 107);
+            this.btnFindElement.Location = new System.Drawing.Point(63, 134);
+            this.btnFindElement.Margin = new System.Windows.Forms.Padding(4);
             this.btnFindElement.Name = "btnFindElement";
-            this.btnFindElement.Size = new System.Drawing.Size(127, 49);
+            this.btnFindElement.Size = new System.Drawing.Size(169, 61);
             this.btnFindElement.TabIndex = 7;
             this.btnFindElement.Text = "FindElement";
             this.btnFindElement.UseVisualStyleBackColor = true;
@@ -851,11 +859,11 @@
             this.gbURL.Controls.Add(this.lbOpenURL);
             this.gbURL.Controls.Add(this.tbOpenURL);
             this.gbURL.Controls.Add(this.btnOpenURL);
-            this.gbURL.Location = new System.Drawing.Point(12, 14);
-            this.gbURL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbURL.Location = new System.Drawing.Point(16, 18);
+            this.gbURL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbURL.Name = "gbURL";
-            this.gbURL.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbURL.Size = new System.Drawing.Size(245, 116);
+            this.gbURL.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbURL.Size = new System.Drawing.Size(327, 145);
             this.gbURL.TabIndex = 13;
             this.gbURL.TabStop = false;
             this.gbURL.Text = "1.URL";
@@ -863,27 +871,27 @@
             // lbOpenURL
             // 
             this.lbOpenURL.AutoSize = true;
-            this.lbOpenURL.Location = new System.Drawing.Point(4, 29);
-            this.lbOpenURL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbOpenURL.Location = new System.Drawing.Point(5, 36);
             this.lbOpenURL.Name = "lbOpenURL";
-            this.lbOpenURL.Size = new System.Drawing.Size(39, 20);
+            this.lbOpenURL.Size = new System.Drawing.Size(50, 25);
             this.lbOpenURL.TabIndex = 12;
             this.lbOpenURL.Text = "URL";
             // 
             // tbOpenURL
             // 
-            this.tbOpenURL.Location = new System.Drawing.Point(46, 26);
-            this.tbOpenURL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbOpenURL.Location = new System.Drawing.Point(61, 32);
+            this.tbOpenURL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbOpenURL.Name = "tbOpenURL";
-            this.tbOpenURL.Size = new System.Drawing.Size(186, 29);
+            this.tbOpenURL.Size = new System.Drawing.Size(247, 34);
             this.tbOpenURL.TabIndex = 11;
             this.tbOpenURL.Text = "http://192.168.0.1/";
             // 
             // btnOpenURL
             // 
-            this.btnOpenURL.Location = new System.Drawing.Point(47, 59);
+            this.btnOpenURL.Location = new System.Drawing.Point(63, 74);
+            this.btnOpenURL.Margin = new System.Windows.Forms.Padding(4);
             this.btnOpenURL.Name = "btnOpenURL";
-            this.btnOpenURL.Size = new System.Drawing.Size(127, 49);
+            this.btnOpenURL.Size = new System.Drawing.Size(169, 61);
             this.btnOpenURL.TabIndex = 6;
             this.btnOpenURL.Text = "OpenURLTest";
             this.btnOpenURL.UseVisualStyleBackColor = true;
@@ -891,14 +899,71 @@
             // 
             // tpFunctionTesting2
             // 
+            this.tpFunctionTesting2.Controls.Add(this.gbConnectWiFi);
             this.tpFunctionTesting2.Controls.Add(this.gbSettingNetworkInterface);
             this.tpFunctionTesting2.Location = new System.Drawing.Point(4, 44);
-            this.tpFunctionTesting2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpFunctionTesting2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpFunctionTesting2.Name = "tpFunctionTesting2";
-            this.tpFunctionTesting2.Size = new System.Drawing.Size(788, 593);
+            this.tpFunctionTesting2.Size = new System.Drawing.Size(1053, 753);
             this.tpFunctionTesting2.TabIndex = 5;
             this.tpFunctionTesting2.Text = "開發功能測試2";
             this.tpFunctionTesting2.UseVisualStyleBackColor = true;
+            // 
+            // gbConnectWiFi
+            // 
+            this.gbConnectWiFi.Controls.Add(this.btnSaveWiFiInfo);
+            this.gbConnectWiFi.Controls.Add(this.tbSsidPasswd);
+            this.gbConnectWiFi.Controls.Add(this.lbSsidPasswd);
+            this.gbConnectWiFi.Controls.Add(this.btnTurnOffWiFi);
+            this.gbConnectWiFi.Controls.Add(this.lbWiFiName);
+            this.gbConnectWiFi.Controls.Add(this.tbSsidiName);
+            this.gbConnectWiFi.Controls.Add(this.btnTurnOnWiFi);
+            this.gbConnectWiFi.Controls.Add(this.btnConnectWiFi);
+            this.gbConnectWiFi.Location = new System.Drawing.Point(400, 11);
+            this.gbConnectWiFi.Name = "gbConnectWiFi";
+            this.gbConnectWiFi.Size = new System.Drawing.Size(238, 378);
+            this.gbConnectWiFi.TabIndex = 18;
+            this.gbConnectWiFi.TabStop = false;
+            this.gbConnectWiFi.Text = "ConnectWiFi";
+            // 
+            // lbWiFiName
+            // 
+            this.lbWiFiName.AutoSize = true;
+            this.lbWiFiName.Location = new System.Drawing.Point(13, 39);
+            this.lbWiFiName.Name = "lbWiFiName";
+            this.lbWiFiName.Size = new System.Drawing.Size(112, 25);
+            this.lbWiFiName.TabIndex = 36;
+            this.lbWiFiName.Text = "Ssid Name";
+            // 
+            // tbSsidiName
+            // 
+            this.tbSsidiName.Location = new System.Drawing.Point(18, 66);
+            this.tbSsidiName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbSsidiName.Name = "tbSsidiName";
+            this.tbSsidiName.Size = new System.Drawing.Size(208, 34);
+            this.tbSsidiName.TabIndex = 35;
+            this.tbSsidiName.Text = "a_Stefen_Test_2.4G";
+            // 
+            // btnTurnOnWiFi
+            // 
+            this.btnTurnOnWiFi.Location = new System.Drawing.Point(124, 238);
+            this.btnTurnOnWiFi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTurnOnWiFi.Name = "btnTurnOnWiFi";
+            this.btnTurnOnWiFi.Size = new System.Drawing.Size(102, 61);
+            this.btnTurnOnWiFi.TabIndex = 34;
+            this.btnTurnOnWiFi.Text = "TurnOnWiFi";
+            this.btnTurnOnWiFi.UseVisualStyleBackColor = true;
+            // 
+            // btnConnectWiFi
+            // 
+            this.btnConnectWiFi.Location = new System.Drawing.Point(18, 238);
+            this.btnConnectWiFi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConnectWiFi.Name = "btnConnectWiFi";
+            this.btnConnectWiFi.Size = new System.Drawing.Size(98, 124);
+            this.btnConnectWiFi.TabIndex = 33;
+            this.btnConnectWiFi.Text = "ConnectWiFi";
+            this.btnConnectWiFi.UseVisualStyleBackColor = true;
+            this.btnConnectWiFi.Click += new System.EventHandler(this.btnConnectWiFi_Click);
             // 
             // gbSettingNetworkInterface
             // 
@@ -914,29 +979,30 @@
             this.gbSettingNetworkInterface.Controls.Add(this.tbIPAddress);
             this.gbSettingNetworkInterface.Controls.Add(this.lbInterfaceName);
             this.gbSettingNetworkInterface.Controls.Add(this.btnSetupToDHCP);
-            this.gbSettingNetworkInterface.Location = new System.Drawing.Point(9, 9);
-            this.gbSettingNetworkInterface.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSettingNetworkInterface.Location = new System.Drawing.Point(12, 11);
+            this.gbSettingNetworkInterface.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbSettingNetworkInterface.Name = "gbSettingNetworkInterface";
-            this.gbSettingNetworkInterface.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbSettingNetworkInterface.Size = new System.Drawing.Size(278, 302);
+            this.gbSettingNetworkInterface.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbSettingNetworkInterface.Size = new System.Drawing.Size(371, 378);
             this.gbSettingNetworkInterface.TabIndex = 17;
             this.gbSettingNetworkInterface.TabStop = false;
             this.gbSettingNetworkInterface.Text = "SettingNetworkInterface";
             // 
             // tbInterfaceName
             // 
-            this.tbInterfaceName.Location = new System.Drawing.Point(138, 28);
-            this.tbInterfaceName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbInterfaceName.Location = new System.Drawing.Point(184, 35);
+            this.tbInterfaceName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbInterfaceName.Name = "tbInterfaceName";
-            this.tbInterfaceName.Size = new System.Drawing.Size(132, 29);
+            this.tbInterfaceName.Size = new System.Drawing.Size(175, 34);
             this.tbInterfaceName.TabIndex = 13;
             this.tbInterfaceName.Text = "乙太網路 2";
             // 
             // btnDisableInterface
             // 
-            this.btnDisableInterface.Location = new System.Drawing.Point(185, 241);
+            this.btnDisableInterface.Location = new System.Drawing.Point(247, 301);
+            this.btnDisableInterface.Margin = new System.Windows.Forms.Padding(4);
             this.btnDisableInterface.Name = "btnDisableInterface";
-            this.btnDisableInterface.Size = new System.Drawing.Size(85, 49);
+            this.btnDisableInterface.Size = new System.Drawing.Size(113, 61);
             this.btnDisableInterface.TabIndex = 33;
             this.btnDisableInterface.Text = "Disable Interface";
             this.btnDisableInterface.UseVisualStyleBackColor = true;
@@ -944,9 +1010,10 @@
             // 
             // btnEnableInterface
             // 
-            this.btnEnableInterface.Location = new System.Drawing.Point(185, 186);
+            this.btnEnableInterface.Location = new System.Drawing.Point(247, 232);
+            this.btnEnableInterface.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnableInterface.Name = "btnEnableInterface";
-            this.btnEnableInterface.Size = new System.Drawing.Size(85, 49);
+            this.btnEnableInterface.Size = new System.Drawing.Size(113, 61);
             this.btnEnableInterface.TabIndex = 32;
             this.btnEnableInterface.Text = "Enable  Interface";
             this.btnEnableInterface.UseVisualStyleBackColor = true;
@@ -954,9 +1021,10 @@
             // 
             // btnSetupToStaticIP
             // 
-            this.btnSetupToStaticIP.Location = new System.Drawing.Point(98, 186);
+            this.btnSetupToStaticIP.Location = new System.Drawing.Point(131, 232);
+            this.btnSetupToStaticIP.Margin = new System.Windows.Forms.Padding(4);
             this.btnSetupToStaticIP.Name = "btnSetupToStaticIP";
-            this.btnSetupToStaticIP.Size = new System.Drawing.Size(81, 104);
+            this.btnSetupToStaticIP.Size = new System.Drawing.Size(108, 130);
             this.btnSetupToStaticIP.TabIndex = 31;
             this.btnSetupToStaticIP.Text = "SetupToStaticIP";
             this.btnSetupToStaticIP.UseVisualStyleBackColor = true;
@@ -965,74 +1033,71 @@
             // lbGateway
             // 
             this.lbGateway.AutoSize = true;
-            this.lbGateway.Location = new System.Drawing.Point(8, 145);
-            this.lbGateway.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbGateway.Location = new System.Drawing.Point(11, 181);
             this.lbGateway.Name = "lbGateway";
-            this.lbGateway.Size = new System.Drawing.Size(74, 20);
+            this.lbGateway.Size = new System.Drawing.Size(93, 25);
             this.lbGateway.TabIndex = 30;
             this.lbGateway.Text = "Gateway";
             // 
             // tbGateway
             // 
-            this.tbGateway.Location = new System.Drawing.Point(101, 142);
-            this.tbGateway.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbGateway.Location = new System.Drawing.Point(135, 178);
+            this.tbGateway.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbGateway.Name = "tbGateway";
-            this.tbGateway.Size = new System.Drawing.Size(169, 29);
+            this.tbGateway.Size = new System.Drawing.Size(224, 34);
             this.tbGateway.TabIndex = 29;
             // 
             // lbSubMesk
             // 
             this.lbSubMesk.AutoSize = true;
-            this.lbSubMesk.Location = new System.Drawing.Point(8, 106);
-            this.lbSubMesk.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSubMesk.Location = new System.Drawing.Point(11, 132);
             this.lbSubMesk.Name = "lbSubMesk";
-            this.lbSubMesk.Size = new System.Drawing.Size(78, 20);
+            this.lbSubMesk.Size = new System.Drawing.Size(98, 25);
             this.lbSubMesk.TabIndex = 28;
             this.lbSubMesk.Text = "SubMesk";
             // 
             // tbSubMesk
             // 
-            this.tbSubMesk.Location = new System.Drawing.Point(101, 103);
-            this.tbSubMesk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSubMesk.Location = new System.Drawing.Point(135, 129);
+            this.tbSubMesk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSubMesk.Name = "tbSubMesk";
-            this.tbSubMesk.Size = new System.Drawing.Size(169, 29);
+            this.tbSubMesk.Size = new System.Drawing.Size(224, 34);
             this.tbSubMesk.TabIndex = 27;
             this.tbSubMesk.Text = "255.255.255.0";
             // 
             // lbIPAddress
             // 
             this.lbIPAddress.AutoSize = true;
-            this.lbIPAddress.Location = new System.Drawing.Point(8, 69);
-            this.lbIPAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbIPAddress.Location = new System.Drawing.Point(11, 86);
             this.lbIPAddress.Name = "lbIPAddress";
-            this.lbIPAddress.Size = new System.Drawing.Size(84, 20);
+            this.lbIPAddress.Size = new System.Drawing.Size(106, 25);
             this.lbIPAddress.TabIndex = 26;
             this.lbIPAddress.Text = "IPAddress";
             // 
             // tbIPAddress
             // 
-            this.tbIPAddress.Location = new System.Drawing.Point(101, 66);
-            this.tbIPAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbIPAddress.Location = new System.Drawing.Point(135, 82);
+            this.tbIPAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbIPAddress.Name = "tbIPAddress";
-            this.tbIPAddress.Size = new System.Drawing.Size(169, 29);
+            this.tbIPAddress.Size = new System.Drawing.Size(224, 34);
             this.tbIPAddress.TabIndex = 25;
             this.tbIPAddress.Text = "192.168.0.119";
             // 
             // lbInterfaceName
             // 
             this.lbInterfaceName.AutoSize = true;
-            this.lbInterfaceName.Location = new System.Drawing.Point(8, 31);
-            this.lbInterfaceName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbInterfaceName.Location = new System.Drawing.Point(11, 39);
             this.lbInterfaceName.Name = "lbInterfaceName";
-            this.lbInterfaceName.Size = new System.Drawing.Size(122, 20);
+            this.lbInterfaceName.Size = new System.Drawing.Size(151, 25);
             this.lbInterfaceName.TabIndex = 24;
             this.lbInterfaceName.Text = "InterfaceName";
             // 
             // btnSetupToDHCP
             // 
-            this.btnSetupToDHCP.Location = new System.Drawing.Point(12, 186);
+            this.btnSetupToDHCP.Location = new System.Drawing.Point(16, 232);
+            this.btnSetupToDHCP.Margin = new System.Windows.Forms.Padding(4);
             this.btnSetupToDHCP.Name = "btnSetupToDHCP";
-            this.btnSetupToDHCP.Size = new System.Drawing.Size(80, 104);
+            this.btnSetupToDHCP.Size = new System.Drawing.Size(107, 130);
             this.btnSetupToDHCP.TabIndex = 5;
             this.btnSetupToDHCP.Text = "SetupToDHCP";
             this.btnSetupToDHCP.UseVisualStyleBackColor = true;
@@ -1044,11 +1109,11 @@
             this.gbMessageShow.Controls.Add(this.tbMessageShow);
             this.gbMessageShow.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.gbMessageShow.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.gbMessageShow.Location = new System.Drawing.Point(9, 23);
-            this.gbMessageShow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbMessageShow.Location = new System.Drawing.Point(12, 29);
+            this.gbMessageShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMessageShow.Name = "gbMessageShow";
-            this.gbMessageShow.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbMessageShow.Size = new System.Drawing.Size(400, 641);
+            this.gbMessageShow.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbMessageShow.Size = new System.Drawing.Size(533, 801);
             this.gbMessageShow.TabIndex = 6;
             this.gbMessageShow.TabStop = false;
             this.gbMessageShow.Text = "資料結果";
@@ -1057,10 +1122,9 @@
             // 
             this.lbVersionNum.AutoSize = true;
             this.lbVersionNum.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbVersionNum.Location = new System.Drawing.Point(1228, 642);
-            this.lbVersionNum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbVersionNum.Location = new System.Drawing.Point(1637, 802);
             this.lbVersionNum.Name = "lbVersionNum";
-            this.lbVersionNum.Size = new System.Drawing.Size(103, 18);
+            this.lbVersionNum.Size = new System.Drawing.Size(126, 22);
             this.lbVersionNum.TabIndex = 7;
             this.lbVersionNum.Text = "Version 0.0.0.0";
             // 
@@ -1068,10 +1132,10 @@
             // 
             this.button1.BackColor = System.Drawing.Color.SkyBlue;
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(1222, 67);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(1629, 84);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 89);
+            this.button1.Size = new System.Drawing.Size(152, 111);
             this.button1.TabIndex = 8;
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = false;
@@ -1080,10 +1144,10 @@
             // 
             this.button2.BackColor = System.Drawing.Color.DarkTurquoise;
             this.button2.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(1222, 160);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(1629, 200);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 89);
+            this.button2.Size = new System.Drawing.Size(152, 111);
             this.button2.TabIndex = 9;
             this.button2.Text = "Pause";
             this.button2.UseVisualStyleBackColor = false;
@@ -1092,25 +1156,64 @@
             // 
             this.button3.BackColor = System.Drawing.Color.MediumPurple;
             this.button3.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button3.Location = new System.Drawing.Point(1222, 253);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Location = new System.Drawing.Point(1629, 316);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(114, 89);
+            this.button3.Size = new System.Drawing.Size(152, 111);
             this.button3.TabIndex = 10;
             this.button3.Text = "Close";
             this.button3.UseVisualStyleBackColor = false;
             // 
+            // btnTurnOffWiFi
+            // 
+            this.btnTurnOffWiFi.Location = new System.Drawing.Point(124, 301);
+            this.btnTurnOffWiFi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTurnOffWiFi.Name = "btnTurnOffWiFi";
+            this.btnTurnOffWiFi.Size = new System.Drawing.Size(102, 61);
+            this.btnTurnOffWiFi.TabIndex = 37;
+            this.btnTurnOffWiFi.Text = "TurnOffWiFi";
+            this.btnTurnOffWiFi.UseVisualStyleBackColor = true;
+            // 
+            // lbSsidPasswd
+            // 
+            this.lbSsidPasswd.AutoSize = true;
+            this.lbSsidPasswd.Location = new System.Drawing.Point(13, 116);
+            this.lbSsidPasswd.Name = "lbSsidPasswd";
+            this.lbSsidPasswd.Size = new System.Drawing.Size(125, 25);
+            this.lbSsidPasswd.TabIndex = 38;
+            this.lbSsidPasswd.Text = "Ssid Passwd";
+            // 
+            // tbSsidPasswd
+            // 
+            this.tbSsidPasswd.Location = new System.Drawing.Point(18, 143);
+            this.tbSsidPasswd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbSsidPasswd.Name = "tbSsidPasswd";
+            this.tbSsidPasswd.Size = new System.Drawing.Size(208, 34);
+            this.tbSsidPasswd.TabIndex = 39;
+            this.tbSsidPasswd.Text = "admin1234";
+            // 
+            // btnSaveWiFiInfo
+            // 
+            this.btnSaveWiFiInfo.Location = new System.Drawing.Point(18, 186);
+            this.btnSaveWiFiInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSaveWiFiInfo.Name = "btnSaveWiFiInfo";
+            this.btnSaveWiFiInfo.Size = new System.Drawing.Size(208, 44);
+            this.btnSaveWiFiInfo.TabIndex = 40;
+            this.btnSaveWiFiInfo.Text = "Save";
+            this.btnSaveWiFiInfo.UseVisualStyleBackColor = true;
+            // 
             // AutomatedWebTestingForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1342, 667);
+            this.ClientSize = new System.Drawing.Size(1789, 834);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lbVersionNum);
             this.Controls.Add(this.gbMessageShow);
             this.Controls.Add(this.tbMainMenu);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AutomatedWebTestingForm";
             this.Text = "AutomatedTesting";
             this.Load += new System.EventHandler(this.FormBase_Load);
@@ -1137,6 +1240,8 @@
             this.gbURL.ResumeLayout(false);
             this.gbURL.PerformLayout();
             this.tpFunctionTesting2.ResumeLayout(false);
+            this.gbConnectWiFi.ResumeLayout(false);
+            this.gbConnectWiFi.PerformLayout();
             this.gbSettingNetworkInterface.ResumeLayout(false);
             this.gbSettingNetworkInterface.PerformLayout();
             this.gbMessageShow.ResumeLayout(false);
@@ -1233,6 +1338,15 @@
         private System.Windows.Forms.Button btnEnableInterface;
         private System.Windows.Forms.Button btnSetupToStaticIP;
         private System.Windows.Forms.Button btnDisableInterface;
-    }
+		private System.Windows.Forms.GroupBox gbConnectWiFi;
+		private System.Windows.Forms.Button btnConnectWiFi;
+		private System.Windows.Forms.Button btnTurnOnWiFi;
+		private System.Windows.Forms.TextBox tbSsidiName;
+		private System.Windows.Forms.Label lbWiFiName;
+		private System.Windows.Forms.Button btnTurnOffWiFi;
+		private System.Windows.Forms.TextBox tbSsidPasswd;
+		private System.Windows.Forms.Label lbSsidPasswd;
+		private System.Windows.Forms.Button btnSaveWiFiInfo;
+	}
 }
 

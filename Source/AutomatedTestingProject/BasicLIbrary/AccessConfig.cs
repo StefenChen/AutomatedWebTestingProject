@@ -40,18 +40,63 @@ namespace BasicLIbrary
             }
             set { configIni.SetValue("FolderPath", "LogPath", value); }
         }
-        #region Shared parameters
-        public string Test
-        {
-            get { return configIni.GetValue("Test", "IP", "192.168.100.100"); }
-            set { configIni.SetValue("Test", "IP", value); }
-        }
-        public string NetConnectionID
-        {
-            get { return configIni.GetValue("NetworkCard", "NetConnectionID", "Wi-Fi"); }
-            set { configIni.SetValue("NetworkCard", "NetConnectionID", value); }
-        }
 
-        #endregion
-    }
+		#region Website Section
+
+
+
+		#endregion
+
+		#region Account Section
+
+		public string WebLogInAccount
+		{
+			get { return configIni.GetValue("Account", "WebLogInAccount", "StevenUniverse"); }
+			set { configIni.SetValue("Account", "WebLogInAccount", value); }
+		}
+		public string WebLogInPasswd
+		{
+			get { return configIni.GetValue("Account", "WebLogInPasswd", "FinntheHuman"); }
+			set { configIni.SetValue("Account", "WebLogInPasswd", value); }
+		}
+
+		#endregion
+
+
+		#region NetworkCard Section
+
+		public string WebIP
+		{
+			get { return configIni.GetValue("NetworkCard", "WebIP", "192.168.0.1"); }
+			set { configIni.SetValue("NetworkCard", "WebIP", value); }
+		}
+		public string WifiName
+		{
+			get { return configIni.GetValue("NetworkCard", "WifiName", "Wi-Fi"); }
+			set { configIni.SetValue("NetworkCard", "WifiName", value); }
+		}
+		public string SsidName
+		{
+			get { return configIni.GetValue("NetworkCard", "SsidName", "a_AStefen_Test_2.4G"); }
+			set { configIni.SetValue("NetworkCard", "SsidName", value); }
+		}
+		public string SsidPasswd
+		{
+			get { return configIni.GetValue("NetworkCard", "SsidPasswd", "0985599568"); }
+			set { configIni.SetValue("NetworkCard", "SsidPasswd", value); }
+		}
+
+		#endregion
+
+		#region Test Section
+
+		public string Test
+		{
+			get { return configIni.GetValue("Test", "IP", "192.168.100.100"); }
+			set { configIni.SetValue("Test", "IP", value); }
+		}
+
+		#endregion
+
+	}
 }

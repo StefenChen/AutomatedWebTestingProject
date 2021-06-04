@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ManagedNativeWifi.Demo
+namespace WindowsControl
 {
 	public static class Account
 	{
