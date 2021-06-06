@@ -26,7 +26,7 @@ namespace AutomatedTestingProject
 		public AutomatedWebTesting(AutomatedWebTestingForm mainForm)
         {
             this.mainForm = mainForm;
-            basicTool = new CommonBase(CONFIG_FILE_PATH);
+            basicTool = new CommonBase(CONFIG_FILE_PATH, mainForm);
         }
 
         public bool Initial()
@@ -40,7 +40,7 @@ namespace AutomatedTestingProject
 			webFunctionControl = new WebFunctionControl(basicTool, new Category());
 			webSystemControl = new WebSystemControl(basicTool, new Category());
 
-			networkCand = new NetworkCard();
+			networkCand = new NetworkCard(basicTool);
 			wifiControl = new WifiControl(basicTool, new Category());
 
 			return true;

@@ -1,10 +1,7 @@
 ﻿using BasicLIbrary;
 using ManagedNativeWifi;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsControl
 {
@@ -56,18 +53,23 @@ $@"<?xml version=""1.0""?>
 			bool result;
 			var profileXml = WifiProfile.CreateProfileXml(ssidString, ssidString, passwd);
 			if (!(result = NativeWifi.SetProfile(interfaceId, ProfileType.AllUser, profileXml, null, true)))
-				basicTool.messageLog.WriteLog(Category.WifiControl, "設定Profile檔案失敗。", "SetProfile");
-			if (!(result &= NativeWifi.EnumerateProfileNames().Contains(ssidString)))
-				basicTool.messageLog.WriteLog(Category.WifiControl, "找不到設定的Profile檔案。", "SetProfile");
+				basicTool.messageLog.WriteLog(Category.WifiProfile, "設定Profile檔案失敗。", "SetProfile");
+			else if (!(result &= NativeWifi.EnumerateProfileNames().Contains(ssidString)))
+				basicTool.messageLog.WriteLog(Category.WifiProfile, "找不到設定的Profile檔案。", "SetProfile");
 			return result;
 		}
 
-		public static void DeletProfile(Guid interfaceId, string profileName)
+		public bool DeletProfile(Guid interfaceId, string profileName)
 		{
-			var result = NativeWifi.EnumerateProfileNames().Contains(profileName);
-			result = NativeWifi.DeleteProfile(interfaceId, profileName);
-			result = NativeWifi.EnumerateProfileNames().Contains(profileName);
+			bool result;
+			if (!(result = NativeWifi.EnumerateProfileNames().Contains(profileName)))
+				basicTool.messageLog.WriteLog(Category.WifiProfile, "找不到Profile檔案:"+ profileName + "失敗。", "DeletProfile");
+			else if (!(result &= NativeWifi.DeleteProfile(interfaceId, profileName)))
+				basicTool.messageLog.WriteLog(Category.WifiProfile, "刪除Profile檔案:" + profileName + "失敗。", "DeletProfile");
+			else if (!(result &= NativeWifi.EnumerateProfileNames().Contains(profileName)))
+				basicTool.messageLog.WriteLog(Category.WifiProfile, "刪除Profile檔案後還是有找到:" + profileName + "失敗。", "DeletProfile");
+
+			return result;
 		}
 	}
-	
 }

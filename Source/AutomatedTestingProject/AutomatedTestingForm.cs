@@ -39,17 +39,19 @@ namespace AutomatedTestingProject
             }
         }
 
-        private void WriteMsg(object sender, string name, string msg)
+        public void WriteMsg(object sender, string name, string msg)
         {
-            if (tbMessageShow.Lines.Length >= 30)
+            if (tbMessageShow.Lines.Length >= 100)
             {
                 /* 選取第一行第一個字符的索引到第二行第二個字符的索引 */
-                tbMessageShow.Select(tbMessageShow.GetFirstCharIndexFromLine(0), tbMessageShow.GetFirstCharIndexFromLine(10));
+                tbMessageShow.Select(tbMessageShow.GetFirstCharIndexFromLine(0), tbMessageShow.GetFirstCharIndexFromLine(40));
                 /* 然後刪除 */
                 tbMessageShow.SelectedText = "";
             }
 
-            tbMessageShow.Text += DateTime.Now.ToString("[HH時mm分ss秒]") + sender.ToString().Split(':')[1] + "," + name + "\r\n";
+            tbMessageShow.Text += DateTime.Now.ToString("[HH時mm分ss秒]")
+														+(sender==null?"":sender.ToString().Split(':')[1])
+														+ "," + name + "\r\n";
             tbMessageShow.Text += msg + "\r\n";
         }
 

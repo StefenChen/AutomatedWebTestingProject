@@ -4,85 +4,104 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using WindowsControl;
 
 namespace WindowsControl
 {
 	public class WifiControl : WifiProfile
 	{
 		private Guid interfaceId;
-		public WifiControl(CommonBase basicTool, Category _type) : base(basicTool,  _type)
+		public WifiControl(CommonBase basicTool, Category _type) : base(basicTool, _type)
 		{
 
 		}
 		public bool ConnectWifi()
 		{
-			//Turn on radio interface.
-			TurnOnAsync();
-			//Set interfaceId.
-			SetInterfaceId();
-			//Overwrote Profile.
-			SetProfile(interfaceId, basicTool.accessConfig.SsidName, basicTool.accessConfig.SsidPasswd);
-			foreach (var ssid in EnumerateNetworkSsids())
+			try
 			{
-				if (ssid == basicTool.accessConfig.SsidName)
+				//Turn on radio interface.
+				TurnOnAsync();
+				//Set interfaceId.
+				SetInterfaceId();
+				//Overwrote Profile.
+				SetProfile(interfaceId, basicTool.accessConfig.SsidName, basicTool.accessConfig.SsidPasswd);
+				foreach (var ssid in EnumerateNetworkSsids())
 				{
-					ConnectAsync(basicTool.accessConfig.SsidName);
-					RefreshAsync();
-					return true;
+					if (ssid == basicTool.accessConfig.SsidName)
+					{
+						ConnectAsync(basicTool.accessConfig.SsidName);
+						RefreshAsync();
+						return true;
+					}
 				}
+				basicTool.messageLog.WriteLog(Category.WifiControl, "找不到指定網路SSID", "ConnectWifi");
+				return false;
 			}
-			basicTool.messageLog.WriteLog(Category.WifiControl, "找不到指定網路SSID", "ConnectWifi");
-			return false;
+			catch (Exception ex)
+			{
+				basicTool.messageLog.WriteLog(Category.WifiControl, ex.ToString(), "ConnectWifi");
+				return false;
+			}
 		}
 		public void ShowRadioInformation()
 		{
-			foreach (var interfaceInfo in NativeWifi.EnumerateInterfaces())
+			try
 			{
-				Trace.WriteLine($"Interface: {interfaceInfo.Description} ({interfaceInfo.Id})");
-
-				var interfaceRadio = NativeWifi.GetInterfaceRadio(interfaceInfo.Id);
-				if (interfaceRadio is null)
-					continue;
-
-				foreach (var radioSet in interfaceRadio.RadioSets)
+				foreach (var interfaceInfo in NativeWifi.EnumerateInterfaces())
 				{
-					Trace.WriteLine($"Type: {radioSet.Type}");
-					Trace.WriteLine($"HardwareOn: {radioSet.HardwareOn}, SoftwareOn: {radioSet.SoftwareOn}, On: {radioSet.On}");
+
+					var interfaceRadio = NativeWifi.GetInterfaceRadio(interfaceInfo.Id);
+					if (interfaceRadio is null)
+						continue;
+
+					foreach (var radioSet in interfaceRadio.RadioSets)
+					{
+						basicTool.messageLog.WriteLog(Category.WifiControl, $"Type: {radioSet.Type},"
+							+ $"HardwareOn: {radioSet.HardwareOn}, SoftwareOn: {radioSet.SoftwareOn}, On: {radioSet.On}",
+							$"Interface: {interfaceInfo.Description} ({interfaceInfo.Id})");
+					}
 				}
+			}
+			catch (Exception ex)
+			{
+				basicTool.messageLog.WriteLog(Category.WifiControl, ex.ToString(), "ShowRadioInformation");
 			}
 		}
 		public void TurnOn()
 		{
-			foreach (var interfaceInfo in NativeWifi.EnumerateInterfaces())
+			try
 			{
-				Trace.WriteLine($"Interface: {interfaceInfo.Description} ({interfaceInfo.Id})");
+				foreach (var interfaceInfo in NativeWifi.EnumerateInterfaces())
+				{
+					Trace.WriteLine($"Interface: {interfaceInfo.Description} ({interfaceInfo.Id})");
 
-				try
-				{
-					Trace.WriteLine($"Turn on: {NativeWifi.TurnOnInterfaceRadio(interfaceInfo.Id)}");
+					try
+					{
+						Trace.WriteLine($"Turn on: {NativeWifi.TurnOnInterfaceRadio(interfaceInfo.Id)}");
+					}
+					catch (UnauthorizedAccessException)
+					{
+						basicTool.messageLog.WriteLog(Category.WifiControl, "Turn on: Unauthorized", "TurnOnRadio");
+					}
 				}
-				catch (UnauthorizedAccessException)
-				{
-					Trace.WriteLine("Turn on: Unauthorized");
-				}
+			}
+			catch (Exception ex)
+			{
+				basicTool.messageLog.WriteLog(Category.WifiControl, ex.ToString(), "TurnOnRadio");
 			}
 		}
 		public void TurnOff()
 		{
 			foreach (var interfaceInfo in NativeWifi.EnumerateInterfaces())
 			{
-				Trace.WriteLine($"Interface: {interfaceInfo.Description} ({interfaceInfo.Id})");
-
 				try
 				{
-					Trace.WriteLine($"Turn off: {NativeWifi.TurnOffInterfaceRadio(interfaceInfo.Id)}");
+					basicTool.messageLog.WriteLog(Category.WifiControl, $"Turn off: {NativeWifi.TurnOffInterfaceRadio(interfaceInfo.Id)}",
+																			$"Interface: {interfaceInfo.Description} ({interfaceInfo.Id})");
 				}
 				catch (UnauthorizedAccessException)
 				{
-					Trace.WriteLine("Turn off: Unauthorized");
+					basicTool.messageLog.WriteLog(Category.WifiControl, "Turn off: Unauthorized", "TurnOffRadio");
 				}
 			}
 		}
@@ -128,21 +147,29 @@ namespace WindowsControl
 		/// Connects to the available wireless LAN which has the highest signal quality.
 		/// </summary>
 		/// <returns>True if successfully connected. False if not.</returns>
-		private static async Task<bool> ConnectAsync(string ssidID)
+		private async Task<bool> ConnectAsync(string ssidID)
 		{
-			var availableNetwork = NativeWifi.EnumerateAvailableNetworks()
-				.Where(x => !string.IsNullOrWhiteSpace(x.ProfileName))
-				.Where(x => x.Ssid.ToString() == ssidID)
-				.First();
+			try
+			{
+				var availableNetwork = NativeWifi.EnumerateAvailableNetworks()
+					.Where(x => !string.IsNullOrWhiteSpace(x.ProfileName))
+					.Where(x => x.Ssid.ToString() == ssidID)
+					.First();
 
-			if (availableNetwork is null)
+				if (availableNetwork is null)
+					return false;
+
+				return await NativeWifi.ConnectNetworkAsync(
+					interfaceId: availableNetwork.Interface.Id,
+					profileName: availableNetwork.ProfileName,
+					bssType: availableNetwork.BssType,
+					timeout: TimeSpan.FromSeconds(10));
+			}
+			catch (Exception ex)
+			{
+				basicTool.messageLog.WriteLog(Category.WifiControl, ex.ToString(), "ConnectAsync");
 				return false;
-
-			return await NativeWifi.ConnectNetworkAsync(
-				interfaceId: availableNetwork.Interface.Id,
-				profileName: availableNetwork.ProfileName,
-				bssType: availableNetwork.BssType,
-				timeout: TimeSpan.FromSeconds(10));
+			}
 		}
 
 		/// <summary>
@@ -156,10 +183,18 @@ namespace WindowsControl
 		/// Enumerates SSIDs of available wireless LANs.
 		/// </summary>
 		/// <returns>SSID strings</returns>
-		private static IEnumerable<string> EnumerateNetworkSsids()
+		private IEnumerable<string> EnumerateNetworkSsids()
 		{
-			return NativeWifi.EnumerateAvailableNetworkSsids()
-				.Select(x => x.ToString()); // UTF-8 string representation
+			try
+			{
+				return NativeWifi.EnumerateAvailableNetworkSsids()
+					.Select(x => x.ToString()); // UTF-8 string representation
+			}
+			catch (Exception ex)
+			{
+				basicTool.messageLog.WriteLog(Category.WifiControl, ex.ToString(), "ConnectAsync");
+				return null;
+			}
 		}
 	}
 }
