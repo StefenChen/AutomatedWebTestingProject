@@ -97,6 +97,10 @@
             this.btnOpenURL = new System.Windows.Forms.Button();
             this.tpFunctionTesting2 = new System.Windows.Forms.TabPage();
             this.gbConnectWiFi = new System.Windows.Forms.GroupBox();
+            this.btnSaveWiFiInfo = new System.Windows.Forms.Button();
+            this.tbSsidPasswd = new System.Windows.Forms.TextBox();
+            this.lbSsidPasswd = new System.Windows.Forms.Label();
+            this.btnTurnOffWiFi = new System.Windows.Forms.Button();
             this.lbWiFiName = new System.Windows.Forms.Label();
             this.tbSsidiName = new System.Windows.Forms.TextBox();
             this.btnTurnOnWiFi = new System.Windows.Forms.Button();
@@ -119,10 +123,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnTurnOffWiFi = new System.Windows.Forms.Button();
-            this.lbSsidPasswd = new System.Windows.Forms.Label();
-            this.tbSsidPasswd = new System.Windows.Forms.TextBox();
-            this.btnSaveWiFiInfo = new System.Windows.Forms.Button();
+            this.lbIDSendKey = new System.Windows.Forms.Label();
+            this.tbIDSendKey = new System.Windows.Forms.TextBox();
             this.tbMainMenu.SuspendLayout();
             this.tpFunctionTesting1.SuspendLayout();
             this.gbGetElementValue.SuspendLayout();
@@ -241,7 +243,7 @@
             this.gbGetElementValue.Controls.Add(this.lbGetElementValue);
             this.gbGetElementValue.Controls.Add(this.tbGetElementValue);
             this.gbGetElementValue.Controls.Add(this.btnGetElementValue);
-            this.gbGetElementValue.Location = new System.Drawing.Point(707, 590);
+            this.gbGetElementValue.Location = new System.Drawing.Point(707, 599);
             this.gbGetElementValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbGetElementValue.Name = "gbGetElementValue";
             this.gbGetElementValue.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -349,7 +351,7 @@
             this.gbSwitchButtonClick.Controls.Add(this.lbSwitchButtonClick);
             this.gbSwitchButtonClick.Controls.Add(this.tbSwitchButtonClick);
             this.gbSwitchButtonClick.Controls.Add(this.btnSwitchButtonClick);
-            this.gbSwitchButtonClick.Location = new System.Drawing.Point(357, 492);
+            this.gbSwitchButtonClick.Location = new System.Drawing.Point(357, 505);
             this.gbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbSwitchButtonClick.Name = "gbSwitchButtonClick";
             this.gbSwitchButtonClick.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -649,7 +651,7 @@
             this.gpButtonClick.Controls.Add(this.label2);
             this.gpButtonClick.Controls.Add(this.tbButtonClick);
             this.gpButtonClick.Controls.Add(this.btnButtonClick);
-            this.gpButtonClick.Location = new System.Drawing.Point(16, 554);
+            this.gpButtonClick.Location = new System.Drawing.Point(16, 567);
             this.gpButtonClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpButtonClick.Name = "gpButtonClick";
             this.gpButtonClick.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -754,6 +756,8 @@
             // 
             // gbKeyIn
             // 
+            this.gbKeyIn.Controls.Add(this.tbIDSendKey);
+            this.gbKeyIn.Controls.Add(this.lbIDSendKey);
             this.gbKeyIn.Controls.Add(this.lbKeyIn);
             this.gbKeyIn.Controls.Add(this.tbSendKey);
             this.gbKeyIn.Controls.Add(this.btnSendKeys);
@@ -761,7 +765,7 @@
             this.gbKeyIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbKeyIn.Name = "gbKeyIn";
             this.gbKeyIn.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbKeyIn.Size = new System.Drawing.Size(327, 154);
+            this.gbKeyIn.Size = new System.Drawing.Size(327, 171);
             this.gbKeyIn.TabIndex = 15;
             this.gbKeyIn.TabStop = false;
             this.gbKeyIn.Text = "3.KeyIn";
@@ -769,7 +773,7 @@
             // lbKeyIn
             // 
             this.lbKeyIn.AutoSize = true;
-            this.lbKeyIn.Location = new System.Drawing.Point(5, 42);
+            this.lbKeyIn.Location = new System.Drawing.Point(11, 72);
             this.lbKeyIn.Name = "lbKeyIn";
             this.lbKeyIn.Size = new System.Drawing.Size(67, 25);
             this.lbKeyIn.TabIndex = 14;
@@ -777,7 +781,7 @@
             // 
             // tbSendKey
             // 
-            this.tbSendKey.Location = new System.Drawing.Point(84, 40);
+            this.tbSendKey.Location = new System.Drawing.Point(84, 69);
             this.tbSendKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSendKey.Name = "tbSendKey";
             this.tbSendKey.Size = new System.Drawing.Size(224, 34);
@@ -786,10 +790,10 @@
             // 
             // btnSendKeys
             // 
-            this.btnSendKeys.Location = new System.Drawing.Point(61, 86);
+            this.btnSendKeys.Location = new System.Drawing.Point(63, 109);
             this.btnSendKeys.Margin = new System.Windows.Forms.Padding(4);
             this.btnSendKeys.Name = "btnSendKeys";
-            this.btnSendKeys.Size = new System.Drawing.Size(169, 61);
+            this.btnSendKeys.Size = new System.Drawing.Size(169, 56);
             this.btnSendKeys.TabIndex = 8;
             this.btnSendKeys.Text = "SendKeys";
             this.btnSendKeys.UseVisualStyleBackColor = true;
@@ -925,6 +929,44 @@
             this.gbConnectWiFi.TabIndex = 18;
             this.gbConnectWiFi.TabStop = false;
             this.gbConnectWiFi.Text = "ConnectWiFi";
+            // 
+            // btnSaveWiFiInfo
+            // 
+            this.btnSaveWiFiInfo.Location = new System.Drawing.Point(18, 186);
+            this.btnSaveWiFiInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSaveWiFiInfo.Name = "btnSaveWiFiInfo";
+            this.btnSaveWiFiInfo.Size = new System.Drawing.Size(208, 44);
+            this.btnSaveWiFiInfo.TabIndex = 40;
+            this.btnSaveWiFiInfo.Text = "Save";
+            this.btnSaveWiFiInfo.UseVisualStyleBackColor = true;
+            // 
+            // tbSsidPasswd
+            // 
+            this.tbSsidPasswd.Location = new System.Drawing.Point(18, 143);
+            this.tbSsidPasswd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbSsidPasswd.Name = "tbSsidPasswd";
+            this.tbSsidPasswd.Size = new System.Drawing.Size(208, 34);
+            this.tbSsidPasswd.TabIndex = 39;
+            this.tbSsidPasswd.Text = "admin1234";
+            // 
+            // lbSsidPasswd
+            // 
+            this.lbSsidPasswd.AutoSize = true;
+            this.lbSsidPasswd.Location = new System.Drawing.Point(13, 116);
+            this.lbSsidPasswd.Name = "lbSsidPasswd";
+            this.lbSsidPasswd.Size = new System.Drawing.Size(125, 25);
+            this.lbSsidPasswd.TabIndex = 38;
+            this.lbSsidPasswd.Text = "Ssid Passwd";
+            // 
+            // btnTurnOffWiFi
+            // 
+            this.btnTurnOffWiFi.Location = new System.Drawing.Point(124, 301);
+            this.btnTurnOffWiFi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTurnOffWiFi.Name = "btnTurnOffWiFi";
+            this.btnTurnOffWiFi.Size = new System.Drawing.Size(102, 61);
+            this.btnTurnOffWiFi.TabIndex = 37;
+            this.btnTurnOffWiFi.Text = "TurnOffWiFi";
+            this.btnTurnOffWiFi.UseVisualStyleBackColor = true;
             // 
             // lbWiFiName
             // 
@@ -1164,43 +1206,23 @@
             this.button3.Text = "Close";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // btnTurnOffWiFi
+            // lbIDSendKey
             // 
-            this.btnTurnOffWiFi.Location = new System.Drawing.Point(124, 301);
-            this.btnTurnOffWiFi.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTurnOffWiFi.Name = "btnTurnOffWiFi";
-            this.btnTurnOffWiFi.Size = new System.Drawing.Size(102, 61);
-            this.btnTurnOffWiFi.TabIndex = 37;
-            this.btnTurnOffWiFi.Text = "TurnOffWiFi";
-            this.btnTurnOffWiFi.UseVisualStyleBackColor = true;
+            this.lbIDSendKey.AutoSize = true;
+            this.lbIDSendKey.Location = new System.Drawing.Point(11, 34);
+            this.lbIDSendKey.Name = "lbIDSendKey";
+            this.lbIDSendKey.Size = new System.Drawing.Size(31, 25);
+            this.lbIDSendKey.TabIndex = 15;
+            this.lbIDSendKey.Text = "Id";
             // 
-            // lbSsidPasswd
+            // tbIDSendKey
             // 
-            this.lbSsidPasswd.AutoSize = true;
-            this.lbSsidPasswd.Location = new System.Drawing.Point(13, 116);
-            this.lbSsidPasswd.Name = "lbSsidPasswd";
-            this.lbSsidPasswd.Size = new System.Drawing.Size(125, 25);
-            this.lbSsidPasswd.TabIndex = 38;
-            this.lbSsidPasswd.Text = "Ssid Passwd";
-            // 
-            // tbSsidPasswd
-            // 
-            this.tbSsidPasswd.Location = new System.Drawing.Point(18, 143);
-            this.tbSsidPasswd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbSsidPasswd.Name = "tbSsidPasswd";
-            this.tbSsidPasswd.Size = new System.Drawing.Size(208, 34);
-            this.tbSsidPasswd.TabIndex = 39;
-            this.tbSsidPasswd.Text = "admin1234";
-            // 
-            // btnSaveWiFiInfo
-            // 
-            this.btnSaveWiFiInfo.Location = new System.Drawing.Point(18, 186);
-            this.btnSaveWiFiInfo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSaveWiFiInfo.Name = "btnSaveWiFiInfo";
-            this.btnSaveWiFiInfo.Size = new System.Drawing.Size(208, 44);
-            this.btnSaveWiFiInfo.TabIndex = 40;
-            this.btnSaveWiFiInfo.Text = "Save";
-            this.btnSaveWiFiInfo.UseVisualStyleBackColor = true;
+            this.tbIDSendKey.Location = new System.Drawing.Point(84, 31);
+            this.tbIDSendKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbIDSendKey.Name = "tbIDSendKey";
+            this.tbIDSendKey.Size = new System.Drawing.Size(224, 34);
+            this.tbIDSendKey.TabIndex = 16;
+            this.tbIDSendKey.Text = "pc-login-password";
             // 
             // AutomatedWebTestingForm
             // 
@@ -1347,6 +1369,8 @@
 		private System.Windows.Forms.TextBox tbSsidPasswd;
 		private System.Windows.Forms.Label lbSsidPasswd;
 		private System.Windows.Forms.Button btnSaveWiFiInfo;
+		private System.Windows.Forms.TextBox tbIDSendKey;
+		private System.Windows.Forms.Label lbIDSendKey;
 	}
 }
 

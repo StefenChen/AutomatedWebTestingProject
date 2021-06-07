@@ -28,27 +28,24 @@ namespace WebLibrary
 			}
 			catch (Exception ex)
 			{
-				basicTool.messageLog.WriteLog(Category.WebElementOperation, errStr = ex.ToString(), "SendCommandToGUI");
+				basicTool.messageLog.WriteLog(Category.WebBasicOperation, errStr = ex.ToString(), "SendCommandToGUI");
 				return null;
 			}
 		}
-
 		public object ExecuteScript(string script, params object[] args)
 		{
 			return js.ExecuteScript(script, args);
 
 		}
-
-		public string UsedIDNameToFindElementCommand(string idName)
+		public string UsedIDNameToFindElement(string idName)
 		{
-			return string.Format("var elements = document.getElementById(\'{0}\');", idName);
+			return string.Format($"var elements = document.getElementById(\'{idName}\');");
 		}
-		public string UsedClassNameToFindElementCommand(string className, int idx)
+		public string UsedClassNameToFindElement(string className, int idx)
 		{
 			return string.Format("var elements = document.getElementsByClassName(\'" + className + "\')[" + idx + "];");
 		}
-
-		public string ClickCommand()
+		public string ElementClick()
 		{
 			return string.Format("elements.click();");
 		}

@@ -16,7 +16,7 @@ namespace BasicLIbrary
         WebGUIBase,
         DriverOperation,
         BrowserOperation,
-        WebElementOperation,
+        WebBasicOperation,
 		WifiControl,
 		WifiProfile,
 		NetworkCard,

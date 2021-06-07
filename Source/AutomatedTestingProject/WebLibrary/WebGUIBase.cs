@@ -15,12 +15,12 @@ namespace WebLibrary
     {
         public DriverOperation driver;
 		public BrowserOperation browser;
-		public WebElementOperation webElement;
+		public WebBasicOperation webBasic;
 
         public WebGUIBase(CommonBase basicTool, Category type)
         {
             browser = new BrowserOperation(basicTool, type);
-            webElement = new WebElementOperation(basicTool, type);
+			webBasic = new WebBasicOperation(basicTool, type);
             driver = new DriverOperation(basicTool, type);
         }
     }
