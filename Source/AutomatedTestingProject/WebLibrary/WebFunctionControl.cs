@@ -1,17 +1,15 @@
 ﻿using BasicLIbrary;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WebLibrary
 {
-	public class WebFunctionControl : WebElementControl
+	public class WebFunctionControl
 	{
-		public WebFunctionControl(CommonBase basicTool, Category type):base(basicTool, type)
+		private WebGUIBase webGUIBase;
+		private CommonBase basicTool;
+		public WebFunctionControl(WebGUIBase webGUIBase,CommonBase basicTool)
 		{
-
+			this.webGUIBase = webGUIBase;
+			this.basicTool = basicTool;
 		}
 
 

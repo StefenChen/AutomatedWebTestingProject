@@ -6,14 +6,14 @@ namespace WebLibrary
 {
 	public class JavaScriptCommand : Chrome
 	{
-		private IJavaScriptExecutor js;
+		private static IJavaScriptExecutor singletonJS;
 		private IJavaScriptExecutor Scripts(IWebDriver driver)
 		{
 			return (IJavaScriptExecutor)driver;
 		}
 		public JavaScriptCommand(CommonBase basicTool, Category type) : base(basicTool, type)
 		{
-			js = Scripts(singletonWebDriver);
+			singletonJS = Scripts(singletonWebDriver);
 		}
 		public object SendCommandToGUI(string[] connectStr, ref string errStr)
 		{
@@ -24,7 +24,7 @@ namespace WebLibrary
 				{
 					tempStr += connectStr[idx];
 				}
-				return js.ExecuteScript(tempStr);
+				return singletonJS.ExecuteScript(tempStr);
 			}
 			catch (Exception ex)
 			{
@@ -34,8 +34,7 @@ namespace WebLibrary
 		}
 		public object ExecuteScript(string script, params object[] args)
 		{
-			return js.ExecuteScript(script, args);
-
+			return singletonJS.ExecuteScript(script, args);
 		}
 		public string UsedIDNameToFindElement(string idName)
 		{
@@ -48,6 +47,10 @@ namespace WebLibrary
 		public string ElementClick()
 		{
 			return string.Format("elements.click();");
+		}
+		public void Reset()
+		{
+			singletonJS = Scripts(singletonWebDriver);
 		}
 	}
 }

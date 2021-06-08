@@ -2,11 +2,14 @@
 
 namespace WebLibrary
 {
-	public class WebSystemControl : WebElementControl
+	public class WebSystemControl
 	{
-		public WebSystemControl(CommonBase basicTool, Category type) : base(basicTool, type)
+		private WebGUIBase webGUIBase;
+		private CommonBase basicTool;
+		public WebSystemControl(WebGUIBase webGUIBase, CommonBase basicTool)
 		{
-
+			this.webGUIBase = webGUIBase;
+			this.basicTool = basicTool;
 		}
 	}
 }

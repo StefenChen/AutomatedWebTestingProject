@@ -4,13 +4,17 @@ using System;
 
 namespace WebLibrary
 {
-	public class DriverOperation : Chrome
+	public class ChromeOperation : Chrome
 	{
-		public DriverOperation(CommonBase basicTool, Category type) : base(basicTool, type)
+		JavaScriptCommand js;
+		public ChromeOperation(CommonBase basicTool, Category type, JavaScriptCommand js) : base(basicTool, type)
 		{
-
+			this.js = js;
 		}
-
+		public static void DriverQuit()
+		{
+			singletonWebDriver.Quit();
+		}
 		public bool RestartDriver()
 		{
 			try
@@ -23,16 +27,16 @@ namespace WebLibrary
 				}
 				else
 				{
-					singletonWebDriver.Quit();
-					singletonWebDriver = null;
+					singletonWebDriver.Close();
 					singletonWebDriver = new OpenQA.Selenium.Chrome.ChromeDriver();
 					singletonWebDriver.Manage().Window.Maximize();
+					js.Reset();
 				}
 				return true;
 			}
 			catch (Exception ex)
 			{
-				basicTool.messageLog.WriteLog(Category.DriverOperation, ex.ToString(), "RestartDriver");
+				basicTool.messageLog.WriteLog(Category.ChromeOperation, ex.ToString(), "RestartDriver");
 				return false;
 			}
 		}

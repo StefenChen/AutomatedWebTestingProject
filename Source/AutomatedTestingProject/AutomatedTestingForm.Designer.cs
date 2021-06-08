@@ -83,6 +83,8 @@
             this.btnConfigTest = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.gbKeyIn = new System.Windows.Forms.GroupBox();
+            this.tbIDSendKey = new System.Windows.Forms.TextBox();
+            this.lbIDSendKey = new System.Windows.Forms.Label();
             this.lbKeyIn = new System.Windows.Forms.Label();
             this.tbSendKey = new System.Windows.Forms.TextBox();
             this.btnSendKeys = new System.Windows.Forms.Button();
@@ -96,6 +98,22 @@
             this.tbOpenURL = new System.Windows.Forms.TextBox();
             this.btnOpenURL = new System.Windows.Forms.Button();
             this.tpFunctionTesting2 = new System.Windows.Forms.TabPage();
+            this.gbRadioButton = new System.Windows.Forms.GroupBox();
+            this.cbparentNode = new System.Windows.Forms.CheckBox();
+            this.tbRadioButtonItem = new System.Windows.Forms.TextBox();
+            this.lbRadioButtonItem = new System.Windows.Forms.Label();
+            this.lbRadioButtonID = new System.Windows.Forms.Label();
+            this.tbRadioButtonID = new System.Windows.Forms.TextBox();
+            this.btnRadioButton = new System.Windows.Forms.Button();
+            this.gbCheckBox = new System.Windows.Forms.GroupBox();
+            this.rbtnLast = new System.Windows.Forms.RadioButton();
+            this.rbtnFront = new System.Windows.Forms.RadioButton();
+            this.cbMultiSelectBox = new System.Windows.Forms.CheckBox();
+            this.tbCheckBoxIdx = new System.Windows.Forms.TextBox();
+            this.lbCheckBoxIdx = new System.Windows.Forms.Label();
+            this.lbCheckBoxID = new System.Windows.Forms.Label();
+            this.tbCheckBoxID = new System.Windows.Forms.TextBox();
+            this.btnCheckBox = new System.Windows.Forms.Button();
             this.gbConnectWiFi = new System.Windows.Forms.GroupBox();
             this.btnSaveWiFiInfo = new System.Windows.Forms.Button();
             this.tbSsidPasswd = new System.Windows.Forms.TextBox();
@@ -120,11 +138,15 @@
             this.btnSetupToDHCP = new System.Windows.Forms.Button();
             this.gbMessageShow = new System.Windows.Forms.GroupBox();
             this.lbVersionNum = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.lbIDSendKey = new System.Windows.Forms.Label();
-            this.tbIDSendKey = new System.Windows.Forms.TextBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnPause = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.gbAccount = new System.Windows.Forms.GroupBox();
+            this.btnSettingPwd = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnLoginStatus = new System.Windows.Forms.Button();
+            this.btnLoginWarning = new System.Windows.Forms.Button();
             this.tbMainMenu.SuspendLayout();
             this.tpFunctionTesting1.SuspendLayout();
             this.gbGetElementValue.SuspendLayout();
@@ -139,9 +161,12 @@
             this.gbFindElement.SuspendLayout();
             this.gbURL.SuspendLayout();
             this.tpFunctionTesting2.SuspendLayout();
+            this.gbRadioButton.SuspendLayout();
+            this.gbCheckBox.SuspendLayout();
             this.gbConnectWiFi.SuspendLayout();
             this.gbSettingNetworkInterface.SuspendLayout();
             this.gbMessageShow.SuspendLayout();
+            this.gbAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbMessageShow
@@ -770,6 +795,24 @@
             this.gbKeyIn.TabStop = false;
             this.gbKeyIn.Text = "3.KeyIn";
             // 
+            // tbIDSendKey
+            // 
+            this.tbIDSendKey.Location = new System.Drawing.Point(84, 31);
+            this.tbIDSendKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbIDSendKey.Name = "tbIDSendKey";
+            this.tbIDSendKey.Size = new System.Drawing.Size(224, 34);
+            this.tbIDSendKey.TabIndex = 16;
+            this.tbIDSendKey.Text = "pc-login-password";
+            // 
+            // lbIDSendKey
+            // 
+            this.lbIDSendKey.AutoSize = true;
+            this.lbIDSendKey.Location = new System.Drawing.Point(11, 34);
+            this.lbIDSendKey.Name = "lbIDSendKey";
+            this.lbIDSendKey.Size = new System.Drawing.Size(31, 25);
+            this.lbIDSendKey.TabIndex = 15;
+            this.lbIDSendKey.Text = "Id";
+            // 
             // lbKeyIn
             // 
             this.lbKeyIn.AutoSize = true;
@@ -903,6 +946,9 @@
             // 
             // tpFunctionTesting2
             // 
+            this.tpFunctionTesting2.Controls.Add(this.gbAccount);
+            this.tpFunctionTesting2.Controls.Add(this.gbRadioButton);
+            this.tpFunctionTesting2.Controls.Add(this.gbCheckBox);
             this.tpFunctionTesting2.Controls.Add(this.gbConnectWiFi);
             this.tpFunctionTesting2.Controls.Add(this.gbSettingNetworkInterface);
             this.tpFunctionTesting2.Location = new System.Drawing.Point(4, 44);
@@ -912,6 +958,181 @@
             this.tpFunctionTesting2.TabIndex = 5;
             this.tpFunctionTesting2.Text = "開發功能測試2";
             this.tpFunctionTesting2.UseVisualStyleBackColor = true;
+            // 
+            // gbRadioButton
+            // 
+            this.gbRadioButton.Controls.Add(this.cbparentNode);
+            this.gbRadioButton.Controls.Add(this.tbRadioButtonItem);
+            this.gbRadioButton.Controls.Add(this.lbRadioButtonItem);
+            this.gbRadioButton.Controls.Add(this.lbRadioButtonID);
+            this.gbRadioButton.Controls.Add(this.tbRadioButtonID);
+            this.gbRadioButton.Controls.Add(this.btnRadioButton);
+            this.gbRadioButton.Location = new System.Drawing.Point(656, 275);
+            this.gbRadioButton.Margin = new System.Windows.Forms.Padding(4);
+            this.gbRadioButton.Name = "gbRadioButton";
+            this.gbRadioButton.Padding = new System.Windows.Forms.Padding(4);
+            this.gbRadioButton.Size = new System.Drawing.Size(373, 182);
+            this.gbRadioButton.TabIndex = 33;
+            this.gbRadioButton.TabStop = false;
+            this.gbRadioButton.Text = "RadioButton";
+            // 
+            // cbparentNode
+            // 
+            this.cbparentNode.AutoSize = true;
+            this.cbparentNode.Location = new System.Drawing.Point(25, 85);
+            this.cbparentNode.Name = "cbparentNode";
+            this.cbparentNode.Size = new System.Drawing.Size(148, 29);
+            this.cbparentNode.TabIndex = 46;
+            this.cbparentNode.Text = "parentNode";
+            this.cbparentNode.UseVisualStyleBackColor = true;
+            // 
+            // tbRadioButtonItem
+            // 
+            this.tbRadioButtonItem.Location = new System.Drawing.Point(136, 126);
+            this.tbRadioButtonItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbRadioButtonItem.Name = "tbRadioButtonItem";
+            this.tbRadioButtonItem.Size = new System.Drawing.Size(41, 34);
+            this.tbRadioButtonItem.TabIndex = 44;
+            this.tbRadioButtonItem.Text = "1";
+            // 
+            // lbRadioButtonItem
+            // 
+            this.lbRadioButtonItem.AutoSize = true;
+            this.lbRadioButtonItem.Location = new System.Drawing.Point(20, 129);
+            this.lbRadioButtonItem.Name = "lbRadioButtonItem";
+            this.lbRadioButtonItem.Size = new System.Drawing.Size(110, 25);
+            this.lbRadioButtonItem.TabIndex = 40;
+            this.lbRadioButtonItem.Text = "SelectItem";
+            // 
+            // lbRadioButtonID
+            // 
+            this.lbRadioButtonID.AutoSize = true;
+            this.lbRadioButtonID.Location = new System.Drawing.Point(20, 38);
+            this.lbRadioButtonID.Name = "lbRadioButtonID";
+            this.lbRadioButtonID.Size = new System.Drawing.Size(90, 25);
+            this.lbRadioButtonID.TabIndex = 32;
+            this.lbRadioButtonID.Text = "IDName";
+            // 
+            // tbRadioButtonID
+            // 
+            this.tbRadioButtonID.Location = new System.Drawing.Point(116, 35);
+            this.tbRadioButtonID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbRadioButtonID.Name = "tbRadioButtonID";
+            this.tbRadioButtonID.Size = new System.Drawing.Size(243, 34);
+            this.tbRadioButtonID.TabIndex = 31;
+            this.tbRadioButtonID.Text = "mssid1SeeEachOther";
+            // 
+            // btnRadioButton
+            // 
+            this.btnRadioButton.Location = new System.Drawing.Point(202, 85);
+            this.btnRadioButton.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRadioButton.Name = "btnRadioButton";
+            this.btnRadioButton.Size = new System.Drawing.Size(157, 81);
+            this.btnRadioButton.TabIndex = 30;
+            this.btnRadioButton.Text = "RadioButton";
+            this.btnRadioButton.UseVisualStyleBackColor = true;
+            this.btnRadioButton.Click += new System.EventHandler(this.btnRadioButton_Click);
+            // 
+            // gbCheckBox
+            // 
+            this.gbCheckBox.Controls.Add(this.rbtnLast);
+            this.gbCheckBox.Controls.Add(this.rbtnFront);
+            this.gbCheckBox.Controls.Add(this.cbMultiSelectBox);
+            this.gbCheckBox.Controls.Add(this.tbCheckBoxIdx);
+            this.gbCheckBox.Controls.Add(this.lbCheckBoxIdx);
+            this.gbCheckBox.Controls.Add(this.lbCheckBoxID);
+            this.gbCheckBox.Controls.Add(this.tbCheckBoxID);
+            this.gbCheckBox.Controls.Add(this.btnCheckBox);
+            this.gbCheckBox.Location = new System.Drawing.Point(656, 11);
+            this.gbCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.gbCheckBox.Name = "gbCheckBox";
+            this.gbCheckBox.Padding = new System.Windows.Forms.Padding(4);
+            this.gbCheckBox.Size = new System.Drawing.Size(373, 256);
+            this.gbCheckBox.TabIndex = 32;
+            this.gbCheckBox.TabStop = false;
+            this.gbCheckBox.Text = "SelectBox";
+            // 
+            // rbtnLast
+            // 
+            this.rbtnLast.AutoSize = true;
+            this.rbtnLast.Location = new System.Drawing.Point(25, 205);
+            this.rbtnLast.Name = "rbtnLast";
+            this.rbtnLast.Size = new System.Drawing.Size(148, 29);
+            this.rbtnLast.TabIndex = 47;
+            this.rbtnLast.Text = "LastChildren";
+            this.rbtnLast.UseVisualStyleBackColor = true;
+            this.rbtnLast.CheckedChanged += new System.EventHandler(this.rbtnLast_CheckedChanged);
+            // 
+            // rbtnFront
+            // 
+            this.rbtnFront.AutoSize = true;
+            this.rbtnFront.Checked = true;
+            this.rbtnFront.Location = new System.Drawing.Point(25, 170);
+            this.rbtnFront.Name = "rbtnFront";
+            this.rbtnFront.Size = new System.Drawing.Size(161, 29);
+            this.rbtnFront.TabIndex = 46;
+            this.rbtnFront.TabStop = true;
+            this.rbtnFront.Text = "FrontChildren";
+            this.rbtnFront.UseVisualStyleBackColor = true;
+            this.rbtnFront.CheckedChanged += new System.EventHandler(this.rbtnFront_CheckedChanged);
+            // 
+            // cbMultiSelectBox
+            // 
+            this.cbMultiSelectBox.AutoSize = true;
+            this.cbMultiSelectBox.Location = new System.Drawing.Point(25, 78);
+            this.cbMultiSelectBox.Name = "cbMultiSelectBox";
+            this.cbMultiSelectBox.Size = new System.Drawing.Size(265, 29);
+            this.cbMultiSelectBox.TabIndex = 45;
+            this.cbMultiSelectBox.Text = "multi-selectboxs in a line";
+            this.cbMultiSelectBox.UseVisualStyleBackColor = true;
+            this.cbMultiSelectBox.CheckedChanged += new System.EventHandler(this.cbMultiSelectBox_CheckedChanged);
+            // 
+            // tbCheckBoxIdx
+            // 
+            this.tbCheckBoxIdx.Location = new System.Drawing.Point(136, 126);
+            this.tbCheckBoxIdx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbCheckBoxIdx.Name = "tbCheckBoxIdx";
+            this.tbCheckBoxIdx.Size = new System.Drawing.Size(41, 34);
+            this.tbCheckBoxIdx.TabIndex = 44;
+            this.tbCheckBoxIdx.Text = "1";
+            // 
+            // lbCheckBoxIdx
+            // 
+            this.lbCheckBoxIdx.AutoSize = true;
+            this.lbCheckBoxIdx.Location = new System.Drawing.Point(20, 129);
+            this.lbCheckBoxIdx.Name = "lbCheckBoxIdx";
+            this.lbCheckBoxIdx.Size = new System.Drawing.Size(110, 25);
+            this.lbCheckBoxIdx.TabIndex = 40;
+            this.lbCheckBoxIdx.Text = "SelectItem";
+            // 
+            // lbCheckBoxID
+            // 
+            this.lbCheckBoxID.AutoSize = true;
+            this.lbCheckBoxID.Location = new System.Drawing.Point(20, 38);
+            this.lbCheckBoxID.Name = "lbCheckBoxID";
+            this.lbCheckBoxID.Size = new System.Drawing.Size(90, 25);
+            this.lbCheckBoxID.TabIndex = 32;
+            this.lbCheckBoxID.Text = "IDName";
+            // 
+            // tbCheckBoxID
+            // 
+            this.tbCheckBoxID.Location = new System.Drawing.Point(116, 32);
+            this.tbCheckBoxID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbCheckBoxID.Name = "tbCheckBoxID";
+            this.tbCheckBoxID.Size = new System.Drawing.Size(243, 34);
+            this.tbCheckBoxID.TabIndex = 31;
+            this.tbCheckBoxID.Text = "mssid1SeeEachOther";
+            // 
+            // btnCheckBox
+            // 
+            this.btnCheckBox.Location = new System.Drawing.Point(202, 126);
+            this.btnCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCheckBox.Name = "btnCheckBox";
+            this.btnCheckBox.Size = new System.Drawing.Size(157, 113);
+            this.btnCheckBox.TabIndex = 30;
+            this.btnCheckBox.Text = "SelectBox";
+            this.btnCheckBox.UseVisualStyleBackColor = true;
+            this.btnCheckBox.Click += new System.EventHandler(this.btnCheckBox_Click);
             // 
             // gbConnectWiFi
             // 
@@ -1170,68 +1391,122 @@
             this.lbVersionNum.TabIndex = 7;
             this.lbVersionNum.Text = "Version 0.0.0.0";
             // 
-            // button1
+            // btnStart
             // 
-            this.button1.BackColor = System.Drawing.Color.SkyBlue;
-            this.button1.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(1629, 84);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 111);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnStart.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnStart.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnStart.Location = new System.Drawing.Point(1629, 84);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(152, 111);
+            this.btnStart.TabIndex = 8;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnPause
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.button2.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(1629, 200);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 111);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Pause";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnPause.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.btnPause.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnPause.Location = new System.Drawing.Point(1629, 200);
+            this.btnPause.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(152, 111);
+            this.btnPause.TabIndex = 9;
+            this.btnPause.Text = "Pause";
+            this.btnPause.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnClose
             // 
-            this.button3.BackColor = System.Drawing.Color.MediumPurple;
-            this.button3.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button3.Location = new System.Drawing.Point(1629, 316);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(152, 111);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Close";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnClose.BackColor = System.Drawing.Color.MediumPurple;
+            this.btnClose.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnClose.Location = new System.Drawing.Point(1629, 316);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(152, 111);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // lbIDSendKey
+            // gbAccount
             // 
-            this.lbIDSendKey.AutoSize = true;
-            this.lbIDSendKey.Location = new System.Drawing.Point(11, 34);
-            this.lbIDSendKey.Name = "lbIDSendKey";
-            this.lbIDSendKey.Size = new System.Drawing.Size(31, 25);
-            this.lbIDSendKey.TabIndex = 15;
-            this.lbIDSendKey.Text = "Id";
+            this.gbAccount.Controls.Add(this.btnLoginWarning);
+            this.gbAccount.Controls.Add(this.btnLoginStatus);
+            this.gbAccount.Controls.Add(this.btnLogout);
+            this.gbAccount.Controls.Add(this.btnLogin);
+            this.gbAccount.Controls.Add(this.btnSettingPwd);
+            this.gbAccount.Location = new System.Drawing.Point(12, 395);
+            this.gbAccount.Margin = new System.Windows.Forms.Padding(4);
+            this.gbAccount.Name = "gbAccount";
+            this.gbAccount.Padding = new System.Windows.Forms.Padding(4);
+            this.gbAccount.Size = new System.Drawing.Size(360, 326);
+            this.gbAccount.TabIndex = 34;
+            this.gbAccount.TabStop = false;
+            this.gbAccount.Text = "LogIn/Out/Monitor";
             // 
-            // tbIDSendKey
+            // btnSettingPwd
             // 
-            this.tbIDSendKey.Location = new System.Drawing.Point(84, 31);
-            this.tbIDSendKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbIDSendKey.Name = "tbIDSendKey";
-            this.tbIDSendKey.Size = new System.Drawing.Size(224, 34);
-            this.tbIDSendKey.TabIndex = 16;
-            this.tbIDSendKey.Text = "pc-login-password";
+            this.btnSettingPwd.Location = new System.Drawing.Point(16, 46);
+            this.btnSettingPwd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSettingPwd.Name = "btnSettingPwd";
+            this.btnSettingPwd.Size = new System.Drawing.Size(146, 60);
+            this.btnSettingPwd.TabIndex = 30;
+            this.btnSettingPwd.Text = "PwdSetting";
+            this.btnSettingPwd.UseVisualStyleBackColor = true;
+            this.btnSettingPwd.Click += new System.EventHandler(this.btnSettingPwd_Click);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(16, 114);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(146, 60);
+            this.btnLogin.TabIndex = 31;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(16, 182);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(146, 60);
+            this.btnLogout.TabIndex = 32;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnLoginStatus
+            // 
+            this.btnLoginStatus.Location = new System.Drawing.Point(16, 250);
+            this.btnLoginStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLoginStatus.Name = "btnLoginStatus";
+            this.btnLoginStatus.Size = new System.Drawing.Size(146, 60);
+            this.btnLoginStatus.TabIndex = 33;
+            this.btnLoginStatus.Text = "LoginStatus";
+            this.btnLoginStatus.UseVisualStyleBackColor = true;
+            this.btnLoginStatus.Click += new System.EventHandler(this.btnLoginStatus_Click);
+            // 
+            // btnLoginWarning
+            // 
+            this.btnLoginWarning.Location = new System.Drawing.Point(173, 46);
+            this.btnLoginWarning.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLoginWarning.Name = "btnLoginWarning";
+            this.btnLoginWarning.Size = new System.Drawing.Size(167, 60);
+            this.btnLoginWarning.TabIndex = 34;
+            this.btnLoginWarning.Text = "LoginWarning";
+            this.btnLoginWarning.UseVisualStyleBackColor = true;
+            this.btnLoginWarning.Click += new System.EventHandler(this.btnLoginWarning_Click);
             // 
             // AutomatedWebTestingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1789, 834);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1783, 853);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnPause);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lbVersionNum);
             this.Controls.Add(this.gbMessageShow);
             this.Controls.Add(this.tbMainMenu);
@@ -1262,12 +1537,17 @@
             this.gbURL.ResumeLayout(false);
             this.gbURL.PerformLayout();
             this.tpFunctionTesting2.ResumeLayout(false);
+            this.gbRadioButton.ResumeLayout(false);
+            this.gbRadioButton.PerformLayout();
+            this.gbCheckBox.ResumeLayout(false);
+            this.gbCheckBox.PerformLayout();
             this.gbConnectWiFi.ResumeLayout(false);
             this.gbConnectWiFi.PerformLayout();
             this.gbSettingNetworkInterface.ResumeLayout(false);
             this.gbSettingNetworkInterface.PerformLayout();
             this.gbMessageShow.ResumeLayout(false);
             this.gbMessageShow.PerformLayout();
+            this.gbAccount.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1331,9 +1611,9 @@
         private System.Windows.Forms.Label lbSwitchButtonClassIndex;
         private System.Windows.Forms.TabPage tpAutoTesting;
         private System.Windows.Forms.TabPage tpAdvancedPataSetting;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox gbDropDownList;
         private System.Windows.Forms.Button btnDropDownList;
         private System.Windows.Forms.Label lbDropDownListName;
@@ -1371,6 +1651,28 @@
 		private System.Windows.Forms.Button btnSaveWiFiInfo;
 		private System.Windows.Forms.TextBox tbIDSendKey;
 		private System.Windows.Forms.Label lbIDSendKey;
+		private System.Windows.Forms.GroupBox gbCheckBox;
+		private System.Windows.Forms.TextBox tbCheckBoxIdx;
+		private System.Windows.Forms.Label lbCheckBoxIdx;
+		private System.Windows.Forms.Label lbCheckBoxID;
+		private System.Windows.Forms.TextBox tbCheckBoxID;
+		private System.Windows.Forms.Button btnCheckBox;
+		private System.Windows.Forms.CheckBox cbMultiSelectBox;
+		private System.Windows.Forms.RadioButton rbtnLast;
+		private System.Windows.Forms.RadioButton rbtnFront;
+		private System.Windows.Forms.GroupBox gbRadioButton;
+		private System.Windows.Forms.TextBox tbRadioButtonItem;
+		private System.Windows.Forms.Label lbRadioButtonItem;
+		private System.Windows.Forms.Label lbRadioButtonID;
+		private System.Windows.Forms.TextBox tbRadioButtonID;
+		private System.Windows.Forms.Button btnRadioButton;
+		private System.Windows.Forms.CheckBox cbparentNode;
+		private System.Windows.Forms.GroupBox gbAccount;
+		private System.Windows.Forms.Button btnSettingPwd;
+		private System.Windows.Forms.Button btnLogin;
+		private System.Windows.Forms.Button btnLogout;
+		private System.Windows.Forms.Button btnLoginStatus;
+		private System.Windows.Forms.Button btnLoginWarning;
 	}
 }
 

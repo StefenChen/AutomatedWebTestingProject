@@ -1,7 +1,6 @@
 ﻿using BasicLIbrary;
 using System;
 using System.Diagnostics;
-using System.Windows.Forms;
 // System.Net.NetworkInformation;
 
 namespace WindowsControl

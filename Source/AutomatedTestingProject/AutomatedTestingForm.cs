@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Windows.Forms;
+using WebLibrary;
 
 namespace AutomatedTestingProject
 {
@@ -50,7 +51,7 @@ namespace AutomatedTestingProject
 		{
 			try
 			{
-				automatedWebTesting.webElementControl.browser.OpenNewWeb(tbOpenURL.Text, 10);
+				automatedWebTesting.webGUIBase.browser.OpenNewWeb(tbOpenURL.Text, 10);
 			}
 			catch (Exception ex)
 			{
@@ -79,7 +80,7 @@ namespace AutomatedTestingProject
 					break;
 			}
 
-			if ((tempInputAccount = automatedWebTesting.webElementControl.webBasic.isElementExist(selector, 5)) != null)
+			if ((tempInputAccount = automatedWebTesting.webGUIBase.webBasic.isElementExist(selector, 5)) != null)
 			{
 				MessageBox.Show(cbFindElement.Text + ":" + tbFindElement.Text + "\r\nFind it!");
 			}
@@ -90,21 +91,14 @@ namespace AutomatedTestingProject
 		}
 		private void SendKeys_Click(object sender, EventArgs e)
 		{
-			if (tempInputAccount != null)
-			{
 				try
 				{
-					automatedWebTesting.webElementControl.webBasic.SetElementValue(tbIDSendKey.Text, tbSendKey.Text);
+					automatedWebTesting.webGUIBase.webBasic.SetElementValue(tbIDSendKey.Text, tbSendKey.Text);
 				}
 				catch (Exception ex)
 				{
 					WriteMsg(sender.ToString(), tbSendKey.Text, ex.ToString());
 				}
-			}
-			else
-			{
-				MessageBox.Show(cbFindElement.Text + ":" + tbFindElement.Text + "\r\nNot found!");
-			}
 		}
 
 		private void btnButtonClick_Click(object sender, EventArgs e)
@@ -129,17 +123,17 @@ namespace AutomatedTestingProject
 					break;
 			}
 
-			if ((tempSubmitButton = automatedWebTesting.webElementControl.webBasic.isElementExist(selector, 5)) != null)
+			if ((tempSubmitButton = automatedWebTesting.webGUIBase.webBasic.isElementExist(selector, 5)) != null)
 			{
 				try
 				{
 					if (cbButtonClick.Text == "ClassName")
 					{
-						tempSubmitButton = automatedWebTesting.webElementControl.webBasic.FindAllElements(selector, 5)[Convert.ToInt32(tbClassIndexButtonClick.Text)];
+						tempSubmitButton = automatedWebTesting.webGUIBase.webBasic.FindAllElements(selector, 5)[Convert.ToInt32(tbClassIndexButtonClick.Text)];
 					}//測試功能用
 					else if (cbButtonClick.Text == "Id")
 					{
-						automatedWebTesting.webElementControl.webBasic.ClickGeneralButton(tbButtonClick.Text);
+						automatedWebTesting.webGUIBase.webBasic.ClickGeneralButton(tbButtonClick.Text);
 						return;
 					}
 					else
@@ -163,7 +157,7 @@ namespace AutomatedTestingProject
 
 		private void btnWebRefresh_Click(object sender, EventArgs e)
 		{
-			if (!automatedWebTesting.webElementControl.browser.WebRefresh())
+			if (!automatedWebTesting.webGUIBase.browser.WebRefresh())
 				WriteMsg(sender.ToString(), "", "Refresh Website Failed!");
 		}
 
@@ -188,7 +182,7 @@ namespace AutomatedTestingProject
 					dir = "";
 					break;
 			}
-			automatedWebTesting.webElementControl.webBasic.MoveAFixedDistanceWhenElementScroll(dir,
+			automatedWebTesting.webGUIBase.webBasic.MoveAFixedDistanceWhenElementScroll(dir,
 																		tbScrollElement.Text,
 																		clbScrollElement.SelectedItem.ToString(),
 																		Convert.ToInt32(tbMovedPixels.Text),
@@ -205,7 +199,7 @@ namespace AutomatedTestingProject
 		private void btnSwitchButtonClick_Click(object sender, EventArgs e)
 		{
 			//方法一
-			automatedWebTesting.webElementControl.webBasic.ClickSwitchButton(tbSwitchButtonClick.Text,
+			automatedWebTesting.webGUIBase.webBasic.ClickSwitchButton(tbSwitchButtonClick.Text,
 													Convert.ToInt32(tbSwitchButtonClassIndex.Text));
 			//方法二
 			//tempSubmitButton = webElementControl.webElement.FindAllElements(By.ClassName(tbSwitchButtonClick.Text), 5)[Convert.ToInt32(tbSwitchButtonClassIndex.Text)];
@@ -214,15 +208,19 @@ namespace AutomatedTestingProject
 
 		private void btnDropDownList_Click(object sender, EventArgs e)
 		{
-			if (automatedWebTesting.webElementControl.webBasic.SelectDropDownMenu(tbDropDownListName.Text,
+			if (automatedWebTesting.webGUIBase.webBasic.SelectDropDownMenu(tbDropDownListName.Text,
 														Convert.ToInt32(tbSelectItem.Text)))
 				WriteMsg(sender, tbDropDownListName.Text, "Control Button Fail");
 		}
 
 		private void btnGetElementValue_Click_1(object sender, EventArgs e)
 		{
-			IWebElement temp = automatedWebTesting.webElementControl.webBasic.isElementExist(By.Id(tbGetElementValue.Text), 5);
-			string tempStr = automatedWebTesting.webElementControl.webBasic.GetElementValue(temp);
+			//方法一
+			//IWebElement temp = automatedWebTesting.webElementControl.webBasic.isElementExist(By.Id(tbGetElementValue.Text), 5);
+			//string tempStr = automatedWebTesting.webElementControl.webBasic.GetElementValue(temp);
+			//WriteMsg(sender, tbGetElementValue.Text + " Value", tempStr);
+			//方法二
+			string tempStr = automatedWebTesting.webGUIBase.webBasic.GetElementValue(tbGetElementValue.Text);
 			WriteMsg(sender, tbGetElementValue.Text + " Value", tempStr);
 		}
 
@@ -254,11 +252,106 @@ namespace AutomatedTestingProject
 			automatedWebTesting.wifiControl.ConnectWifi();
 		}
 
+		private void btnCheckBox_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (cbMultiSelectBox.Checked)
+				{
+					automatedWebTesting.webGUIBase.webBasic.ClickSelectBox(tbCheckBoxID.Text, Convert.ToInt32(tbCheckBoxIdx.Text), true);
+				}
+				else
+				{
+					automatedWebTesting.webGUIBase.webBasic.ClickSelectBox(tbCheckBoxID.Text, rbtnFront.Checked == true ? 1 : 2);
+				}
+			}
+			catch (Exception ex)
+			{
+				WriteMsg(sender.ToString(), "btnCheckBox_Click", ex.ToString());
+			}
+		}
+
+		private void cbMultiSelectBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (cbMultiSelectBox.Checked)
+			{
+				tbCheckBoxIdx.Visible = true;
+				lbCheckBoxIdx.Visible = true;
+				rbtnFront.Visible = false;
+				rbtnLast.Visible = false;
+			}
+			else
+			{
+				tbCheckBoxIdx.Visible = false;
+				lbCheckBoxIdx.Visible = false;
+				rbtnFront.Visible = true;
+				rbtnLast.Visible = true;
+			}
+		}
+
+		private void rbtnFront_CheckedChanged(object sender, EventArgs e)
+		{
+			if (rbtnFront.Checked == true) rbtnLast.Checked = false;
+		}
+
+		private void rbtnLast_CheckedChanged(object sender, EventArgs e)
+		{
+			if (rbtnLast.Checked == true) rbtnFront.Checked = false;
+		}
+
+		private void btnRadioButton_Click(object sender, EventArgs e)
+		{
+			if (Convert.ToInt32(tbRadioButtonItem.Text) < 5 || Convert.ToInt32(tbRadioButtonItem.Text) > 0)
+			{
+				automatedWebTesting.webGUIBase.webBasic.ClickRadioButton(tbRadioButtonID.Text, Convert.ToInt32(tbRadioButtonItem.Text), cbparentNode.Checked);
+			}
+			else
+			{
+				MessageBox.Show("Radio button 選擇項次超出範圍，上限為4，下限為1!");
+			}
+		}
+
+		private void btnClose_Click(object sender, EventArgs e)
+		{
+			ChromeOperation.DriverQuit();
+			System.Windows.Forms.Application.Exit();
+		}
+
+		private void btnSettingPwd_Click(object sender, EventArgs e)
+		{
+			bool tempBool = automatedWebTesting.webAccountControl.SettingPwd();
+			WriteMsg(sender.ToString(), "SettingPwd", tempBool?"Success": "Failure");
+		}
+
+		private void btnLogin_Click(object sender, EventArgs e)
+		{
+			bool tempBool = automatedWebTesting.webAccountControl.Login();
+			WriteMsg(sender.ToString(), "Login", tempBool ? "Success" : "Failure");
+		}
+
+		private void btnLogout_Click(object sender, EventArgs e)
+		{
+			bool tempBool = automatedWebTesting.webAccountControl.Logout();
+			WriteMsg(sender.ToString(), "Logout", tempBool ? "Success" : "Failure");
+		}
+
+		private void btnLoginStatus_Click(object sender, EventArgs e)
+		{
+			bool tempBool = automatedWebTesting.webAccountControl.CheckLoginStatus();
+			WriteMsg(sender.ToString(), "CheckLoginStatus", tempBool ? "Success" : "Failure");
+		}
+
+		private void btnLoginWarning_Click(object sender, EventArgs e)
+		{
+			bool tempBool = automatedWebTesting.webAccountControl.LoginWarning();
+			WriteMsg(sender.ToString(), "CheckLoginStatus", tempBool ? "Success" : "Failure");
+		}
+
 		private void btnResartDriver_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				automatedWebTesting.webElementControl.driver.RestartDriver();
+				automatedWebTesting.webGUIBase.driver.RestartDriver();
 			}
 			catch (Exception ex)
 			{

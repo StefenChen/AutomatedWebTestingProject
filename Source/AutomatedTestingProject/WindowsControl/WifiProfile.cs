@@ -63,7 +63,7 @@ $@"<?xml version=""1.0""?>
 		{
 			bool result;
 			if (!(result = NativeWifi.EnumerateProfileNames().Contains(profileName)))
-				basicTool.messageLog.WriteLog(Category.WifiProfile, "找不到Profile檔案:"+ profileName + "失敗。", "DeletProfile");
+				basicTool.messageLog.WriteLog(Category.WifiProfile, "找不到Profile檔案:" + profileName + "失敗。", "DeletProfile");
 			else if (!(result &= NativeWifi.DeleteProfile(interfaceId, profileName)))
 				basicTool.messageLog.WriteLog(Category.WifiProfile, "刪除Profile檔案:" + profileName + "失敗。", "DeletProfile");
 			else if (!(result &= NativeWifi.EnumerateProfileNames().Contains(profileName)))
