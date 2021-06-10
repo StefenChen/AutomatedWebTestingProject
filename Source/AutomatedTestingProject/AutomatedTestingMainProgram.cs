@@ -1,4 +1,5 @@
 ﻿using BasicLIbrary;
+using StateMachine;
 using System;
 using WebLibrary;
 using WindowsControl;
@@ -10,19 +11,22 @@ namespace AutomatedTestingProject
 		private AutomatedWebTestingForm mainForm = null;
 		private string CONFIG_FILE_PATH = @"C:\AutoTesting\Para\config.ini";
 
-		public WebAccountControl webAccountControl;
-		public WebFunctionControl webFunctionControl;
-		public WebSystemControl webSystemControl;
-		public WebGUIBase webGUIBase;
-		public CommonBase basicTool;
+		//basic tools
+		public WebGUIBase webGUIBase = null;
+		public CommonBase basicTool = null;
 
-		public NetworkCard networkCand;
-		public WifiControl wifiControl;
+		//API Tools
+		public WebAccountControl webAccount = null;
+		public WebFunctionControl webFunction = null;
+		public WebSystemControl webSystem = null;
+		public WifiControl wifi = null;
+		public NetworkAdapterControl networkAdapter = null;
+
+		public StateMachinesBase temp = null;
 
 		public AutomatedWebTesting(AutomatedWebTestingForm mainForm)
 		{
 			this.mainForm = mainForm;
-
 		}
 
 		public bool Initial()
@@ -32,14 +36,16 @@ namespace AutomatedTestingProject
 			webGUIBase = WebGUIBase.SetWebGUIBase(basicTool, new Category());
 			Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 			mainForm.lbVersionNum.Text = string.Format("Version {0}", version);
-			
-			webAccountControl = new WebAccountControl(webGUIBase, basicTool);
-			webFunctionControl = new WebFunctionControl(webGUIBase, basicTool);
-			webSystemControl = new WebSystemControl(webGUIBase, basicTool);
 
-			networkCand = new NetworkCard(basicTool);
-			wifiControl = new WifiControl(basicTool, new Category());
+			//API Tools initial
+			webAccount = new WebAccountControl(webGUIBase, basicTool);
+			webFunction = new WebFunctionControl(webGUIBase, basicTool);
+			webSystem = new WebSystemControl(webGUIBase, basicTool);
+			networkAdapter = new NetworkAdapterControl(basicTool);
+			wifi = new WifiControl(basicTool, new Category());
 
+			//State Machine Base
+			temp = new StateMachinesBase(basicTool, webAccount, webFunction, webSystem, wifi, networkAdapter);
 			return true;
 		}
 	}

@@ -11,6 +11,7 @@ namespace BasicLIbrary
 		WebBasicOperation,
 		WifiControl,
 		WebAccountControl,
+		WebFunctionControl,
 		WifiProfile,
 		NetworkCard,
 	}
@@ -18,7 +19,6 @@ namespace BasicLIbrary
 	{
 		public AccessConfig accessConfig;
 		public MessageLog messageLog;
-
 		public CommonBase(string configPath, AutomatedWebTestingForm mainFormBase)
 		{
 			accessConfig = AccessConfig.SetConfig(configPath);

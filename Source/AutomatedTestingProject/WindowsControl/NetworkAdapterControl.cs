@@ -5,13 +5,13 @@ using System.Diagnostics;
 
 namespace WindowsControl
 {
-	public class NetworkCard
+	public class NetworkAdapterControl
 	{
-		private Process process;
-		private ProcessStartInfo psi;
-		private CommonBase basicTool;
+		private Process process = null;
+		private ProcessStartInfo psi = null;
+		private CommonBase basicTool = null;
 
-		public NetworkCard(CommonBase basicTool)
+		public NetworkAdapterControl(CommonBase basicTool)
 		{
 			this.basicTool = basicTool;
 		}

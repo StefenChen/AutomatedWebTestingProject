@@ -73,11 +73,10 @@ namespace WindowsControl
 			{
 				foreach (var interfaceInfo in NativeWifi.EnumerateInterfaces())
 				{
-					Trace.WriteLine($"Interface: {interfaceInfo.Description} ({interfaceInfo.Id})");
-
 					try
 					{
-						Trace.WriteLine($"Turn on: {NativeWifi.TurnOnInterfaceRadio(interfaceInfo.Id)}");
+						basicTool.messageLog.WriteLog(Category.WifiControl, $"Turn on: {NativeWifi.TurnOnInterfaceRadio(interfaceInfo.Id)}",
+														$"Interface: {interfaceInfo.Description} ({interfaceInfo.Id})");
 					}
 					catch (UnauthorizedAccessException)
 					{
@@ -111,7 +110,6 @@ namespace WindowsControl
 				.Select(x => x.Id)
 				.FirstOrDefault();
 		}
-
 		/// <summary>
 		/// Turns on the radio of a wireless interface which is not currently on but can be on.
 		/// </summary>

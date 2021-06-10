@@ -7,7 +7,7 @@ namespace WindowsControl
 {
 	public class WifiProfile
 	{
-		protected CommonBase basicTool;
+		protected CommonBase basicTool = null;
 		protected Category _type;
 		public WifiProfile(CommonBase basicTool, Category _type)
 		{

@@ -6,9 +6,8 @@ namespace WebLibrary
 	public class Chrome
 	{
 		protected Category type;
-		protected static IWebDriver singletonWebDriver;
-		protected CommonBase basicTool;
-
+		protected static IWebDriver singletonWebDriver = null;
+		protected CommonBase basicTool = null;
 		public Chrome(CommonBase basicTool, Category type)
 		{
 			this.basicTool = basicTool;

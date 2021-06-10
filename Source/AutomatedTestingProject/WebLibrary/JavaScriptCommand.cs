@@ -6,7 +6,7 @@ namespace WebLibrary
 {
 	public class JavaScriptCommand : Chrome
 	{
-		private static IJavaScriptExecutor singletonJS;
+		private static IJavaScriptExecutor singletonJS = null;
 		private IJavaScriptExecutor Scripts(IWebDriver driver)
 		{
 			return (IJavaScriptExecutor)driver;
@@ -48,7 +48,7 @@ namespace WebLibrary
 		{
 			return string.Format("elements.click();");
 		}
-		public void Reset()
+		public void ResetSingletonJS()
 		{
 			singletonJS = Scripts(singletonWebDriver);
 		}

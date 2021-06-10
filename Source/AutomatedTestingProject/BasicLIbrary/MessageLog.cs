@@ -12,7 +12,7 @@ namespace BasicLIbrary
 		private Mutex logMutex = new Mutex();
 		private string logFile;
 		private string logPath;
-		AutomatedWebTestingForm mainFormBase;
+		private AutomatedWebTestingForm mainFormBase;
 		public static MessageLog SetMessageLog(string logPath, AutomatedWebTestingForm mainFormBase)
 		{
 			if (singtonMessageLog == null)

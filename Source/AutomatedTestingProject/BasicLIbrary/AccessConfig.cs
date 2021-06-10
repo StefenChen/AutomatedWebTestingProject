@@ -82,14 +82,41 @@ namespace BasicLIbrary
 
 		#endregion
 
-		#region Test Section
+		#region FilePaths
 
-		public string Test
+		public string LocalUpgradeFirmwareFilePath
 		{
-			get { return configIni.GetValue("Test", "IP", "192.168.100.100"); }
-			set { configIni.SetValue("Test", "IP", value); }
+			get { return configIni.GetValue("FilePaths", "LocalUpgradeFirmwareFilePath", ""); }
+			set { configIni.SetValue("FilePaths", "LocalUpgradeFirmwareFilePath", value); }
+		}
+		public string RestoreFilePath
+		{
+			get { return configIni.GetValue("FilePaths", "RestoreFilePath", ""); }
+			set { configIni.SetValue("FilePaths", "RestoreFilePath", value); }
 		}
 
+		#endregion
+
+
+
+
+		#region PageSequence
+
+		public string PageNetwork
+		{
+			get { return configIni.GetValue("PageSequence", "Network", ""); }
+			set { configIni.SetValue("PageSequence", "Network", value); }
+		}
+		public string PageWireless
+		{
+			get { return configIni.GetValue("PageSequence", "Wireless", ""); }
+			set { configIni.SetValue("PageSequence", "Wireless", value); }
+		}
+		public string PageSystemTools
+		{
+			get { return configIni.GetValue("PageSequence", "SystemTools", ""); }
+			set { configIni.SetValue("PageSequence", "SystemTools", value); }
+		}
 		#endregion
 
 	}

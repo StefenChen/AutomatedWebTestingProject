@@ -6,7 +6,7 @@ namespace WebLibrary
 {
 	public class ChromeOperation : Chrome
 	{
-		JavaScriptCommand js;
+		private JavaScriptCommand js = null;
 		public ChromeOperation(CommonBase basicTool, Category type, JavaScriptCommand js) : base(basicTool, type)
 		{
 			this.js = js;
@@ -30,7 +30,7 @@ namespace WebLibrary
 					singletonWebDriver.Close();
 					singletonWebDriver = new OpenQA.Selenium.Chrome.ChromeDriver();
 					singletonWebDriver.Manage().Window.Maximize();
-					js.Reset();
+					js.ResetSingletonJS();
 				}
 				return true;
 			}
