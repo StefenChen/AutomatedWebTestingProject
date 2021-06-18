@@ -3,33 +3,37 @@ using System;
 
 namespace WebLibrary
 {
-	public class BrowserOperation : Chrome
+	public class BrowserControl : Chrome
 	{
-		public BrowserOperation(CommonBase basicTool, Category type) : base(basicTool, type)
+		public BrowserControl(CommonBase basicTool, Category type) : base(basicTool, type)
 		{
 
 		}
-		public void OpenNewWeb(string _url, int timeOut)
+		public bool OpenNewWeb(string _url, int timeOut)
 		{
 			try
 			{
 				singletonWebDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(timeOut);
 				singletonWebDriver.Navigate().GoToUrl(_url);
+				return true;
 			}
 			catch (Exception ex)
 			{
 				basicTool.messageLog.WriteLog(Category.BrowserOperation, ex.ToString(), "OpenNewWeb");
+				return false;
 			}
 		}
-		public void CloseWeb()
+		public bool CloseWeb()
 		{
 			try
 			{
 				singletonWebDriver.Close();
+				return true;
 			}
 			catch (Exception ex)
 			{
 				basicTool.messageLog.WriteLog(Category.BrowserOperation, ex.ToString(), "CloseWeb");
+				return false;
 			}
 		}
 		public bool WebRefresh()

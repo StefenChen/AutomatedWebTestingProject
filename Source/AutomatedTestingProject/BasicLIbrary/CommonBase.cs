@@ -5,6 +5,7 @@ namespace BasicLIbrary
 {
 	public enum Category
 	{
+		UserCommand,
 		WebGUIBase,
 		ChromeOperation,
 		BrowserOperation,
@@ -14,6 +15,8 @@ namespace BasicLIbrary
 		WebFunctionControl,
 		WifiProfile,
 		NetworkCard,
+		DHCPStateMachine,
+
 	}
 	public class CommonBase
 	{

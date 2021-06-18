@@ -86,6 +86,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutomatedTestingMainProgram.cs" />
+    <Compile Include="StateMachine\AutoWebTestingContext.cs" />
+    <Compile Include="StateMachine\Communication.cs" />
+    <Compile Include="StateMachine\StaticIPStateMachine.cs" />
+    <Compile Include="StateMachine\DHCPStateMachine.cs" />
     <Compile Include="StateMachine\StateMachinesBase.cs" />
     <Compile Include="WebLibrary\WebFunctionControl.cs" />
     <Compile Include="WebLibrary\WebAccountControl.cs" />
@@ -94,7 +98,7 @@
     <Compile Include="BasicLIbrary\CommonBase.cs" />
     <Compile Include="BasicLIbrary\ConfigBase.cs" />
     <Compile Include="BasicLIbrary\MessageLog.cs" />
-    <Compile Include="WebLibrary\BrowserOperation.cs" />
+    <Compile Include="WebLibrary\BrowserControl.cs" />
     <Compile Include="WebLibrary\Chrome.cs" />
     <Compile Include="WebLibrary\ChromeOperation.cs" />
     <Compile Include="WebLibrary\JavaScriptCommand.cs" />

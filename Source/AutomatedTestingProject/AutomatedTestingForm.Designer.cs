@@ -31,9 +31,10 @@
             this.tbMessageShow = new System.Windows.Forms.TextBox();
             this.tbMainMenu = new System.Windows.Forms.TabControl();
             this.tpBasicFuntion = new System.Windows.Forms.TabPage();
-            this.tpAutoTesting = new System.Windows.Forms.TabPage();
+            this.gbLANBasic = new System.Windows.Forms.GroupBox();
+            this.cbWANType_DHCP = new System.Windows.Forms.CheckBox();
+            this.gbWANType = new System.Windows.Forms.GroupBox();
             this.tpBasicPataSetting = new System.Windows.Forms.TabPage();
-            this.tpAdvancedPataSetting = new System.Windows.Forms.TabPage();
             this.tpFunctionTesting1 = new System.Windows.Forms.TabPage();
             this.gbCheckBox = new System.Windows.Forms.GroupBox();
             this.rbtnLast = new System.Windows.Forms.RadioButton();
@@ -107,6 +108,17 @@
             this.tbOpenURL = new System.Windows.Forms.TextBox();
             this.btnOpenURL = new System.Windows.Forms.Button();
             this.tpFunctionTesting2 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.gbFunctionControl = new System.Windows.Forms.GroupBox();
+            this.gbPageChanging = new System.Windows.Forms.GroupBox();
+            this.lbTopPageIndex = new System.Windows.Forms.Label();
+            this.tbTopPageIndex = new System.Windows.Forms.TextBox();
+            this.tbChildrenPageName = new System.Windows.Forms.TextBox();
+            this.lbChildrenPageName = new System.Windows.Forms.Label();
+            this.lbParentPageID = new System.Windows.Forms.Label();
+            this.tblbParentPageID = new System.Windows.Forms.TextBox();
+            this.btnMovePage = new System.Windows.Forms.Button();
             this.gbWebRefresh = new System.Windows.Forms.GroupBox();
             this.btnWebRefresh = new System.Windows.Forms.Button();
             this.gbRestartDriver = new System.Windows.Forms.GroupBox();
@@ -150,16 +162,13 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.gbFunctionControl = new System.Windows.Forms.GroupBox();
-            this.btnMovePage = new System.Windows.Forms.Button();
-            this.gbPageChanging = new System.Windows.Forms.GroupBox();
-            this.tbChildrenPageName = new System.Windows.Forms.TextBox();
-            this.lbChildrenPageName = new System.Windows.Forms.Label();
-            this.lbParentPageID = new System.Windows.Forms.Label();
-            this.tblbParentPageID = new System.Windows.Forms.TextBox();
-            this.lbTopPageIndex = new System.Windows.Forms.Label();
-            this.tbTopPageIndex = new System.Windows.Forms.TextBox();
+            this.cbWANType_StaticIP = new System.Windows.Forms.CheckBox();
+            this.gbWirelessBasic = new System.Windows.Forms.GroupBox();
+            this.gbSystemTool = new System.Windows.Forms.GroupBox();
+            this.gbSecurity = new System.Windows.Forms.GroupBox();
             this.tbMainMenu.SuspendLayout();
+            this.tpBasicFuntion.SuspendLayout();
+            this.gbWANType.SuspendLayout();
             this.tpFunctionTesting1.SuspendLayout();
             this.gbCheckBox.SuspendLayout();
             this.gbRadioButton.SuspendLayout();
@@ -172,6 +181,8 @@
             this.gbFindElement.SuspendLayout();
             this.gbURL.SuspendLayout();
             this.tpFunctionTesting2.SuspendLayout();
+            this.gbFunctionControl.SuspendLayout();
+            this.gbPageChanging.SuspendLayout();
             this.gbWebRefresh.SuspendLayout();
             this.gbRestartDriver.SuspendLayout();
             this.gbSystemControl.SuspendLayout();
@@ -179,8 +190,6 @@
             this.gbConnectWiFi.SuspendLayout();
             this.gbSettingNetworkInterface.SuspendLayout();
             this.gbMessageShow.SuspendLayout();
-            this.gbFunctionControl.SuspendLayout();
-            this.gbPageChanging.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbMessageShow
@@ -188,7 +197,7 @@
             this.tbMessageShow.BackColor = System.Drawing.Color.White;
             this.tbMessageShow.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbMessageShow.Location = new System.Drawing.Point(14, 35);
-            this.tbMessageShow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMessageShow.Margin = new System.Windows.Forms.Padding(2);
             this.tbMessageShow.Multiline = true;
             this.tbMessageShow.Name = "tbMessageShow";
             this.tbMessageShow.ReadOnly = true;
@@ -200,15 +209,13 @@
             // tbMainMenu
             // 
             this.tbMainMenu.Controls.Add(this.tpBasicFuntion);
-            this.tbMainMenu.Controls.Add(this.tpAutoTesting);
             this.tbMainMenu.Controls.Add(this.tpBasicPataSetting);
-            this.tbMainMenu.Controls.Add(this.tpAdvancedPataSetting);
             this.tbMainMenu.Controls.Add(this.tpFunctionTesting1);
             this.tbMainMenu.Controls.Add(this.tpFunctionTesting2);
             this.tbMainMenu.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbMainMenu.ItemSize = new System.Drawing.Size(200, 40);
             this.tbMainMenu.Location = new System.Drawing.Point(422, 23);
-            this.tbMainMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMainMenu.Margin = new System.Windows.Forms.Padding(2);
             this.tbMainMenu.Name = "tbMainMenu";
             this.tbMainMenu.SelectedIndex = 0;
             this.tbMainMenu.Size = new System.Drawing.Size(796, 664);
@@ -216,44 +223,59 @@
             // 
             // tpBasicFuntion
             // 
+            this.tpBasicFuntion.Controls.Add(this.gbSystemTool);
+            this.tpBasicFuntion.Controls.Add(this.gbSecurity);
+            this.tpBasicFuntion.Controls.Add(this.gbWirelessBasic);
+            this.tpBasicFuntion.Controls.Add(this.gbLANBasic);
+            this.tpBasicFuntion.Controls.Add(this.gbWANType);
             this.tpBasicFuntion.Location = new System.Drawing.Point(4, 44);
-            this.tpBasicFuntion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpBasicFuntion.Margin = new System.Windows.Forms.Padding(2);
             this.tpBasicFuntion.Name = "tpBasicFuntion";
-            this.tpBasicFuntion.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpBasicFuntion.Padding = new System.Windows.Forms.Padding(2);
             this.tpBasicFuntion.Size = new System.Drawing.Size(788, 616);
             this.tpBasicFuntion.TabIndex = 1;
-            this.tpBasicFuntion.Text = "基本功能";
+            this.tpBasicFuntion.Text = "自動化測項";
             this.tpBasicFuntion.UseVisualStyleBackColor = true;
             // 
-            // tpAutoTesting
+            // gbLANBasic
             // 
-            this.tpAutoTesting.Location = new System.Drawing.Point(4, 44);
-            this.tpAutoTesting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tpAutoTesting.Name = "tpAutoTesting";
-            this.tpAutoTesting.Size = new System.Drawing.Size(788, 616);
-            this.tpAutoTesting.TabIndex = 3;
-            this.tpAutoTesting.Text = "自動化測項";
-            this.tpAutoTesting.UseVisualStyleBackColor = true;
+            this.gbLANBasic.Location = new System.Drawing.Point(14, 15);
+            this.gbLANBasic.Name = "gbLANBasic";
+            this.gbLANBasic.Size = new System.Drawing.Size(212, 137);
+            this.gbLANBasic.TabIndex = 2;
+            this.gbLANBasic.TabStop = false;
+            this.gbLANBasic.Text = "LANBasic";
+            // 
+            // cbWANType_DHCP
+            // 
+            this.cbWANType_DHCP.AutoSize = true;
+            this.cbWANType_DHCP.Location = new System.Drawing.Point(22, 38);
+            this.cbWANType_DHCP.Name = "cbWANType_DHCP";
+            this.cbWANType_DHCP.Size = new System.Drawing.Size(156, 24);
+            this.cbWANType_DHCP.TabIndex = 0;
+            this.cbWANType_DHCP.Text = "WANType_DHCP";
+            this.cbWANType_DHCP.UseVisualStyleBackColor = true;
+            // 
+            // gbWANType
+            // 
+            this.gbWANType.Controls.Add(this.cbWANType_StaticIP);
+            this.gbWANType.Controls.Add(this.cbWANType_DHCP);
+            this.gbWANType.Location = new System.Drawing.Point(14, 168);
+            this.gbWANType.Name = "gbWANType";
+            this.gbWANType.Size = new System.Drawing.Size(212, 295);
+            this.gbWANType.TabIndex = 1;
+            this.gbWANType.TabStop = false;
+            this.gbWANType.Text = "WANType";
             // 
             // tpBasicPataSetting
             // 
             this.tpBasicPataSetting.Location = new System.Drawing.Point(4, 44);
-            this.tpBasicPataSetting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpBasicPataSetting.Margin = new System.Windows.Forms.Padding(2);
             this.tpBasicPataSetting.Name = "tpBasicPataSetting";
             this.tpBasicPataSetting.Size = new System.Drawing.Size(788, 616);
             this.tpBasicPataSetting.TabIndex = 2;
             this.tpBasicPataSetting.Text = "默認參數設置";
             this.tpBasicPataSetting.UseVisualStyleBackColor = true;
-            // 
-            // tpAdvancedPataSetting
-            // 
-            this.tpAdvancedPataSetting.Location = new System.Drawing.Point(4, 44);
-            this.tpAdvancedPataSetting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tpAdvancedPataSetting.Name = "tpAdvancedPataSetting";
-            this.tpAdvancedPataSetting.Size = new System.Drawing.Size(788, 616);
-            this.tpAdvancedPataSetting.TabIndex = 4;
-            this.tpAdvancedPataSetting.Text = "網卡IP相關參數設置";
-            this.tpAdvancedPataSetting.UseVisualStyleBackColor = true;
             // 
             // tpFunctionTesting1
             // 
@@ -268,12 +290,12 @@
             this.tpFunctionTesting1.Controls.Add(this.gbFindElement);
             this.tpFunctionTesting1.Controls.Add(this.gbURL);
             this.tpFunctionTesting1.Location = new System.Drawing.Point(4, 44);
-            this.tpFunctionTesting1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpFunctionTesting1.Margin = new System.Windows.Forms.Padding(2);
             this.tpFunctionTesting1.Name = "tpFunctionTesting1";
-            this.tpFunctionTesting1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpFunctionTesting1.Padding = new System.Windows.Forms.Padding(2);
             this.tpFunctionTesting1.Size = new System.Drawing.Size(788, 616);
             this.tpFunctionTesting1.TabIndex = 0;
-            this.tpFunctionTesting1.Text = "底層功能";
+            this.tpFunctionTesting1.Text = "部件功能 I";
             this.tpFunctionTesting1.UseVisualStyleBackColor = true;
             // 
             // gbCheckBox
@@ -297,7 +319,7 @@
             // 
             this.rbtnLast.AutoSize = true;
             this.rbtnLast.Location = new System.Drawing.Point(19, 164);
-            this.rbtnLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbtnLast.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnLast.Name = "rbtnLast";
             this.rbtnLast.Size = new System.Drawing.Size(121, 24);
             this.rbtnLast.TabIndex = 47;
@@ -310,7 +332,7 @@
             this.rbtnFront.AutoSize = true;
             this.rbtnFront.Checked = true;
             this.rbtnFront.Location = new System.Drawing.Point(19, 136);
-            this.rbtnFront.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbtnFront.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnFront.Name = "rbtnFront";
             this.rbtnFront.Size = new System.Drawing.Size(131, 24);
             this.rbtnFront.TabIndex = 46;
@@ -323,7 +345,7 @@
             // 
             this.cbMultiSelectBox.AutoSize = true;
             this.cbMultiSelectBox.Location = new System.Drawing.Point(19, 62);
-            this.cbMultiSelectBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMultiSelectBox.Margin = new System.Windows.Forms.Padding(2);
             this.cbMultiSelectBox.Name = "cbMultiSelectBox";
             this.cbMultiSelectBox.Size = new System.Drawing.Size(214, 24);
             this.cbMultiSelectBox.TabIndex = 45;
@@ -334,7 +356,7 @@
             // tbCheckBoxIdx
             // 
             this.tbCheckBoxIdx.Location = new System.Drawing.Point(102, 101);
-            this.tbCheckBoxIdx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbCheckBoxIdx.Margin = new System.Windows.Forms.Padding(2);
             this.tbCheckBoxIdx.Name = "tbCheckBoxIdx";
             this.tbCheckBoxIdx.Size = new System.Drawing.Size(32, 29);
             this.tbCheckBoxIdx.TabIndex = 44;
@@ -363,7 +385,7 @@
             // tbCheckBoxID
             // 
             this.tbCheckBoxID.Location = new System.Drawing.Point(87, 26);
-            this.tbCheckBoxID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbCheckBoxID.Margin = new System.Windows.Forms.Padding(2);
             this.tbCheckBoxID.Name = "tbCheckBoxID";
             this.tbCheckBoxID.Size = new System.Drawing.Size(157, 29);
             this.tbCheckBoxID.TabIndex = 31;
@@ -398,7 +420,7 @@
             // 
             this.cbparentNode.AutoSize = true;
             this.cbparentNode.Location = new System.Drawing.Point(19, 68);
-            this.cbparentNode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbparentNode.Margin = new System.Windows.Forms.Padding(2);
             this.cbparentNode.Name = "cbparentNode";
             this.cbparentNode.Size = new System.Drawing.Size(120, 24);
             this.cbparentNode.TabIndex = 46;
@@ -408,7 +430,7 @@
             // tbRadioButtonItem
             // 
             this.tbRadioButtonItem.Location = new System.Drawing.Point(102, 101);
-            this.tbRadioButtonItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbRadioButtonItem.Margin = new System.Windows.Forms.Padding(2);
             this.tbRadioButtonItem.Name = "tbRadioButtonItem";
             this.tbRadioButtonItem.Size = new System.Drawing.Size(32, 29);
             this.tbRadioButtonItem.TabIndex = 44;
@@ -437,7 +459,7 @@
             // tbRadioButtonID
             // 
             this.tbRadioButtonID.Location = new System.Drawing.Point(87, 28);
-            this.tbRadioButtonID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbRadioButtonID.Margin = new System.Windows.Forms.Padding(2);
             this.tbRadioButtonID.Name = "tbRadioButtonID";
             this.tbRadioButtonID.Size = new System.Drawing.Size(183, 29);
             this.tbRadioButtonID.TabIndex = 31;
@@ -459,9 +481,9 @@
             this.gbGetElementValue.Controls.Add(this.tbGetElementValue);
             this.gbGetElementValue.Controls.Add(this.btnGetElementValue);
             this.gbGetElementValue.Location = new System.Drawing.Point(530, 146);
-            this.gbGetElementValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbGetElementValue.Margin = new System.Windows.Forms.Padding(2);
             this.gbGetElementValue.Name = "gbGetElementValue";
-            this.gbGetElementValue.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbGetElementValue.Padding = new System.Windows.Forms.Padding(2);
             this.gbGetElementValue.Size = new System.Drawing.Size(253, 120);
             this.gbGetElementValue.TabIndex = 35;
             this.gbGetElementValue.TabStop = false;
@@ -480,7 +502,7 @@
             // tbGetElementValue
             // 
             this.tbGetElementValue.Location = new System.Drawing.Point(83, 29);
-            this.tbGetElementValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbGetElementValue.Margin = new System.Windows.Forms.Padding(2);
             this.tbGetElementValue.Name = "tbGetElementValue";
             this.tbGetElementValue.Size = new System.Drawing.Size(154, 29);
             this.tbGetElementValue.TabIndex = 33;
@@ -513,7 +535,7 @@
             // tbSelectItem
             // 
             this.tbSelectItem.Location = new System.Drawing.Point(99, 71);
-            this.tbSelectItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSelectItem.Margin = new System.Windows.Forms.Padding(2);
             this.tbSelectItem.Name = "tbSelectItem";
             this.tbSelectItem.Size = new System.Drawing.Size(32, 29);
             this.tbSelectItem.TabIndex = 44;
@@ -542,7 +564,7 @@
             // tbDropDownListName
             // 
             this.tbDropDownListName.Location = new System.Drawing.Point(78, 26);
-            this.tbDropDownListName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbDropDownListName.Margin = new System.Windows.Forms.Padding(2);
             this.tbDropDownListName.Name = "tbDropDownListName";
             this.tbDropDownListName.Size = new System.Drawing.Size(160, 29);
             this.tbDropDownListName.TabIndex = 31;
@@ -566,9 +588,9 @@
             this.gbSwitchButtonClick.Controls.Add(this.tbSwitchButtonClick);
             this.gbSwitchButtonClick.Controls.Add(this.btnSwitchButtonClick);
             this.gbSwitchButtonClick.Location = new System.Drawing.Point(268, 350);
-            this.gbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(2);
             this.gbSwitchButtonClick.Name = "gbSwitchButtonClick";
-            this.gbSwitchButtonClick.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSwitchButtonClick.Padding = new System.Windows.Forms.Padding(2);
             this.gbSwitchButtonClick.Size = new System.Drawing.Size(191, 195);
             this.gbSwitchButtonClick.TabIndex = 29;
             this.gbSwitchButtonClick.TabStop = false;
@@ -577,7 +599,7 @@
             // tbSwitchButtonClassIndex
             // 
             this.tbSwitchButtonClassIndex.Location = new System.Drawing.Point(97, 99);
-            this.tbSwitchButtonClassIndex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSwitchButtonClassIndex.Margin = new System.Windows.Forms.Padding(2);
             this.tbSwitchButtonClassIndex.Name = "tbSwitchButtonClassIndex";
             this.tbSwitchButtonClassIndex.Size = new System.Drawing.Size(34, 29);
             this.tbSwitchButtonClassIndex.TabIndex = 37;
@@ -606,7 +628,7 @@
             // tbSwitchButtonClick
             // 
             this.tbSwitchButtonClick.Location = new System.Drawing.Point(8, 64);
-            this.tbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSwitchButtonClick.Margin = new System.Windows.Forms.Padding(2);
             this.tbSwitchButtonClick.Name = "tbSwitchButtonClick";
             this.tbSwitchButtonClick.Size = new System.Drawing.Size(168, 29);
             this.tbSwitchButtonClick.TabIndex = 27;
@@ -641,9 +663,9 @@
             this.gbScrollElement.Controls.Add(this.label5);
             this.gbScrollElement.Controls.Add(this.clbScrollElement);
             this.gbScrollElement.Location = new System.Drawing.Point(268, 14);
-            this.gbScrollElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbScrollElement.Margin = new System.Windows.Forms.Padding(2);
             this.gbScrollElement.Name = "gbScrollElement";
-            this.gbScrollElement.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbScrollElement.Padding = new System.Windows.Forms.Padding(2);
             this.gbScrollElement.Size = new System.Drawing.Size(249, 332);
             this.gbScrollElement.TabIndex = 21;
             this.gbScrollElement.TabStop = false;
@@ -652,7 +674,7 @@
             // tbClassIndex
             // 
             this.tbClassIndex.Location = new System.Drawing.Point(164, 80);
-            this.tbClassIndex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbClassIndex.Margin = new System.Windows.Forms.Padding(2);
             this.tbClassIndex.Name = "tbClassIndex";
             this.tbClassIndex.Size = new System.Drawing.Size(34, 29);
             this.tbClassIndex.TabIndex = 35;
@@ -722,7 +744,7 @@
             // tbMovedPixels
             // 
             this.tbMovedPixels.Location = new System.Drawing.Point(106, 65);
-            this.tbMovedPixels.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMovedPixels.Margin = new System.Windows.Forms.Padding(2);
             this.tbMovedPixels.Name = "tbMovedPixels";
             this.tbMovedPixels.Size = new System.Drawing.Size(42, 29);
             this.tbMovedPixels.TabIndex = 24;
@@ -751,7 +773,7 @@
             // tbScrollElement
             // 
             this.tbScrollElement.Location = new System.Drawing.Point(61, 26);
-            this.tbScrollElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbScrollElement.Margin = new System.Windows.Forms.Padding(2);
             this.tbScrollElement.Name = "tbScrollElement";
             this.tbScrollElement.Size = new System.Drawing.Size(175, 29);
             this.tbScrollElement.TabIndex = 21;
@@ -809,7 +831,7 @@
             "Id",
             "Class"});
             this.clbScrollElement.Location = new System.Drawing.Point(10, 135);
-            this.clbScrollElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clbScrollElement.Margin = new System.Windows.Forms.Padding(2);
             this.clbScrollElement.MultiColumn = true;
             this.clbScrollElement.Name = "clbScrollElement";
             this.clbScrollElement.Size = new System.Drawing.Size(70, 52);
@@ -825,9 +847,9 @@
             this.gpButtonClick.Controls.Add(this.tbButtonClick);
             this.gpButtonClick.Controls.Add(this.btnButtonClick);
             this.gpButtonClick.Location = new System.Drawing.Point(12, 454);
-            this.gpButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpButtonClick.Margin = new System.Windows.Forms.Padding(2);
             this.gpButtonClick.Name = "gpButtonClick";
-            this.gpButtonClick.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpButtonClick.Padding = new System.Windows.Forms.Padding(2);
             this.gpButtonClick.Size = new System.Drawing.Size(245, 146);
             this.gpButtonClick.TabIndex = 16;
             this.gpButtonClick.TabStop = false;
@@ -836,7 +858,7 @@
             // tbClassIndexButtonClick
             // 
             this.tbClassIndexButtonClick.Location = new System.Drawing.Point(194, 24);
-            this.tbClassIndexButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbClassIndexButtonClick.Margin = new System.Windows.Forms.Padding(2);
             this.tbClassIndexButtonClick.Name = "tbClassIndexButtonClick";
             this.tbClassIndexButtonClick.Size = new System.Drawing.Size(34, 29);
             this.tbClassIndexButtonClick.TabIndex = 39;
@@ -861,7 +883,7 @@
             "XPath",
             "ClassName"});
             this.cbButtonClick.Location = new System.Drawing.Point(8, 25);
-            this.cbButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbButtonClick.Margin = new System.Windows.Forms.Padding(2);
             this.cbButtonClick.Name = "cbButtonClick";
             this.cbButtonClick.Size = new System.Drawing.Size(80, 28);
             this.cbButtonClick.TabIndex = 20;
@@ -880,7 +902,7 @@
             // tbButtonClick
             // 
             this.tbButtonClick.Location = new System.Drawing.Point(67, 58);
-            this.tbButtonClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbButtonClick.Margin = new System.Windows.Forms.Padding(2);
             this.tbButtonClick.Name = "tbButtonClick";
             this.tbButtonClick.Size = new System.Drawing.Size(162, 29);
             this.tbButtonClick.TabIndex = 10;
@@ -904,9 +926,9 @@
             this.gbKeyIn.Controls.Add(this.tbSendKey);
             this.gbKeyIn.Controls.Add(this.btnSendKeys);
             this.gbKeyIn.Location = new System.Drawing.Point(12, 315);
-            this.gbKeyIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbKeyIn.Margin = new System.Windows.Forms.Padding(2);
             this.gbKeyIn.Name = "gbKeyIn";
-            this.gbKeyIn.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbKeyIn.Padding = new System.Windows.Forms.Padding(2);
             this.gbKeyIn.Size = new System.Drawing.Size(245, 137);
             this.gbKeyIn.TabIndex = 15;
             this.gbKeyIn.TabStop = false;
@@ -915,7 +937,7 @@
             // tbIDSendKey
             // 
             this.tbIDSendKey.Location = new System.Drawing.Point(63, 25);
-            this.tbIDSendKey.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbIDSendKey.Margin = new System.Windows.Forms.Padding(2);
             this.tbIDSendKey.Name = "tbIDSendKey";
             this.tbIDSendKey.Size = new System.Drawing.Size(169, 29);
             this.tbIDSendKey.TabIndex = 16;
@@ -944,7 +966,7 @@
             // tbSendKey
             // 
             this.tbSendKey.Location = new System.Drawing.Point(63, 55);
-            this.tbSendKey.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSendKey.Margin = new System.Windows.Forms.Padding(2);
             this.tbSendKey.Name = "tbSendKey";
             this.tbSendKey.Size = new System.Drawing.Size(169, 29);
             this.tbSendKey.TabIndex = 10;
@@ -967,9 +989,9 @@
             this.gbFindElement.Controls.Add(this.tbFindElement);
             this.gbFindElement.Controls.Add(this.btnFindElement);
             this.gbFindElement.Location = new System.Drawing.Point(12, 142);
-            this.gbFindElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbFindElement.Margin = new System.Windows.Forms.Padding(2);
             this.gbFindElement.Name = "gbFindElement";
-            this.gbFindElement.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbFindElement.Padding = new System.Windows.Forms.Padding(2);
             this.gbFindElement.Size = new System.Drawing.Size(245, 169);
             this.gbFindElement.TabIndex = 14;
             this.gbFindElement.TabStop = false;
@@ -994,7 +1016,7 @@
             "XPath",
             "ClassName"});
             this.cbFindElement.Location = new System.Drawing.Point(7, 29);
-            this.cbFindElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbFindElement.Margin = new System.Windows.Forms.Padding(2);
             this.cbFindElement.Name = "cbFindElement";
             this.cbFindElement.Size = new System.Drawing.Size(167, 28);
             this.cbFindElement.TabIndex = 19;
@@ -1003,7 +1025,7 @@
             // tbFindElement
             // 
             this.tbFindElement.Location = new System.Drawing.Point(63, 67);
-            this.tbFindElement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbFindElement.Margin = new System.Windows.Forms.Padding(2);
             this.tbFindElement.Name = "tbFindElement";
             this.tbFindElement.Size = new System.Drawing.Size(169, 29);
             this.tbFindElement.TabIndex = 9;
@@ -1025,9 +1047,9 @@
             this.gbURL.Controls.Add(this.tbOpenURL);
             this.gbURL.Controls.Add(this.btnOpenURL);
             this.gbURL.Location = new System.Drawing.Point(12, 14);
-            this.gbURL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbURL.Margin = new System.Windows.Forms.Padding(2);
             this.gbURL.Name = "gbURL";
-            this.gbURL.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbURL.Padding = new System.Windows.Forms.Padding(2);
             this.gbURL.Size = new System.Drawing.Size(245, 116);
             this.gbURL.TabIndex = 13;
             this.gbURL.TabStop = false;
@@ -1046,7 +1068,7 @@
             // tbOpenURL
             // 
             this.tbOpenURL.Location = new System.Drawing.Point(46, 26);
-            this.tbOpenURL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbOpenURL.Margin = new System.Windows.Forms.Padding(2);
             this.tbOpenURL.Name = "tbOpenURL";
             this.tbOpenURL.Size = new System.Drawing.Size(186, 29);
             this.tbOpenURL.TabIndex = 11;
@@ -1064,6 +1086,8 @@
             // 
             // tpFunctionTesting2
             // 
+            this.tpFunctionTesting2.Controls.Add(this.button2);
+            this.tpFunctionTesting2.Controls.Add(this.button1);
             this.tpFunctionTesting2.Controls.Add(this.gbFunctionControl);
             this.tpFunctionTesting2.Controls.Add(this.gbWebRefresh);
             this.tpFunctionTesting2.Controls.Add(this.gbRestartDriver);
@@ -1072,20 +1096,133 @@
             this.tpFunctionTesting2.Controls.Add(this.gbConnectWiFi);
             this.tpFunctionTesting2.Controls.Add(this.gbSettingNetworkInterface);
             this.tpFunctionTesting2.Location = new System.Drawing.Point(4, 44);
-            this.tpFunctionTesting2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpFunctionTesting2.Margin = new System.Windows.Forms.Padding(2);
             this.tpFunctionTesting2.Name = "tpFunctionTesting2";
             this.tpFunctionTesting2.Size = new System.Drawing.Size(788, 616);
             this.tpFunctionTesting2.TabIndex = 5;
-            this.tpFunctionTesting2.Text = "上層功能";
+            this.tpFunctionTesting2.Text = "部件功能 II";
             this.tpFunctionTesting2.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(510, 93);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(133, 48);
+            this.button2.TabIndex = 40;
+            this.button2.Text = "Test";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(510, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 48);
+            this.button1.TabIndex = 39;
+            this.button1.Text = "Test";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // gbFunctionControl
+            // 
+            this.gbFunctionControl.Controls.Add(this.gbPageChanging);
+            this.gbFunctionControl.Location = new System.Drawing.Point(296, 9);
+            this.gbFunctionControl.Name = "gbFunctionControl";
+            this.gbFunctionControl.Size = new System.Drawing.Size(189, 319);
+            this.gbFunctionControl.TabIndex = 38;
+            this.gbFunctionControl.TabStop = false;
+            this.gbFunctionControl.Text = "Function";
+            // 
+            // gbPageChanging
+            // 
+            this.gbPageChanging.Controls.Add(this.lbTopPageIndex);
+            this.gbPageChanging.Controls.Add(this.tbTopPageIndex);
+            this.gbPageChanging.Controls.Add(this.tbChildrenPageName);
+            this.gbPageChanging.Controls.Add(this.lbChildrenPageName);
+            this.gbPageChanging.Controls.Add(this.lbParentPageID);
+            this.gbPageChanging.Controls.Add(this.tblbParentPageID);
+            this.gbPageChanging.Controls.Add(this.btnMovePage);
+            this.gbPageChanging.Location = new System.Drawing.Point(12, 28);
+            this.gbPageChanging.Name = "gbPageChanging";
+            this.gbPageChanging.Size = new System.Drawing.Size(162, 285);
+            this.gbPageChanging.TabIndex = 31;
+            this.gbPageChanging.TabStop = false;
+            this.gbPageChanging.Text = "PageChanging";
+            // 
+            // lbTopPageIndex
+            // 
+            this.lbTopPageIndex.AutoSize = true;
+            this.lbTopPageIndex.Location = new System.Drawing.Point(5, 32);
+            this.lbTopPageIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTopPageIndex.Name = "lbTopPageIndex";
+            this.lbTopPageIndex.Size = new System.Drawing.Size(118, 20);
+            this.lbTopPageIndex.TabIndex = 45;
+            this.lbTopPageIndex.Text = "TopPageIndex";
+            // 
+            // tbTopPageIndex
+            // 
+            this.tbTopPageIndex.Location = new System.Drawing.Point(9, 53);
+            this.tbTopPageIndex.Margin = new System.Windows.Forms.Padding(2);
+            this.tbTopPageIndex.Name = "tbTopPageIndex";
+            this.tbTopPageIndex.Size = new System.Drawing.Size(30, 29);
+            this.tbTopPageIndex.TabIndex = 44;
+            this.tbTopPageIndex.Text = "2";
+            // 
+            // tbChildrenPageName
+            // 
+            this.tbChildrenPageName.Location = new System.Drawing.Point(9, 182);
+            this.tbChildrenPageName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbChildrenPageName.Name = "tbChildrenPageName";
+            this.tbChildrenPageName.Size = new System.Drawing.Size(133, 29);
+            this.tbChildrenPageName.TabIndex = 43;
+            this.tbChildrenPageName.Text = "Multi-SSID";
+            // 
+            // lbChildrenPageName
+            // 
+            this.lbChildrenPageName.AutoSize = true;
+            this.lbChildrenPageName.Location = new System.Drawing.Point(5, 160);
+            this.lbChildrenPageName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbChildrenPageName.Name = "lbChildrenPageName";
+            this.lbChildrenPageName.Size = new System.Drawing.Size(157, 20);
+            this.lbChildrenPageName.TabIndex = 42;
+            this.lbChildrenPageName.Text = "ChildrenPageName";
+            // 
+            // lbParentPageID
+            // 
+            this.lbParentPageID.AutoSize = true;
+            this.lbParentPageID.Location = new System.Drawing.Point(5, 95);
+            this.lbParentPageID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbParentPageID.Name = "lbParentPageID";
+            this.lbParentPageID.Size = new System.Drawing.Size(114, 20);
+            this.lbParentPageID.TabIndex = 41;
+            this.lbParentPageID.Text = "ParentPageID";
+            // 
+            // tblbParentPageID
+            // 
+            this.tblbParentPageID.Location = new System.Drawing.Point(9, 116);
+            this.tblbParentPageID.Margin = new System.Windows.Forms.Padding(2);
+            this.tblbParentPageID.Name = "tblbParentPageID";
+            this.tblbParentPageID.Size = new System.Drawing.Size(133, 29);
+            this.tblbParentPageID.TabIndex = 40;
+            this.tblbParentPageID.Text = "wireless";
+            // 
+            // btnMovePage
+            // 
+            this.btnMovePage.Location = new System.Drawing.Point(9, 226);
+            this.btnMovePage.Name = "btnMovePage";
+            this.btnMovePage.Size = new System.Drawing.Size(133, 48);
+            this.btnMovePage.TabIndex = 30;
+            this.btnMovePage.Text = "MovePage";
+            this.btnMovePage.UseVisualStyleBackColor = true;
+            this.btnMovePage.Click += new System.EventHandler(this.btnMovePage_Click);
             // 
             // gbWebRefresh
             // 
             this.gbWebRefresh.Controls.Add(this.btnWebRefresh);
             this.gbWebRefresh.Location = new System.Drawing.Point(625, 520);
-            this.gbWebRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbWebRefresh.Margin = new System.Windows.Forms.Padding(2);
             this.gbWebRefresh.Name = "gbWebRefresh";
-            this.gbWebRefresh.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbWebRefresh.Padding = new System.Windows.Forms.Padding(2);
             this.gbWebRefresh.Size = new System.Drawing.Size(150, 91);
             this.gbWebRefresh.TabIndex = 37;
             this.gbWebRefresh.TabStop = false;
@@ -1105,9 +1242,9 @@
             // 
             this.gbRestartDriver.Controls.Add(this.btnRestartDriver);
             this.gbRestartDriver.Location = new System.Drawing.Point(625, 424);
-            this.gbRestartDriver.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbRestartDriver.Margin = new System.Windows.Forms.Padding(2);
             this.gbRestartDriver.Name = "gbRestartDriver";
-            this.gbRestartDriver.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbRestartDriver.Padding = new System.Windows.Forms.Padding(2);
             this.gbRestartDriver.Size = new System.Drawing.Size(150, 91);
             this.gbRestartDriver.TabIndex = 36;
             this.gbRestartDriver.TabStop = false;
@@ -1262,9 +1399,9 @@
             this.gbConnectWiFi.Controls.Add(this.btnTurnOnWiFi);
             this.gbConnectWiFi.Controls.Add(this.btnConnectWiFi);
             this.gbConnectWiFi.Location = new System.Drawing.Point(292, 333);
-            this.gbConnectWiFi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbConnectWiFi.Margin = new System.Windows.Forms.Padding(2);
             this.gbConnectWiFi.Name = "gbConnectWiFi";
-            this.gbConnectWiFi.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbConnectWiFi.Padding = new System.Windows.Forms.Padding(2);
             this.gbConnectWiFi.Size = new System.Drawing.Size(178, 282);
             this.gbConnectWiFi.TabIndex = 18;
             this.gbConnectWiFi.TabStop = false;
@@ -1283,7 +1420,7 @@
             // tbSsidPasswd
             // 
             this.tbSsidPasswd.Location = new System.Drawing.Point(10, 98);
-            this.tbSsidPasswd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSsidPasswd.Margin = new System.Windows.Forms.Padding(2);
             this.tbSsidPasswd.Name = "tbSsidPasswd";
             this.tbSsidPasswd.Size = new System.Drawing.Size(157, 29);
             this.tbSsidPasswd.TabIndex = 39;
@@ -1322,7 +1459,7 @@
             // tbSsidiName
             // 
             this.tbSsidiName.Location = new System.Drawing.Point(10, 47);
-            this.tbSsidiName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSsidiName.Margin = new System.Windows.Forms.Padding(2);
             this.tbSsidiName.Name = "tbSsidiName";
             this.tbSsidiName.Size = new System.Drawing.Size(157, 29);
             this.tbSsidiName.TabIndex = 35;
@@ -1363,9 +1500,9 @@
             this.gbSettingNetworkInterface.Controls.Add(this.lbInterfaceName);
             this.gbSettingNetworkInterface.Controls.Add(this.btnSetupToDHCP);
             this.gbSettingNetworkInterface.Location = new System.Drawing.Point(10, 333);
-            this.gbSettingNetworkInterface.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSettingNetworkInterface.Margin = new System.Windows.Forms.Padding(2);
             this.gbSettingNetworkInterface.Name = "gbSettingNetworkInterface";
-            this.gbSettingNetworkInterface.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSettingNetworkInterface.Padding = new System.Windows.Forms.Padding(2);
             this.gbSettingNetworkInterface.Size = new System.Drawing.Size(278, 282);
             this.gbSettingNetworkInterface.TabIndex = 17;
             this.gbSettingNetworkInterface.TabStop = false;
@@ -1374,7 +1511,7 @@
             // tbInterfaceName
             // 
             this.tbInterfaceName.Location = new System.Drawing.Point(138, 28);
-            this.tbInterfaceName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbInterfaceName.Margin = new System.Windows.Forms.Padding(2);
             this.tbInterfaceName.Name = "tbInterfaceName";
             this.tbInterfaceName.Size = new System.Drawing.Size(132, 29);
             this.tbInterfaceName.TabIndex = 13;
@@ -1423,7 +1560,7 @@
             // tbGateway
             // 
             this.tbGateway.Location = new System.Drawing.Point(101, 125);
-            this.tbGateway.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbGateway.Margin = new System.Windows.Forms.Padding(2);
             this.tbGateway.Name = "tbGateway";
             this.tbGateway.Size = new System.Drawing.Size(169, 29);
             this.tbGateway.TabIndex = 29;
@@ -1441,7 +1578,7 @@
             // tbSubMesk
             // 
             this.tbSubMesk.Location = new System.Drawing.Point(101, 91);
-            this.tbSubMesk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSubMesk.Margin = new System.Windows.Forms.Padding(2);
             this.tbSubMesk.Name = "tbSubMesk";
             this.tbSubMesk.Size = new System.Drawing.Size(169, 29);
             this.tbSubMesk.TabIndex = 27;
@@ -1460,7 +1597,7 @@
             // tbIPAddress
             // 
             this.tbIPAddress.Location = new System.Drawing.Point(101, 59);
-            this.tbIPAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbIPAddress.Margin = new System.Windows.Forms.Padding(2);
             this.tbIPAddress.Name = "tbIPAddress";
             this.tbIPAddress.Size = new System.Drawing.Size(169, 29);
             this.tbIPAddress.TabIndex = 25;
@@ -1493,9 +1630,9 @@
             this.gbMessageShow.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.gbMessageShow.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbMessageShow.Location = new System.Drawing.Point(9, 23);
-            this.gbMessageShow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbMessageShow.Margin = new System.Windows.Forms.Padding(2);
             this.gbMessageShow.Name = "gbMessageShow";
-            this.gbMessageShow.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbMessageShow.Padding = new System.Windows.Forms.Padding(2);
             this.gbMessageShow.Size = new System.Drawing.Size(400, 661);
             this.gbMessageShow.TabIndex = 6;
             this.gbMessageShow.TabStop = false;
@@ -1517,19 +1654,20 @@
             this.btnStart.BackColor = System.Drawing.Color.SkyBlue;
             this.btnStart.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnStart.Location = new System.Drawing.Point(1222, 67);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(114, 89);
             this.btnStart.TabIndex = 8;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnPause
             // 
             this.btnPause.BackColor = System.Drawing.Color.DarkTurquoise;
             this.btnPause.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnPause.Location = new System.Drawing.Point(1222, 160);
-            this.btnPause.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPause.Margin = new System.Windows.Forms.Padding(2);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(114, 89);
             this.btnPause.TabIndex = 9;
@@ -1541,7 +1679,7 @@
             this.btnClose.BackColor = System.Drawing.Color.MediumPurple;
             this.btnClose.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnClose.Location = new System.Drawing.Point(1222, 253);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(114, 89);
             this.btnClose.TabIndex = 10;
@@ -1549,104 +1687,48 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // gbFunctionControl
+            // cbWANType_StaticIP
             // 
-            this.gbFunctionControl.Controls.Add(this.gbPageChanging);
-            this.gbFunctionControl.Location = new System.Drawing.Point(296, 9);
-            this.gbFunctionControl.Name = "gbFunctionControl";
-            this.gbFunctionControl.Size = new System.Drawing.Size(189, 319);
-            this.gbFunctionControl.TabIndex = 38;
-            this.gbFunctionControl.TabStop = false;
-            this.gbFunctionControl.Text = "Function";
+            this.cbWANType_StaticIP.AutoSize = true;
+            this.cbWANType_StaticIP.Location = new System.Drawing.Point(22, 68);
+            this.cbWANType_StaticIP.Name = "cbWANType_StaticIP";
+            this.cbWANType_StaticIP.Size = new System.Drawing.Size(168, 24);
+            this.cbWANType_StaticIP.TabIndex = 1;
+            this.cbWANType_StaticIP.Text = "WANType_StaticIP";
+            this.cbWANType_StaticIP.UseVisualStyleBackColor = true;
             // 
-            // btnMovePage
+            // gbWirelessBasic
             // 
-            this.btnMovePage.Location = new System.Drawing.Point(9, 226);
-            this.btnMovePage.Name = "btnMovePage";
-            this.btnMovePage.Size = new System.Drawing.Size(133, 48);
-            this.btnMovePage.TabIndex = 30;
-            this.btnMovePage.Text = "MovePage";
-            this.btnMovePage.UseVisualStyleBackColor = true;
-            this.btnMovePage.Click += new System.EventHandler(this.btnMovePage_Click);
+            this.gbWirelessBasic.Location = new System.Drawing.Point(244, 15);
+            this.gbWirelessBasic.Name = "gbWirelessBasic";
+            this.gbWirelessBasic.Size = new System.Drawing.Size(212, 448);
+            this.gbWirelessBasic.TabIndex = 3;
+            this.gbWirelessBasic.TabStop = false;
+            this.gbWirelessBasic.Text = "WirelessBasic";
             // 
-            // gbPageChanging
+            // gbSystemTool
             // 
-            this.gbPageChanging.Controls.Add(this.lbTopPageIndex);
-            this.gbPageChanging.Controls.Add(this.tbTopPageIndex);
-            this.gbPageChanging.Controls.Add(this.tbChildrenPageName);
-            this.gbPageChanging.Controls.Add(this.lbChildrenPageName);
-            this.gbPageChanging.Controls.Add(this.lbParentPageID);
-            this.gbPageChanging.Controls.Add(this.tblbParentPageID);
-            this.gbPageChanging.Controls.Add(this.btnMovePage);
-            this.gbPageChanging.Location = new System.Drawing.Point(12, 28);
-            this.gbPageChanging.Name = "gbPageChanging";
-            this.gbPageChanging.Size = new System.Drawing.Size(162, 285);
-            this.gbPageChanging.TabIndex = 31;
-            this.gbPageChanging.TabStop = false;
-            this.gbPageChanging.Text = "PageChanging";
+            this.gbSystemTool.Location = new System.Drawing.Point(472, 15);
+            this.gbSystemTool.Name = "gbSystemTool";
+            this.gbSystemTool.Size = new System.Drawing.Size(212, 260);
+            this.gbSystemTool.TabIndex = 4;
+            this.gbSystemTool.TabStop = false;
+            this.gbSystemTool.Text = "SystemTool";
             // 
-            // tbChildrenPageName
+            // gbSecurity
             // 
-            this.tbChildrenPageName.Location = new System.Drawing.Point(9, 182);
-            this.tbChildrenPageName.Margin = new System.Windows.Forms.Padding(2);
-            this.tbChildrenPageName.Name = "tbChildrenPageName";
-            this.tbChildrenPageName.Size = new System.Drawing.Size(133, 29);
-            this.tbChildrenPageName.TabIndex = 43;
-            this.tbChildrenPageName.Text = "Multi-SSID";
-            // 
-            // lbChildrenPageName
-            // 
-            this.lbChildrenPageName.AutoSize = true;
-            this.lbChildrenPageName.Location = new System.Drawing.Point(5, 160);
-            this.lbChildrenPageName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbChildrenPageName.Name = "lbChildrenPageName";
-            this.lbChildrenPageName.Size = new System.Drawing.Size(157, 20);
-            this.lbChildrenPageName.TabIndex = 42;
-            this.lbChildrenPageName.Text = "ChildrenPageName";
-            // 
-            // lbParentPageID
-            // 
-            this.lbParentPageID.AutoSize = true;
-            this.lbParentPageID.Location = new System.Drawing.Point(5, 95);
-            this.lbParentPageID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbParentPageID.Name = "lbParentPageID";
-            this.lbParentPageID.Size = new System.Drawing.Size(114, 20);
-            this.lbParentPageID.TabIndex = 41;
-            this.lbParentPageID.Text = "ParentPageID";
-            // 
-            // tblbParentPageID
-            // 
-            this.tblbParentPageID.Location = new System.Drawing.Point(9, 116);
-            this.tblbParentPageID.Margin = new System.Windows.Forms.Padding(2);
-            this.tblbParentPageID.Name = "tblbParentPageID";
-            this.tblbParentPageID.Size = new System.Drawing.Size(133, 29);
-            this.tblbParentPageID.TabIndex = 40;
-            this.tblbParentPageID.Text = "wireless";
-            // 
-            // lbTopPageIndex
-            // 
-            this.lbTopPageIndex.AutoSize = true;
-            this.lbTopPageIndex.Location = new System.Drawing.Point(5, 32);
-            this.lbTopPageIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbTopPageIndex.Name = "lbTopPageIndex";
-            this.lbTopPageIndex.Size = new System.Drawing.Size(118, 20);
-            this.lbTopPageIndex.TabIndex = 45;
-            this.lbTopPageIndex.Text = "TopPageIndex";
-            // 
-            // tbTopPageIndex
-            // 
-            this.tbTopPageIndex.Location = new System.Drawing.Point(9, 53);
-            this.tbTopPageIndex.Margin = new System.Windows.Forms.Padding(2);
-            this.tbTopPageIndex.Name = "tbTopPageIndex";
-            this.tbTopPageIndex.Size = new System.Drawing.Size(30, 29);
-            this.tbTopPageIndex.TabIndex = 44;
-            this.tbTopPageIndex.Text = "2";
+            this.gbSecurity.Location = new System.Drawing.Point(14, 469);
+            this.gbSecurity.Name = "gbSecurity";
+            this.gbSecurity.Size = new System.Drawing.Size(212, 128);
+            this.gbSecurity.TabIndex = 5;
+            this.gbSecurity.TabStop = false;
+            this.gbSecurity.Text = "Security";
             // 
             // AutomatedWebTestingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1337, 694);
+            this.ClientSize = new System.Drawing.Size(1346, 692);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnStart);
@@ -1657,6 +1739,9 @@
             this.Text = "AutomatedTesting";
             this.Load += new System.EventHandler(this.FormBase_Load);
             this.tbMainMenu.ResumeLayout(false);
+            this.tpBasicFuntion.ResumeLayout(false);
+            this.gbWANType.ResumeLayout(false);
+            this.gbWANType.PerformLayout();
             this.tpFunctionTesting1.ResumeLayout(false);
             this.gbCheckBox.ResumeLayout(false);
             this.gbCheckBox.PerformLayout();
@@ -1679,6 +1764,9 @@
             this.gbURL.ResumeLayout(false);
             this.gbURL.PerformLayout();
             this.tpFunctionTesting2.ResumeLayout(false);
+            this.gbFunctionControl.ResumeLayout(false);
+            this.gbPageChanging.ResumeLayout(false);
+            this.gbPageChanging.PerformLayout();
             this.gbWebRefresh.ResumeLayout(false);
             this.gbRestartDriver.ResumeLayout(false);
             this.gbSystemControl.ResumeLayout(false);
@@ -1689,9 +1777,6 @@
             this.gbSettingNetworkInterface.PerformLayout();
             this.gbMessageShow.ResumeLayout(false);
             this.gbMessageShow.PerformLayout();
-            this.gbFunctionControl.ResumeLayout(false);
-            this.gbPageChanging.ResumeLayout(false);
-            this.gbPageChanging.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1699,8 +1784,6 @@
 
         #endregion
         private System.Windows.Forms.TabControl tbMainMenu;
-        private System.Windows.Forms.TabPage tpBasicPataSetting;
-        private System.Windows.Forms.TabPage tpBasicFuntion;
         public System.Windows.Forms.GroupBox gbMessageShow;
         public System.Windows.Forms.TextBox tbMessageShow;
         public System.Windows.Forms.TabPage tpFunctionTesting1;
@@ -1746,8 +1829,6 @@
         private System.Windows.Forms.TextBox tbSwitchButtonClick;
         private System.Windows.Forms.TextBox tbSwitchButtonClassIndex;
         private System.Windows.Forms.Label lbSwitchButtonClassIndex;
-        private System.Windows.Forms.TabPage tpAutoTesting;
-        private System.Windows.Forms.TabPage tpAdvancedPataSetting;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnClose;
@@ -1829,6 +1910,17 @@
 		private System.Windows.Forms.TextBox tblbParentPageID;
 		private System.Windows.Forms.Label lbTopPageIndex;
 		private System.Windows.Forms.TextBox tbTopPageIndex;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.TabPage tpBasicFuntion;
+		private System.Windows.Forms.GroupBox gbWANType;
+		private System.Windows.Forms.TabPage tpBasicPataSetting;
+		private System.Windows.Forms.GroupBox gbLANBasic;
+		private System.Windows.Forms.CheckBox cbWANType_DHCP;
+		private System.Windows.Forms.CheckBox cbWANType_StaticIP;
+		private System.Windows.Forms.GroupBox gbWirelessBasic;
+		private System.Windows.Forms.GroupBox gbSystemTool;
+		private System.Windows.Forms.GroupBox gbSecurity;
 	}
 }
 

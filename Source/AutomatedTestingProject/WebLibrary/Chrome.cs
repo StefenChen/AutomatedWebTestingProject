@@ -16,7 +16,7 @@ namespace WebLibrary
 			{
 				singletonWebDriver = new OpenQA.Selenium.Chrome.ChromeDriver();
 				singletonWebDriver.Manage().Window.Maximize();
-				basicTool.messageLog.WriteLog(Category.BrowserOperation, "Chrome自動控制瀏覽器開啟");
+				basicTool.messageLog.WriteLog(Category.BrowserOperation, "" ,"Chrome自動控制瀏覽器開啟");
 			}
 		}
 	}

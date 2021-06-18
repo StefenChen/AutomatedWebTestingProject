@@ -16,14 +16,36 @@ namespace WebLibrary
 		}
 		public bool SettingPwd()
 		{
-			bool tempBool;
+			bool tempBool = true;
 			try
 			{
-				tempBool = webGUIBase.webBasic.SetElementValue("pc-setPwd-new", basicTool.accessConfig.WebLogInPasswd);
+				IWebElement tempElement;
+				if ((tempElement = webGUIBase.webBasic.GetElement("pc-setPwd-new")) != null)
+				{
+					if (tempElement.Displayed)
+						tempBool = webGUIBase.webBasic.SetElementValue("pc-setPwd-new", basicTool.accessConfig.WebLogInPasswd);
+					Thread.Sleep(100);
+				}
+				else
+					tempBool = false;
 				Thread.Sleep(100);
-				tempBool &= webGUIBase.webBasic.SetElementValue("pc-setPwd-confirm", basicTool.accessConfig.WebLogInPasswd);
+				if ((tempElement = webGUIBase.webBasic.GetElement("pc-setPwd-confirm")) != null)
+				{
+					if(tempElement.Displayed)
+						tempBool &= webGUIBase.webBasic.SetElementValue("pc-setPwd-confirm", basicTool.accessConfig.WebLogInPasswd);
+					Thread.Sleep(100);
+				}
+				else
+					tempBool = false;
 				Thread.Sleep(100);
-				tempBool &= webGUIBase.webBasic.ClickGeneralButton("pc-setPwd-btn");
+				if ((tempElement = webGUIBase.webBasic.GetElement("pc-setPwd-btn")) != null)
+				{
+					if (tempElement.Displayed)
+						tempBool &= webGUIBase.webBasic.ClickGeneralButton("pc-setPwd-btn");
+				}
+				else
+					tempBool = false;
+
 				return tempBool;
 			}
 			catch (Exception ex)
@@ -50,11 +72,15 @@ namespace WebLibrary
 		}
 		public bool LoginWarning()
 		{
-			bool tempBool;
+			IWebElement tempElement;
 			try
 			{
-				tempBool = webGUIBase.webBasic.ClickGeneralButton("confirm-yes");
-				return tempBool;
+				if((tempElement = webGUIBase.webBasic.GetElement("confirm-yes")) != null)
+				{
+					if(tempElement.Displayed)
+						return webGUIBase.webBasic.ClickGeneralButton("confirm-yes");
+				}
+				return false;
 			}
 			catch (Exception ex)
 			{
@@ -69,6 +95,8 @@ namespace WebLibrary
 			{
 				tempBool = webGUIBase.webBasic.ClickGeneralButton("topLogout");
 				Thread.Sleep(100);
+
+				//MR200中是1，BBA2.5是0。
 				tempBool &= webGUIBase.webBasic.ClickGeneralButtonByClass("btn-msg-ok", 0);
 				return tempBool;
 			}
@@ -78,21 +106,38 @@ namespace WebLibrary
 				return false;
 			}
 		}
-		public bool CheckLoginStatus()
+		/// <summary>
+		/// -1:Error, 0:Setting Page, 1:Logout, 2:Login.
+		/// </summary>
+		/// <returns></returns>
+		public int CheckLoginStatus()
 		{
+			IWebElement tempElement;
 			try
 			{
-				if(webGUIBase.webBasic.isElementExist(By.Id("pc-login-password")) != null
-					 || webGUIBase.webBasic.isElementExist(By.Id("pc-login-btn")) != null
-					 || webGUIBase.webBasic.isElementExist(By.Id("topLogout")) == null)
-					return false;
-				else
-					return true;
+				if ((tempElement = webGUIBase.webBasic.isElementExist(By.Id("topLogout"))) != null)
+				{
+					if (tempElement.Displayed)
+						return 2;
+				}
+				Thread.Sleep(100);
+				if ((tempElement = webGUIBase.webBasic.isElementExist(By.Id("pc-login-btn"))) != null)
+				{
+					if (tempElement.Displayed)
+						return 1;
+				}
+				Thread.Sleep(100);
+				if ((tempElement = webGUIBase.webBasic.isElementExist(By.Id("pc-setPwd-btn"))) != null)
+				{
+					if (tempElement.Displayed)
+						return 0;
+				}
+				return -1;
 			}
 			catch (Exception ex)
 			{
 				basicTool.messageLog.WriteLog(Category.WebAccountControl, ex.ToString(), "Login");
-				return false;
+				return -1;
 			}
 		}
 	}

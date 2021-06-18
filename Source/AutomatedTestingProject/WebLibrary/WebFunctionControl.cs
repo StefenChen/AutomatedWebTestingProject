@@ -80,7 +80,6 @@ namespace WebLibrary
 					default:
 						throw new Exception("topPageIndex value out of range!");
 				}
-
 				if (webGUIBase.webBasic.ClickGeneralButton(topPageID))
 				{
 					return true;
@@ -92,13 +91,13 @@ namespace WebLibrary
 				basicTool.messageLog.WriteLog(Category.WebFunctionControl, ex.ToString(), "MoveToSpecificPage");
 				return false;
 			}
-		}
+		}   
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="topPageIndex">0:Quick,1:Basic,1:Advanced</param>
-		/// <param name="parentPageName">左側主標頁的id</param>
-		/// <param name="childrenPageName">主標頁點開小標頁的名稱，要config中的一致(只需去除空白)/param>
+		/// <param name="topPageIndex">0:Quick,1:Basic,2:Advanced</param>
+		/// <param name="parentPageId">左側主標頁的id</param>
+		/// <param name="childrenPageName">主標頁點開小標頁的名稱，要config中的一致(只需去除空白)</param>
 		/// <returns></returns>
 		public bool MoveToSpecificSidePage(int topPageIndex, string parentPageId, string childrenPageName = null)
 		{
@@ -112,7 +111,7 @@ namespace WebLibrary
 					Thread.Sleep(200);
 					if ((index = GetAdvancedPageIndex(parentPageId, childrenPageName)) != -1)
 					{
-						if (webGUIBase.webBasic.DesignYourJSFunction(parentPageId, $".parentElement.parentElement.children[1].childNodes[{index}].children[0].click()"))
+						if (webGUIBase.webBasic.DesignYourJSFunction(parentPageId, $"elements.parentElement.parentElement.children[1].childNodes[{index}].children[0].click()"))
 							return true;
 					}
 					return false;
@@ -131,6 +130,14 @@ namespace WebLibrary
 				basicTool.messageLog.WriteLog(Category.WebFunctionControl, ex.ToString(), "MoveToSpecificPage");
 				return false;
 			}
+		}
+		public bool DesignYourJSFunction(string idName, string JSCommand)
+		{
+			return webGUIBase.webBasic.DesignYourJSFunction(idName, JSCommand);
+		}
+		public string ReturnYourJSFunctionFeedback(string idName, string JSCommand)
+		{
+			return webGUIBase.webBasic.ReturnYourJSFunctionFeedback(idName, JSCommand);
 		}
 		public bool SwitchButtonClicked(string idName, int classIndex)
 		{
@@ -190,6 +197,24 @@ namespace WebLibrary
 		{
 			return webGUIBase.webBasic.isElementExist(by);
 		}
+		public bool IsElementDisplayed(IWebElement element)
+		{
+			return element.Displayed;
+		}
+		public bool IsElementDisplayed(string idName)
+		{
+			IWebElement temp;
+			if ((temp = webGUIBase.webBasic.GetElement(idName))!=null)
+			{
+				return temp.Displayed;
+			}
+			else
+			{
+				basicTool.messageLog.WriteLog(Category.WebFunctionControl, idName + " Element is null!", "IsElementDisplayed");
+				return false;
+			}	
+		}
+
 		public IList<IWebElement> FindAllElements(By by, int timeoutInSeconds)
 		{
 			return webGUIBase.webBasic.FindAllElements(by, timeoutInSeconds);

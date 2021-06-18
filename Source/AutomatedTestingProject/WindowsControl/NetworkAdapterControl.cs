@@ -1,6 +1,7 @@
 ﻿using BasicLIbrary;
 using System;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 // System.Net.NetworkInformation;
 
 namespace WindowsControl
@@ -78,6 +79,29 @@ namespace WindowsControl
 			catch (Exception ex)
 			{
 				basicTool.messageLog.WriteLog(Category.NetworkCard, ex.ToString(), "EnableInterface");
+				return false;
+			}
+		}
+
+		public bool Ping(string target)
+		{
+			try
+			{
+				Ping pingSender = new Ping();
+				PingReply reply = pingSender.Send(target, 1000);//第一個引數為ip地址,第二個引數為ping的時間
+
+				if (reply.Status == IPStatus.Success)
+				{
+					return true;//ping通
+				}
+				else
+				{
+					return false;//ping不通
+				}
+			}
+			catch (Exception ex)
+			{
+				basicTool.messageLog.WriteLog(Category.NetworkCard, ex.ToString(), "Ping");
 				return false;
 			}
 		}

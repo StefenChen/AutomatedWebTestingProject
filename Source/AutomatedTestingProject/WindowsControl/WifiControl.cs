@@ -24,12 +24,12 @@ namespace WindowsControl
 				//Set interfaceId.
 				SetInterfaceId();
 				//Overwrote Profile.
-				SetProfile(interfaceId, basicTool.accessConfig.SsidName, basicTool.accessConfig.SsidPasswd);
+				SetProfile(interfaceId, basicTool.accessConfig.Ssid1Name, basicTool.accessConfig.Ssid1Passwd);
 				foreach (var ssid in EnumerateNetworkSsids())
 				{
-					if (ssid == basicTool.accessConfig.SsidName)
+					if (ssid == basicTool.accessConfig.Ssid1Name)
 					{
-						ConnectAsync(basicTool.accessConfig.SsidName);
+						ConnectAsync(basicTool.accessConfig.Ssid1Name);
 						RefreshAsync();
 						return true;
 					}

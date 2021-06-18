@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace WebLibrary
 {
@@ -34,7 +35,7 @@ namespace WebLibrary
 			}
 			catch (Exception ex)
 			{
-				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "isElementExist");
+				//basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "isElementExist");
 				return null;
 			}
 		}
@@ -125,8 +126,10 @@ namespace WebLibrary
 			{
 				findElementCommand = js.UsedIDNameToFindElement(idName);
 				dropDownCommand = string.Format("elements.childNodes[2].childNodes[1].click();");
+				js.SendCommandToGUI(new string[] { findElementCommand, dropDownCommand }, ref errMsg);
+				Thread.Sleep(300);
 				selectTargetCommand = string.Format($"elements.childNodes[2].childNodes[2].childNodes[{findItem}].click();");
-				js.SendCommandToGUI(new string[] { findElementCommand, dropDownCommand, selectTargetCommand }, ref errMsg);
+				js.SendCommandToGUI(new string[] { findElementCommand, selectTargetCommand }, ref errMsg);
 				return true;
 			}
 			catch (Exception ex)
@@ -165,6 +168,21 @@ namespace WebLibrary
 			{
 				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "ClickGeneralButton");
 				return false;
+			}
+		}
+		public IWebElement GetElement(string idName)
+		{
+			string findElementCommand, getElementCommand;
+			try
+			{
+				findElementCommand = js.UsedIDNameToFindElement(idName);
+				getElementCommand = string.Format("return elements;");
+				return (IWebElement)js.SendCommandToGUI(new string[] { findElementCommand, getElementCommand }, ref errMsg);
+			}
+			catch (Exception ex)
+			{
+				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "GetElement");
+				return null;
 			}
 		}
 		public string GetElementValue(IWebElement element)
@@ -220,7 +238,7 @@ namespace WebLibrary
 			}
 			catch (Exception ex)
 			{
-				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "GetElementValueByIWebElement");
+				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "GetMembersRelatedToIWebElement");
 				return null;
 			}
 		}
@@ -247,7 +265,7 @@ namespace WebLibrary
 			}
 			catch (Exception ex)
 			{
-				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "ClickSelectRadioButton");
+				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "ClickRadioButton");
 				return false;
 			}
 		}
@@ -295,14 +313,29 @@ namespace WebLibrary
 			try
 			{
 				findElementCommand = js.UsedIDNameToFindElement(idName);
-				getValueCommand = string.Format($"elements{JSCommand}");
+				getValueCommand = string.Format($"{JSCommand}");
 				js.SendCommandToGUI(new string[] { findElementCommand, getValueCommand }, ref errMsg);
 				return true;
 			}
 			catch (Exception ex)
 			{
-				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "DesignJSFunction");
+				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "DesignYourJSFunction");
 				return false;
+			}
+		}
+		public string ReturnYourJSFunctionFeedback(string idName, string JSCommand)
+		{
+			string findElementCommand, getValueCommand;
+			try
+			{
+				findElementCommand = js.UsedIDNameToFindElement(idName);
+				getValueCommand = string.Format($"return {JSCommand}");
+				return (string)js.SendCommandToGUI(new string[] { findElementCommand, getValueCommand }, ref errMsg);
+			}
+			catch (Exception ex)
+			{
+				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "DesignYourJSFunction");
+				return "null";
 			}
 		}
 		public object SendCommandToGUI(string[] connectStr, ref string errStr)

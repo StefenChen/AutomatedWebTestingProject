@@ -1,5 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using BasicLIbrary;
+using OpenQA.Selenium;
+using StateMachine;
 using System;
+using System.Threading;
+using System.Timers;
 using System.Windows.Forms;
 using WebLibrary;
 
@@ -7,14 +11,15 @@ namespace AutomatedTestingProject
 {
 	public partial class AutomatedWebTestingForm : Form
 	{
-		private AutomatedWebTesting automatedWebTesting = null;
+		private AutomatedWebTestingMainProgram automatedWebTesting = null;
 
 		IWebElement tempInputAccount = null, tempSubmitButton = null;
 
 		public AutomatedWebTestingForm()
 		{
-			automatedWebTesting = new AutomatedWebTesting(this);
+			automatedWebTesting = new AutomatedWebTestingMainProgram(this);
 			InitializeComponent();
+			InitializeTestCaseTimer();
 		}
 
 		private void FormBase_Load(object sender, EventArgs e)
@@ -44,7 +49,10 @@ namespace AutomatedTestingProject
 		{
 			try
 			{
-				automatedWebTesting.webGUIBase.browser.OpenNewWeb(tbOpenURL.Text, 10);
+				if(!automatedWebTesting.browser.OpenNewWeb(tbOpenURL.Text, 10))
+					WriteMsg(sender.ToString(), tbOpenURL.Text, "網頁開啟失敗");
+				else
+					WriteMsg(sender.ToString(), tbOpenURL.Text, "網頁開啟成功");
 			}
 			catch (Exception ex)
 			{
@@ -75,7 +83,7 @@ namespace AutomatedTestingProject
 
 			if ((tempInputAccount = automatedWebTesting.webFunction.IsElementExist(selector)) != null)
 			{
-				MessageBox.Show(cbFindElement.Text + ":" + tbFindElement.Text + "\r\nFind it!");
+				MessageBox.Show(cbFindElement.Text + ":" + tbFindElement.Text + $"\r\nFind it, and Displayed is {tempInputAccount.Displayed}");
 			}
 			else
 			{
@@ -93,7 +101,6 @@ namespace AutomatedTestingProject
 					WriteMsg(sender.ToString(), tbSendKey.Text, ex.ToString());
 				}
 		}
-
 		private void btnButtonClick_Click(object sender, EventArgs e)
 		{
 			By selector;
@@ -286,8 +293,24 @@ namespace AutomatedTestingProject
 
 		private void btnLoginStatus_Click(object sender, EventArgs e)
 		{
-			bool tempBool = automatedWebTesting.webAccount.CheckLoginStatus();
-			WriteMsg(sender.ToString(), "CheckLoginStatus", tempBool ? "Success" : "Failure");
+			int tempInt = automatedWebTesting.webAccount.CheckLoginStatus();
+			string tempStr;
+			switch (tempInt)
+			{
+				case 0:
+					tempStr = "Setting Passwd Page";
+					break;
+				case 1:
+					tempStr = "Login Page";
+					break;
+				case 2:
+					tempStr = "Logged in Page";
+					break;
+				default:
+					tempStr = "Error";
+					break;
+			}
+			WriteMsg(sender.ToString(), "CheckLoginStatus", tempStr);
 		}
 
 		private void btnLoginWarning_Click(object sender, EventArgs e)
@@ -314,8 +337,8 @@ namespace AutomatedTestingProject
 
 		private void btnSaveWiFiInfo_Click(object sender, EventArgs e)
 		{
-			automatedWebTesting.basicTool.accessConfig.SsidName = tbSsidiName.Text;
-			automatedWebTesting.basicTool.accessConfig.SsidPasswd = tbSsidPasswd.Text;
+			automatedWebTesting.basicTool.accessConfig.Ssid1Name = tbSsidiName.Text;
+			automatedWebTesting.basicTool.accessConfig.Ssid1Passwd = tbSsidPasswd.Text;
 		}
 
 		private void btnTurnOnWiFi_Click(object sender, EventArgs e)
@@ -335,7 +358,7 @@ namespace AutomatedTestingProject
 
 		private void btnWebRefresh_Click_1(object sender, EventArgs e)
 		{
-			if (!automatedWebTesting.webGUIBase.browser.WebRefresh())
+			if (!automatedWebTesting.browser.WebRefresh())
 				WriteMsg(sender.ToString(), "", "Refresh Website Failed!");
 		}
 
@@ -380,6 +403,23 @@ namespace AutomatedTestingProject
 			automatedWebTesting.webFunction.MoveToSpecificSidePage(Convert.ToInt32(tbTopPageIndex.Text), tblbParentPageID.Text, tbChildrenPageName.Text!=""? tbChildrenPageName.Text:null);
 		}
 
+		private void button1_Click(object sender, EventArgs e)
+		{
+			string tempStr = "";
+			automatedWebTesting.BuildStateMachine("DHCPStateMachine");
+			automatedWebTesting.Start(ref tempStr);
+			if (tempStr != "")
+			{
+				WriteMsg(sender.ToString(), "DHCPStateMachine", tempStr);
+				return;
+			}
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			automatedWebTesting.networkAdapter.Ping("12.0.0.1");
+		}
+
 		private void btnRestartDriver_Click_1(object sender, EventArgs e)
 		{
 			try
@@ -391,6 +431,67 @@ namespace AutomatedTestingProject
 				WriteMsg(sender.ToString(), "", ex.ToString());
 			}
 		}
+		private void btnStart_Click(object sender, EventArgs e)
+		{
+			TimerStart();
+		}
 
+		private void StartTestCase(object sender, ElapsedEventArgs e)
+		{
+			//WAN Type_DHCP
+			if (cbWANType_DHCP.Checked)
+			{
+				switch (automatedWebTesting.status.DHCPStatus)
+				{
+					case CommunicationStatus.Idle:
+						automatedWebTesting.FreedStateMachines();
+						automatedWebTesting.BuildNStartStateMachine("DHCPStateMachine");
+						TimerStart();
+						return;
+					case CommunicationStatus.Error:
+						break;
+					case CommunicationStatus.Busy:
+						TimerStart();
+						return;
+					case CommunicationStatus.Done:
+						automatedWebTesting.FreedStateMachines();
+						break;
+				}
+			}
+
+			//WAN Type_Static IP
+			if (cbWANType_StaticIP.Checked)
+			{
+				switch (automatedWebTesting.status.StaticIPStatus)
+				{
+					case CommunicationStatus.Idle:
+						automatedWebTesting.FreedStateMachines();
+						automatedWebTesting.BuildNStartStateMachine("StaticIPStateMachine");
+						TimerStart();
+						return;
+					case CommunicationStatus.Error:
+						break;
+					case CommunicationStatus.Busy:
+						TimerStart();
+						return;
+					case CommunicationStatus.Done:
+						automatedWebTesting.FreedStateMachines();
+						break;
+				}
+			}
+		}
+
+		System.Timers.Timer TestCaseTimer;
+		private void InitializeTestCaseTimer()
+		{
+			TestCaseTimer = new System.Timers.Timer(1000);
+			TestCaseTimer.Stop();
+			TestCaseTimer.AutoReset = false;
+			TestCaseTimer.Elapsed += new System.Timers.ElapsedEventHandler(StartTestCase);
+		}
+		private void TimerStart()
+		{
+			TestCaseTimer.Start();
+		}
 	}
 }

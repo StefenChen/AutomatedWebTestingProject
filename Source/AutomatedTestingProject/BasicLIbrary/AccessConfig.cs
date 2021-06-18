@@ -41,7 +41,11 @@ namespace BasicLIbrary
 		}
 
 		#region Website Section
-
+		public string URL
+		{
+			get { return configIni.GetValue("Website", "URL", "192.168.0.1"); }
+			set { configIni.SetValue("Website", "URL", value); }
+		}
 
 
 		#endregion
@@ -57,27 +61,52 @@ namespace BasicLIbrary
 		#endregion
 
 
-		#region NetworkCard Section
+		#region Wi-Fi Section
 
-		public string WebIP
-		{
-			get { return configIni.GetValue("NetworkCard", "WebIP", "192.168.0.1"); }
-			set { configIni.SetValue("NetworkCard", "WebIP", value); }
-		}
+
 		public string WifiName
 		{
-			get { return configIni.GetValue("NetworkCard", "WifiName", "Wi-Fi"); }
-			set { configIni.SetValue("NetworkCard", "WifiName", value); }
+			get { return configIni.GetValue("Wi-Fi", "WifiName", "Wi-Fi"); }
+			set { configIni.SetValue("Wi-Fi", "WifiName", value); }
 		}
-		public string SsidName
+		public string Ssid1Name
 		{
-			get { return configIni.GetValue("NetworkCard", "SsidName", "a_AStefen_Test_2.4G"); }
-			set { configIni.SetValue("NetworkCard", "SsidName", value); }
+			get { return configIni.GetValue("Wi-Fi", "Ssid1Name", "a_AStefen_Test_2.4G"); }
+			set { configIni.SetValue("Wi-Fi", "Ssid1Name", value); }
 		}
-		public string SsidPasswd
+		public string Ssid1Passwd
 		{
-			get { return configIni.GetValue("NetworkCard", "SsidPasswd", "0985599568"); }
-			set { configIni.SetValue("NetworkCard", "SsidPasswd", value); }
+			get { return configIni.GetValue("Wi-Fi", "Ssid1Passwd", "0985599568"); }
+			set { configIni.SetValue("Wi-Fi", "Ssid1Passwd", value); }
+		}
+		public string Ssid2Name
+		{
+			get { return configIni.GetValue("Wi-Fi", "Ssid2Name", "a_AStefen_Test_2.4G"); }
+			set { configIni.SetValue("Wi-Fi", "Ssid2Name", value); }
+		}
+		public string Ssid2Passwd
+		{
+			get { return configIni.GetValue("Wi-Fi", "Ssid2Passwd", "0985599568"); }
+			set { configIni.SetValue("Wi-Fi", "Ssid2Passwd", value); }
+		}
+		public string Ssid3Name
+		{
+			get { return configIni.GetValue("Wi-Fi", "Ssid3Name", "a_AStefen_Test_2.4G"); }
+			set { configIni.SetValue("Wi-Fi", "Ssid3Name", value); }
+		}
+		public string Ssid3Passwd
+		{
+			get { return configIni.GetValue("Wi-Fi", "Ssid3Passwd", "0985599568"); }
+			set { configIni.SetValue("Wi-Fi", "Ssid3Passwd", value); }
+		}
+		#endregion
+
+		#region NetworkCard Section
+
+		public string WiredNetworkName
+		{
+			get { return configIni.GetValue("NetworkCard", "WiredNetworkName", "Network2"); }
+			set { configIni.SetValue("NetworkCard", "WiredNetworkName", value); }
 		}
 
 		#endregion
@@ -97,9 +126,6 @@ namespace BasicLIbrary
 
 		#endregion
 
-
-
-
 		#region PageSequence
 
 		public string PageNetwork
@@ -116,6 +142,34 @@ namespace BasicLIbrary
 		{
 			get { return configIni.GetValue("PageSequence", "SystemTools", ""); }
 			set { configIni.SetValue("PageSequence", "SystemTools", value); }
+		}
+		#endregion
+
+		#region StaticIP
+		public string StaticIPAddress
+		{
+			get { return configIni.GetValue("StaticIP", "IPAddress", ""); }
+			set { configIni.SetValue("StaticIP", "IPAddress", value); }
+		}
+		public string StaticSubnetMask
+		{
+			get { return configIni.GetValue("StaticIP", "SubnetMask", ""); }
+			set { configIni.SetValue("StaticIP", "SubnetMask", value); }
+		}
+		public string StaticDefaultGateway
+		{
+			get { return configIni.GetValue("StaticIP", "DefaultGateway", ""); }
+			set { configIni.SetValue("StaticIP", "DefaultGateway", value); }
+		}
+		public string StaticPrimaryDNS
+		{
+			get { return configIni.GetValue("StaticIP", "PrimaryDNS", ""); }
+			set { configIni.SetValue("StaticIP", "PrimaryDNS", value); }
+		}
+		public string StaticSecondaryDNS
+		{
+			get { return configIni.GetValue("StaticIP", "SecondaryDNS", ""); }
+			set { configIni.SetValue("StaticIP", "SecondaryDNS", value); }
 		}
 		#endregion
 
