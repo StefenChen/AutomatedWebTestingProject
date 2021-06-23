@@ -54,16 +54,16 @@ namespace StateMachine
 				case DHCPProcessState.Idle:
 					break;
 				case DHCPProcessState.SwitchToInternetPage:
-					msgLog.WriteLog(DHCPProcessState.SwitchToInternetPage, "SwitchToInternetPage", Name);
+					msgLog.WriteLog(DHCPProcessState.SwitchToInternetPage, optionalString, Name);
 					break;
 				case DHCPProcessState.ChangeInternetConnectionToDynamicIP:
-					msgLog.WriteLog(DHCPProcessState.ChangeInternetConnectionToDynamicIP, "ChangeInternetConnectionToDynamicIP", Name);
+					msgLog.WriteLog(DHCPProcessState.ChangeInternetConnectionToDynamicIP, optionalString, Name);
 					break;
 				case DHCPProcessState.SwitchToStatusPage:
-					msgLog.WriteLog(DHCPProcessState.SwitchToStatusPage, "SwitchToStatusPage", Name);
+					msgLog.WriteLog(DHCPProcessState.SwitchToStatusPage, optionalString, Name);
 					break;
 				case DHCPProcessState.CheckIPAddressStatus:
-					msgLog.WriteLog(DHCPProcessState.CheckIPAddressStatus, "CheckIPAddressStatus", Name);
+					msgLog.WriteLog(DHCPProcessState.CheckIPAddressStatus, optionalString , Name);
 					break;
 				case DHCPProcessState.Done:
 					msgLog.WriteLog(DHCPProcessState.Done, "Done", Name);
@@ -144,7 +144,7 @@ namespace StateMachine
 					Thread.Sleep(1000);
 					if (!(tempBool &= webFunction.ClickGeneralButton("saveBtn")))
 						GoToErrorState(DHCPProcessErrorState.ClickGeneralButtonError, "ChangeInternetConnectionToDynamicIP");
-					if (tempBool)
+					else if (tempBool)
 						GoToNewAutoState(DHCPProcessState.SwitchToStatusPage);
 					break;
 				case DHCPProcessState.SwitchToStatusPage:
@@ -156,7 +156,9 @@ namespace StateMachine
 				case DHCPProcessState.CheckIPAddressStatus:
 					string tempStr;
 					Thread.Sleep(1000);
-					if ((tempStr = webFunction.GetElementValue("IPV4").Split('.')[0]) == "0")
+					if (webFunction.GetElementValue("IPV4") == "NULL")
+						GoToNewAutoState(DHCPProcessState.SwitchToStatusPage, "Element cannot find.");
+					else if ((tempStr = webFunction.GetElementValue("IPV4")) == "0.0.0.0")
 					{
 						Thread.Sleep(500);
 						GoToNewAutoState(DHCPProcessState.SwitchToStatusPage);

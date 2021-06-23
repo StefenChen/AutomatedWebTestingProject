@@ -202,9 +202,13 @@ namespace WebLibrary
 			string findElementCommand, getValueCommand;
 			try
 			{
+				object tempObj;
 				findElementCommand = js.UsedIDNameToFindElement(idName);
 				getValueCommand = string.Format("return elements.value;");
-				return js.SendCommandToGUI(new string[] { findElementCommand, getValueCommand }, ref errMsg).ToString();
+				if ((tempObj = js.SendCommandToGUI(new string[] { findElementCommand, getValueCommand }, ref errMsg)) != null)
+					return tempObj.ToString();
+				else
+					return "NULL";
 			}
 			catch (Exception ex)
 			{

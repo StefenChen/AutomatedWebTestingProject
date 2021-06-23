@@ -31,9 +31,14 @@
             this.tbMessageShow = new System.Windows.Forms.TextBox();
             this.tbMainMenu = new System.Windows.Forms.TabControl();
             this.tpBasicFuntion = new System.Windows.Forms.TabPage();
+            this.gbSystemTool = new System.Windows.Forms.GroupBox();
+            this.gbSecurity = new System.Windows.Forms.GroupBox();
+            this.gbWirelessBasic = new System.Windows.Forms.GroupBox();
             this.gbLANBasic = new System.Windows.Forms.GroupBox();
-            this.cbWANType_DHCP = new System.Windows.Forms.CheckBox();
             this.gbWANType = new System.Windows.Forms.GroupBox();
+            this.cbWANType_PPPoE = new System.Windows.Forms.CheckBox();
+            this.cbWANType_StaticIP = new System.Windows.Forms.CheckBox();
+            this.cbWANType_DHCP = new System.Windows.Forms.CheckBox();
             this.tpBasicPataSetting = new System.Windows.Forms.TabPage();
             this.tpFunctionTesting1 = new System.Windows.Forms.TabPage();
             this.gbCheckBox = new System.Windows.Forms.GroupBox();
@@ -108,7 +113,6 @@
             this.tbOpenURL = new System.Windows.Forms.TextBox();
             this.btnOpenURL = new System.Windows.Forms.Button();
             this.tpFunctionTesting2 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.gbFunctionControl = new System.Windows.Forms.GroupBox();
             this.gbPageChanging = new System.Windows.Forms.GroupBox();
@@ -162,10 +166,9 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.cbWANType_StaticIP = new System.Windows.Forms.CheckBox();
-            this.gbWirelessBasic = new System.Windows.Forms.GroupBox();
-            this.gbSystemTool = new System.Windows.Forms.GroupBox();
-            this.gbSecurity = new System.Windows.Forms.GroupBox();
+            this.cbWANType_L2TP = new System.Windows.Forms.CheckBox();
+            this.cbWANType_PPTP = new System.Windows.Forms.CheckBox();
+            this.cbWANType_Bridge = new System.Windows.Forms.CheckBox();
             this.tbMainMenu.SuspendLayout();
             this.tpBasicFuntion.SuspendLayout();
             this.gbWANType.SuspendLayout();
@@ -237,6 +240,33 @@
             this.tpBasicFuntion.Text = "自動化測項";
             this.tpBasicFuntion.UseVisualStyleBackColor = true;
             // 
+            // gbSystemTool
+            // 
+            this.gbSystemTool.Location = new System.Drawing.Point(472, 15);
+            this.gbSystemTool.Name = "gbSystemTool";
+            this.gbSystemTool.Size = new System.Drawing.Size(212, 260);
+            this.gbSystemTool.TabIndex = 4;
+            this.gbSystemTool.TabStop = false;
+            this.gbSystemTool.Text = "SystemTool";
+            // 
+            // gbSecurity
+            // 
+            this.gbSecurity.Location = new System.Drawing.Point(14, 469);
+            this.gbSecurity.Name = "gbSecurity";
+            this.gbSecurity.Size = new System.Drawing.Size(212, 128);
+            this.gbSecurity.TabIndex = 5;
+            this.gbSecurity.TabStop = false;
+            this.gbSecurity.Text = "Security";
+            // 
+            // gbWirelessBasic
+            // 
+            this.gbWirelessBasic.Location = new System.Drawing.Point(244, 15);
+            this.gbWirelessBasic.Name = "gbWirelessBasic";
+            this.gbWirelessBasic.Size = new System.Drawing.Size(212, 448);
+            this.gbWirelessBasic.TabIndex = 3;
+            this.gbWirelessBasic.TabStop = false;
+            this.gbWirelessBasic.Text = "WirelessBasic";
+            // 
             // gbLANBasic
             // 
             this.gbLANBasic.Location = new System.Drawing.Point(14, 15);
@@ -245,6 +275,41 @@
             this.gbLANBasic.TabIndex = 2;
             this.gbLANBasic.TabStop = false;
             this.gbLANBasic.Text = "LANBasic";
+            // 
+            // gbWANType
+            // 
+            this.gbWANType.Controls.Add(this.cbWANType_Bridge);
+            this.gbWANType.Controls.Add(this.cbWANType_PPTP);
+            this.gbWANType.Controls.Add(this.cbWANType_L2TP);
+            this.gbWANType.Controls.Add(this.cbWANType_PPPoE);
+            this.gbWANType.Controls.Add(this.cbWANType_StaticIP);
+            this.gbWANType.Controls.Add(this.cbWANType_DHCP);
+            this.gbWANType.Location = new System.Drawing.Point(14, 168);
+            this.gbWANType.Name = "gbWANType";
+            this.gbWANType.Size = new System.Drawing.Size(212, 234);
+            this.gbWANType.TabIndex = 1;
+            this.gbWANType.TabStop = false;
+            this.gbWANType.Text = "WANType";
+            // 
+            // cbWANType_PPPoE
+            // 
+            this.cbWANType_PPPoE.AutoSize = true;
+            this.cbWANType_PPPoE.Location = new System.Drawing.Point(22, 100);
+            this.cbWANType_PPPoE.Name = "cbWANType_PPPoE";
+            this.cbWANType_PPPoE.Size = new System.Drawing.Size(160, 24);
+            this.cbWANType_PPPoE.TabIndex = 2;
+            this.cbWANType_PPPoE.Text = "WANType_PPPoE";
+            this.cbWANType_PPPoE.UseVisualStyleBackColor = true;
+            // 
+            // cbWANType_StaticIP
+            // 
+            this.cbWANType_StaticIP.AutoSize = true;
+            this.cbWANType_StaticIP.Location = new System.Drawing.Point(22, 69);
+            this.cbWANType_StaticIP.Name = "cbWANType_StaticIP";
+            this.cbWANType_StaticIP.Size = new System.Drawing.Size(168, 24);
+            this.cbWANType_StaticIP.TabIndex = 1;
+            this.cbWANType_StaticIP.Text = "WANType_StaticIP";
+            this.cbWANType_StaticIP.UseVisualStyleBackColor = true;
             // 
             // cbWANType_DHCP
             // 
@@ -255,17 +320,6 @@
             this.cbWANType_DHCP.TabIndex = 0;
             this.cbWANType_DHCP.Text = "WANType_DHCP";
             this.cbWANType_DHCP.UseVisualStyleBackColor = true;
-            // 
-            // gbWANType
-            // 
-            this.gbWANType.Controls.Add(this.cbWANType_StaticIP);
-            this.gbWANType.Controls.Add(this.cbWANType_DHCP);
-            this.gbWANType.Location = new System.Drawing.Point(14, 168);
-            this.gbWANType.Name = "gbWANType";
-            this.gbWANType.Size = new System.Drawing.Size(212, 295);
-            this.gbWANType.TabIndex = 1;
-            this.gbWANType.TabStop = false;
-            this.gbWANType.Text = "WANType";
             // 
             // tpBasicPataSetting
             // 
@@ -1086,7 +1140,6 @@
             // 
             // tpFunctionTesting2
             // 
-            this.tpFunctionTesting2.Controls.Add(this.button2);
             this.tpFunctionTesting2.Controls.Add(this.button1);
             this.tpFunctionTesting2.Controls.Add(this.gbFunctionControl);
             this.tpFunctionTesting2.Controls.Add(this.gbWebRefresh);
@@ -1102,16 +1155,6 @@
             this.tpFunctionTesting2.TabIndex = 5;
             this.tpFunctionTesting2.Text = "部件功能 II";
             this.tpFunctionTesting2.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(510, 93);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(133, 48);
-            this.button2.TabIndex = 40;
-            this.button2.Text = "Test";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -1687,42 +1730,35 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // cbWANType_StaticIP
+            // cbWANType_L2TP
             // 
-            this.cbWANType_StaticIP.AutoSize = true;
-            this.cbWANType_StaticIP.Location = new System.Drawing.Point(22, 68);
-            this.cbWANType_StaticIP.Name = "cbWANType_StaticIP";
-            this.cbWANType_StaticIP.Size = new System.Drawing.Size(168, 24);
-            this.cbWANType_StaticIP.TabIndex = 1;
-            this.cbWANType_StaticIP.Text = "WANType_StaticIP";
-            this.cbWANType_StaticIP.UseVisualStyleBackColor = true;
+            this.cbWANType_L2TP.AutoSize = true;
+            this.cbWANType_L2TP.Location = new System.Drawing.Point(22, 162);
+            this.cbWANType_L2TP.Name = "cbWANType_L2TP";
+            this.cbWANType_L2TP.Size = new System.Drawing.Size(147, 24);
+            this.cbWANType_L2TP.TabIndex = 3;
+            this.cbWANType_L2TP.Text = "WANType_L2TP";
+            this.cbWANType_L2TP.UseVisualStyleBackColor = true;
             // 
-            // gbWirelessBasic
+            // cbWANType_PPTP
             // 
-            this.gbWirelessBasic.Location = new System.Drawing.Point(244, 15);
-            this.gbWirelessBasic.Name = "gbWirelessBasic";
-            this.gbWirelessBasic.Size = new System.Drawing.Size(212, 448);
-            this.gbWirelessBasic.TabIndex = 3;
-            this.gbWirelessBasic.TabStop = false;
-            this.gbWirelessBasic.Text = "WirelessBasic";
+            this.cbWANType_PPTP.AutoSize = true;
+            this.cbWANType_PPTP.Location = new System.Drawing.Point(22, 193);
+            this.cbWANType_PPTP.Name = "cbWANType_PPTP";
+            this.cbWANType_PPTP.Size = new System.Drawing.Size(150, 24);
+            this.cbWANType_PPTP.TabIndex = 4;
+            this.cbWANType_PPTP.Text = "WANType_PPTP";
+            this.cbWANType_PPTP.UseVisualStyleBackColor = true;
             // 
-            // gbSystemTool
+            // cbWANType_Bridge
             // 
-            this.gbSystemTool.Location = new System.Drawing.Point(472, 15);
-            this.gbSystemTool.Name = "gbSystemTool";
-            this.gbSystemTool.Size = new System.Drawing.Size(212, 260);
-            this.gbSystemTool.TabIndex = 4;
-            this.gbSystemTool.TabStop = false;
-            this.gbSystemTool.Text = "SystemTool";
-            // 
-            // gbSecurity
-            // 
-            this.gbSecurity.Location = new System.Drawing.Point(14, 469);
-            this.gbSecurity.Name = "gbSecurity";
-            this.gbSecurity.Size = new System.Drawing.Size(212, 128);
-            this.gbSecurity.TabIndex = 5;
-            this.gbSecurity.TabStop = false;
-            this.gbSecurity.Text = "Security";
+            this.cbWANType_Bridge.AutoSize = true;
+            this.cbWANType_Bridge.Location = new System.Drawing.Point(22, 131);
+            this.cbWANType_Bridge.Name = "cbWANType_Bridge";
+            this.cbWANType_Bridge.Size = new System.Drawing.Size(160, 24);
+            this.cbWANType_Bridge.TabIndex = 5;
+            this.cbWANType_Bridge.Text = "WANType_Bridge";
+            this.cbWANType_Bridge.UseVisualStyleBackColor = true;
             // 
             // AutomatedWebTestingForm
             // 
@@ -1911,7 +1947,6 @@
 		private System.Windows.Forms.Label lbTopPageIndex;
 		private System.Windows.Forms.TextBox tbTopPageIndex;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.TabPage tpBasicFuntion;
 		private System.Windows.Forms.GroupBox gbWANType;
 		private System.Windows.Forms.TabPage tpBasicPataSetting;
@@ -1921,6 +1956,10 @@
 		private System.Windows.Forms.GroupBox gbWirelessBasic;
 		private System.Windows.Forms.GroupBox gbSystemTool;
 		private System.Windows.Forms.GroupBox gbSecurity;
+		private System.Windows.Forms.CheckBox cbWANType_PPPoE;
+		private System.Windows.Forms.CheckBox cbWANType_L2TP;
+		private System.Windows.Forms.CheckBox cbWANType_PPTP;
+		private System.Windows.Forms.CheckBox cbWANType_Bridge;
 	}
 }
 

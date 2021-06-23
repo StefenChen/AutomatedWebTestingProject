@@ -82,13 +82,24 @@ namespace WindowsControl
 				return false;
 			}
 		}
-
+		public IPInterfaceProperties GetNetWorkCardIPInformation(string NetworkCardName)
+		{
+			NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+			foreach(NetworkInterface temp in nics)
+			{
+				if (temp.Name == NetworkCardName)
+				{
+					return temp.GetIPProperties();
+				}
+			}
+			return null;
+		}
 		public bool Ping(string target)
 		{
 			try
 			{
 				Ping pingSender = new Ping();
-				PingReply reply = pingSender.Send(target, 1000);//第一個引數為ip地址,第二個引數為ping的時間
+				PingReply reply = pingSender.Send(target, 2000);//第一個引數為ip地址,第二個引數為ping的時間
 
 				if (reply.Status == IPStatus.Success)
 				{

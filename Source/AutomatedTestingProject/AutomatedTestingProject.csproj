@@ -88,8 +88,12 @@
     <Compile Include="AutomatedTestingMainProgram.cs" />
     <Compile Include="StateMachine\AutoWebTestingContext.cs" />
     <Compile Include="StateMachine\Communication.cs" />
-    <Compile Include="StateMachine\StaticIPStateMachine.cs" />
-    <Compile Include="StateMachine\DHCPStateMachine.cs" />
+    <Compile Include="WANType_StateMachine\BridgeStateMachine.cs" />
+    <Compile Include="WANType_StateMachine\PPTPStateMachine.cs" />
+    <Compile Include="WANType_StateMachine\L2TPStateMachine.cs" />
+    <Compile Include="WANType_StateMachine\PPPoEStateMachine.cs" />
+    <Compile Include="WANType_StateMachine\StaticIPStateMachine.cs" />
+    <Compile Include="WANType_StateMachine\DHCPStateMachine.cs" />
     <Compile Include="StateMachine\StateMachinesBase.cs" />
     <Compile Include="WebLibrary\WebFunctionControl.cs" />
     <Compile Include="WebLibrary\WebAccountControl.cs" />
@@ -144,7 +148,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="WirelessBase_StateMachine\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>

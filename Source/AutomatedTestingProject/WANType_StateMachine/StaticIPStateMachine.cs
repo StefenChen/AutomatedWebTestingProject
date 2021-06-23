@@ -81,7 +81,7 @@ namespace StateMachine
 		#endregion
 
 		#region ErrorState
-		public enum DHCPProcessErrorState
+		public enum PPPoEProcessErrorState
 		{
 			None,                   // 狀態正常
 			SelectDropDownListError,
@@ -92,36 +92,36 @@ namespace StateMachine
 			GetValueResultError,
 			SettingInputBoxError,
 		}
-		DHCPProcessErrorState errorState = DHCPProcessErrorState.None;
+		PPPoEProcessErrorState errorState = PPPoEProcessErrorState.None;
 		protected override object ErrorState
 		{
 			get { return errorState; }
-			set { errorState = (DHCPProcessErrorState)value; }
+			set { errorState = (PPPoEProcessErrorState)value; }
 		}
 		protected override void WriteLogWhenError(object errorState, string optionalString)
 		{
-			switch ((DHCPProcessErrorState)errorState)
+			switch ((PPPoEProcessErrorState)errorState)
 			{
-				case DHCPProcessErrorState.SelectDropDownListError:
-					msgLog.WriteLog(DHCPProcessErrorState.SelectDropDownListError, optionalString, Name);
+				case PPPoEProcessErrorState.SelectDropDownListError:
+					msgLog.WriteLog(PPPoEProcessErrorState.SelectDropDownListError, optionalString, Name);
 					break;
-				case DHCPProcessErrorState.ClickGeneralButtonError:
-					msgLog.WriteLog(DHCPProcessErrorState.ClickGeneralButtonError, optionalString, Name);
+				case PPPoEProcessErrorState.ClickGeneralButtonError:
+					msgLog.WriteLog(PPPoEProcessErrorState.ClickGeneralButtonError, optionalString, Name);
 					break;
-				case DHCPProcessErrorState.MoveToSpecificSidePageError:
-					msgLog.WriteLog(DHCPProcessErrorState.MoveToSpecificSidePageError, optionalString, Name);
+				case PPPoEProcessErrorState.MoveToSpecificSidePageError:
+					msgLog.WriteLog(PPPoEProcessErrorState.MoveToSpecificSidePageError, optionalString, Name);
 					break;
-				case DHCPProcessErrorState.SwitchToStatusPageError:
-					msgLog.WriteLog(DHCPProcessErrorState.SwitchToStatusPageError, optionalString, Name);
+				case PPPoEProcessErrorState.SwitchToStatusPageError:
+					msgLog.WriteLog(PPPoEProcessErrorState.SwitchToStatusPageError, optionalString, Name);
 					break;
-				case DHCPProcessErrorState.CannotFindElementsError:
-					msgLog.WriteLog(DHCPProcessErrorState.CannotFindElementsError, optionalString, Name);
+				case PPPoEProcessErrorState.CannotFindElementsError:
+					msgLog.WriteLog(PPPoEProcessErrorState.CannotFindElementsError, optionalString, Name);
 					break;
-				case DHCPProcessErrorState.GetValueResultError:
-					msgLog.WriteLog(DHCPProcessErrorState.GetValueResultError, optionalString, Name);
+				case PPPoEProcessErrorState.GetValueResultError:
+					msgLog.WriteLog(PPPoEProcessErrorState.GetValueResultError, optionalString, Name);
 					break;
-				case DHCPProcessErrorState.SettingInputBoxError:
-					msgLog.WriteLog(DHCPProcessErrorState.SettingInputBoxError, optionalString, Name);
+				case PPPoEProcessErrorState.SettingInputBoxError:
+					msgLog.WriteLog(PPPoEProcessErrorState.SettingInputBoxError, optionalString, Name);
 					break;
 				default:
 					break;
@@ -131,25 +131,25 @@ namespace StateMachine
 		{
 			switch (errorState)
 			{
-				case DHCPProcessErrorState.SelectDropDownListError:
+				case PPPoEProcessErrorState.SelectDropDownListError:
 					GoBackToAutoFromError();
 					break;
-				case DHCPProcessErrorState.ClickGeneralButtonError:
+				case PPPoEProcessErrorState.ClickGeneralButtonError:
 					GoBackToAutoFromError();
 					break;
-				case DHCPProcessErrorState.MoveToSpecificSidePageError:
+				case PPPoEProcessErrorState.MoveToSpecificSidePageError:
 					GoBackToAutoFromError();
 					break;
-				case DHCPProcessErrorState.SwitchToStatusPageError:
+				case PPPoEProcessErrorState.SwitchToStatusPageError:
 					GoBackToAutoFromError();
 					break;
-				case DHCPProcessErrorState.CannotFindElementsError:
+				case PPPoEProcessErrorState.CannotFindElementsError:
 					GoBackToAutoFromError();
 					break;
-				case DHCPProcessErrorState.GetValueResultError:
+				case PPPoEProcessErrorState.GetValueResultError:
 					GoBackToAutoFromError();
 					break;
-				case DHCPProcessErrorState.SettingInputBoxError:
+				case PPPoEProcessErrorState.SettingInputBoxError:
 					GoBackToAutoFromError();
 					break;
 				default:
@@ -160,9 +160,6 @@ namespace StateMachine
 		#endregion
 		protected override void AutoSequence()
 		{
-			bool tempBool = true;
-			int countItem = 0, countNode = 0;
-			string globalStr;
 			switch (autoState)
 			{
 				case StaticIPProcessState.Idle:
@@ -170,19 +167,21 @@ namespace StateMachine
 					break;
 				case StaticIPProcessState.SwitchToInternetPage:
 					if (!webFunction.MoveToSpecificSidePage(1, "internet"))
-						GoToErrorState(DHCPProcessErrorState.MoveToSpecificSidePageError, "SwitchToInternetPage");
+						GoToErrorState(PPPoEProcessErrorState.MoveToSpecificSidePageError, "SwitchToInternetPage");
 					else
 						GoToNewAutoState(StaticIPProcessState.SetWANInterface);
 					break;
 				case StaticIPProcessState.SetWANInterface:
+					bool tempBool = true;
+					int countItem = 0, countNode = 0;
 					if (!webFunction.IsElementDisplayed("_linkType"))
 					{
-						GoToErrorState(DHCPProcessErrorState.CannotFindElementsError, "DropDownMenu:_linkType");
+						GoToErrorState(PPPoEProcessErrorState.CannotFindElementsError, "DropDownMenu:_linkType");
 						break;
 					}
 					else if(!(tempBool = webFunction.SelectDropDownMenu("_linkType", 3)))
 					{
-						GoToErrorState(DHCPProcessErrorState.SelectDropDownListError, "DropDownMenu:_linkType");
+						GoToErrorState(PPPoEProcessErrorState.SelectDropDownListError, "DropDownMenu:_linkType");
 						break;
 					}
 					if (tempBool)
@@ -193,34 +192,37 @@ namespace StateMachine
 							{
 								if (!(tempBool &= webFunction.DesignYourJSFunction("StaticIPBasic",
 																					$"elements.children[{countItem}].children[2].children[{countNode}].value={partStr}")))
-									GoToErrorState(DHCPProcessErrorState.ClickGeneralButtonError, "s");
+								{
+									GoToErrorState(PPPoEProcessErrorState.SettingInputBoxError, "StaticIP Setting Error");
+									break;
+								}
+									
 								countNode += 2;
 							}
 							countNode = 0;
 							countItem++;
 						}
 						if (!(tempBool &= webFunction.ClickGeneralButton("saveBtn")))
-							GoToErrorState(DHCPProcessErrorState.ClickGeneralButtonError, "saveBtn");
+							GoToErrorState(PPPoEProcessErrorState.ClickGeneralButtonError, "saveBtn");
 						Thread.Sleep(3000);
 					}
 					if (tempBool)
-						//GoToNewAutoState(StaticIPProcessState.SetNetworkCardToDHCP);
 						GoToNewAutoState(StaticIPProcessState.SwitchToStatusPage);
 					break;
 				case StaticIPProcessState.SwitchToStatusPage:
 					if (!webFunction.MoveToSpecificSidePage(2, "status"))
 					{
-						GoToErrorState(DHCPProcessErrorState.SwitchToStatusPageError, "SwitchToStatusPage");
+						GoToErrorState(PPPoEProcessErrorState.SwitchToStatusPageError, "SwitchToStatusPage");
 					}
 					else
 						GoToNewAutoState(StaticIPProcessState.CheckIPAddressStatus);
 					Thread.Sleep(1000);
 					break;
 				case StaticIPProcessState.CheckIPAddressStatus:
-					tempBool = true;
-					if (!(staticIPBasic[0] == (globalStr = webFunction.GetElementValue("IPV4"))))
+					string tempStr;
+					if (!(staticIPBasic[0] == (tempStr = webFunction.GetElementValue("IPV4"))))
 					{
-						GoToErrorState(DHCPProcessErrorState.SettingInputBoxError, $"Get value is different between \"{staticIPBasic[0]}\" and \"{globalStr}\"");
+						GoToErrorState(PPPoEProcessErrorState.SettingInputBoxError, $"Get value is different between \"{staticIPBasic[0]}\" and \"{tempStr}\"");
 						break;
 					}
 					else

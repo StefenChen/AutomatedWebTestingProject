@@ -30,6 +30,7 @@ namespace StateMachine
 			{
 				switch (name)
 				{
+					#region WAN
 					case "DHCPStateMachine":
 						stateMachines = new DHCPStateMachine(name, basicTool, browser, webAccount,
 															 webFunction, webSystem, wifi, networkAdapter, status);
@@ -39,18 +40,22 @@ namespace StateMachine
 															 webFunction, webSystem, wifi, networkAdapter, status);
 						break;
 					case "PPPoEStateMachine":
-						//stateMachines = new PPPoEStateMachine(name, basicTool, browser, webAccount,
-						//			 webFunction, webSystem, wifi, networkAdapter, status);
+						stateMachines = new PPPoEStateMachine(name, basicTool, browser, webAccount,
+									 webFunction, webSystem, wifi, networkAdapter, status);
 						break;
 					case "BridgeStateMachine":
-
+						stateMachines = new BridgeStateMachine(name, basicTool, browser, webAccount,
+									webFunction, webSystem, wifi, networkAdapter, status);
 						break;
 					case "L2TPStateMachine":
-
+						stateMachines = new L2TPStateMachine(name, basicTool, browser, webAccount,
+									webFunction, webSystem, wifi, networkAdapter, status);
 						break;
 					case "PPTPStateMachine":
-
+						stateMachines = new PPTPStateMachine(name, basicTool, browser, webAccount,
+									webFunction, webSystem, wifi, networkAdapter, status);
 						break;
+					#endregion
 					default:
 						throw new SystemException("輸入的StateMachine不存在");
 				}

@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using StateMachine;
 using System;
+using System.Net.NetworkInformation;
 using System.Threading;
 using System.Timers;
 using System.Windows.Forms;
@@ -41,8 +42,8 @@ namespace AutomatedTestingProject
 			}
 
 			tbMessageShow.Text += DateTime.Now.ToString("[HH時mm分ss秒]")
-														+ (sender == null ? "" : sender.ToString().Split(':')[1])
-														+ "," + name + "\r\n";
+														+ (sender == null ? "" : (sender.ToString().Split(':')[1]+ ","))
+														 + name + "\r\n";
 			tbMessageShow.Text += msg + "\r\n";
 		}
 		private void OpenURLButton_Click(object sender, EventArgs e)
@@ -405,13 +406,13 @@ namespace AutomatedTestingProject
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			string tempStr = "";
-			automatedWebTesting.BuildStateMachine("DHCPStateMachine");
-			automatedWebTesting.Start(ref tempStr);
-			if (tempStr != "")
+			string tts;
+			IPInterfaceProperties temp = automatedWebTesting.networkAdapter.GetNetWorkCardIPInformation(
+												automatedWebTesting.basicTool.accessConfig.WiredNetworkName);
+			foreach(var tempT in temp.UnicastAddresses)
 			{
-				WriteMsg(sender.ToString(), "DHCPStateMachine", tempStr);
-				return;
+				if (tempT.Address.ToString().Contains("."))
+					tts = tempT.Address.ToString();
 			}
 		}
 
@@ -438,6 +439,7 @@ namespace AutomatedTestingProject
 
 		private void StartTestCase(object sender, ElapsedEventArgs e)
 		{
+			#region WAN Type
 			//WAN Type_DHCP
 			if (cbWANType_DHCP.Checked)
 			{
@@ -454,11 +456,10 @@ namespace AutomatedTestingProject
 						TimerStart();
 						return;
 					case CommunicationStatus.Done:
-						automatedWebTesting.FreedStateMachines();
 						break;
 				}
 			}
-
+			
 			//WAN Type_Static IP
 			if (cbWANType_StaticIP.Checked)
 			{
@@ -475,10 +476,89 @@ namespace AutomatedTestingProject
 						TimerStart();
 						return;
 					case CommunicationStatus.Done:
-						automatedWebTesting.FreedStateMachines();
 						break;
 				}
 			}
+
+			//WAN Type_PPPoE
+			if (cbWANType_PPPoE.Checked)
+			{
+				switch (automatedWebTesting.status.PPPoEStatus)
+				{
+					case CommunicationStatus.Idle:
+						automatedWebTesting.FreedStateMachines();
+						automatedWebTesting.BuildNStartStateMachine("PPPoEStateMachine");
+						TimerStart();
+						return;
+					case CommunicationStatus.Error:
+						break;
+					case CommunicationStatus.Busy:
+						TimerStart();
+						return;
+					case CommunicationStatus.Done:
+						break;
+				}
+			}
+
+			//WAN Type_Bridge
+			if (cbWANType_Bridge.Checked)
+			{
+				switch (automatedWebTesting.status.BridgeStatus)
+				{
+					case CommunicationStatus.Idle:
+						automatedWebTesting.FreedStateMachines();
+						automatedWebTesting.BuildNStartStateMachine("BridgeStateMachine");
+						TimerStart();
+						return;
+					case CommunicationStatus.Error:
+						break;
+					case CommunicationStatus.Busy:
+						TimerStart();
+						return;
+					case CommunicationStatus.Done:
+						break;
+				}
+			}
+			//WAN Type_L2TP
+			if (cbWANType_L2TP.Checked)
+			{
+				switch (automatedWebTesting.status.L2TPStatus)
+				{
+					case CommunicationStatus.Idle:
+						automatedWebTesting.FreedStateMachines();
+						automatedWebTesting.BuildNStartStateMachine("L2TPStateMachine");
+						TimerStart();
+						return;
+					case CommunicationStatus.Error:
+						break;
+					case CommunicationStatus.Busy:
+						TimerStart();
+						return;
+					case CommunicationStatus.Done:
+						break;
+				}
+			}
+
+			//WAN Type_PPTP
+			if (cbWANType_PPTP.Checked)
+			{
+				switch (automatedWebTesting.status.PPTPStatus)
+				{
+					case CommunicationStatus.Idle:
+						automatedWebTesting.FreedStateMachines();
+						automatedWebTesting.BuildNStartStateMachine("PPTPStateMachine");
+						TimerStart();
+						return;
+					case CommunicationStatus.Error:
+						break;
+					case CommunicationStatus.Busy:
+						TimerStart();
+						return;
+					case CommunicationStatus.Done:
+						break;
+				}
+			}
+			#endregion
 		}
 
 		System.Timers.Timer TestCaseTimer;

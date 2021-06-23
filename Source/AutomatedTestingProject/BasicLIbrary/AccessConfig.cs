@@ -46,7 +46,17 @@ namespace BasicLIbrary
 			get { return configIni.GetValue("Website", "URL", "192.168.0.1"); }
 			set { configIni.SetValue("Website", "URL", value); }
 		}
-
+		public string StaticIPForBridge
+		{
+			get { return configIni.GetValue("Website", "StaticIPForBridge", "192.168.0.100"); }
+			set { configIni.SetValue("Website", "StaticIPForBridge", value); }
+		}
+		public string StaticSubnetMaskForBridge
+		{
+			get { return configIni.GetValue("Website", "StaticSubnetMaskForBridge", "255.255.255.0"); }
+			set { configIni.SetValue("Website", "StaticSubnetMaskForBridge", value); }
+		}
+		
 
 		#endregion
 

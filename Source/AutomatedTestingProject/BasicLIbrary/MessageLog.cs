@@ -40,7 +40,7 @@ namespace BasicLIbrary
 			logMutex.WaitOne();
 			try
 			{
-				ShowInGUI(description, msg);
+				ShowInGUI(description, category.ToString() + (msg !=""?(":" + msg):""));
 
 				File.AppendAllText(logFile, String.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\r\n",
 													  occurTime.ToString("yyyy-MM-dd HH:mm:ss"),
