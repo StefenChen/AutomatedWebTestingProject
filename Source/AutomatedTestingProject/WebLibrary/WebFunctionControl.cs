@@ -108,17 +108,17 @@ namespace WebLibrary
 					return false;
 				else if (childrenPageName != null)
 				{
-					Thread.Sleep(200);
+					Thread.Sleep(1000);
 					if ((index = GetAdvancedPageIndex(parentPageId, childrenPageName)) != -1)
 					{
-						if (webGUIBase.webBasic.DesignYourJSFunction(parentPageId, $"elements.parentElement.parentElement.children[1].childNodes[{index}].children[0].click()"))
+						if (webGUIBase.webBasic.DesignYourJSFunction(parentPageId, $"elements.parentElement.parentElement.children[1].childNodes[{index}].children[0].click();"))
 							return true;
 					}
 					return false;
 				}
 				else
 				{
-					Thread.Sleep(200);
+					Thread.Sleep(1000);
 					if (webGUIBase.webBasic.ClickGeneralButton(parentPageId))
 						return true;
 					else
@@ -161,6 +161,7 @@ namespace WebLibrary
 		/// <returns></returns>
 		public bool ClickSelectBox(string idName, int type)
 		{
+			Thread.Sleep(500);
 			if (webGUIBase.webBasic.ClickSelectBox(idName, type))
 				return true;
 			else
@@ -191,7 +192,12 @@ namespace WebLibrary
 		}
 		public bool SelectDropDownMenu(string idName, int findItem)
 		{
+			Thread.Sleep(500);
 			return webGUIBase.webBasic.SelectDropDownMenu(idName, findItem);
+		}
+		public bool SelectDropDownMenu(string idName, string innerText)
+		{
+			return webGUIBase.webBasic.SelectDropDownMenu(idName, innerText);
 		}
 		public IWebElement IsElementExist(By by)
 		{
@@ -221,6 +227,7 @@ namespace WebLibrary
 		}
 		public bool ClickGeneralButton(string idName)
 		{
+			Thread.Sleep(500);
 			return webGUIBase.webBasic.ClickGeneralButton(idName);
 		}
 	}

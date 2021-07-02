@@ -56,6 +56,9 @@
   <PropertyGroup>
     <StartupObject>AutomatedTestingProject.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AMS.Profile">
       <HintPath>Library\AMS.Profile.dll</HintPath>
@@ -85,7 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutomatedTestingMainProgram.cs" />
+    <Compile Include="Form\AutomatedTestingMainProgram.cs" />
     <Compile Include="StateMachine\AutoWebTestingContext.cs" />
     <Compile Include="StateMachine\Communication.cs" />
     <Compile Include="WANType_StateMachine\BridgeStateMachine.cs" />
@@ -97,7 +100,7 @@
     <Compile Include="StateMachine\StateMachinesBase.cs" />
     <Compile Include="WebLibrary\WebFunctionControl.cs" />
     <Compile Include="WebLibrary\WebAccountControl.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Form\Program.cs" />
     <Compile Include="BasicLIbrary\AccessConfig.cs" />
     <Compile Include="BasicLIbrary\CommonBase.cs" />
     <Compile Include="BasicLIbrary\ConfigBase.cs" />
@@ -109,10 +112,10 @@
     <Compile Include="WebLibrary\WebSystemControl.cs" />
     <Compile Include="WebLibrary\WebBasicOperation.cs" />
     <Compile Include="WebLibrary\WebGUIBase.cs" />
-    <Compile Include="AutomatedTestingForm.cs">
+    <Compile Include="Form\AutomatedTestingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AutomatedTestingForm.Designer.cs">
+    <Compile Include="Form\AutomatedTestingForm.Designer.cs">
       <DependentUpon>AutomatedTestingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,7 +123,9 @@
     <Compile Include="WindowsControl\NetworkAdapterControl.cs" />
     <Compile Include="WindowsControl\WifiControl.cs" />
     <Compile Include="WindowsControl\WifiProfile.cs" />
-    <EmbeddedResource Include="AutomatedTestingForm.resx">
+    <Compile Include="WirelessBase_StateMachine\WirelessSSIDStateMachine.cs" />
+    <Compile Include="WirelessBase_StateMachine\WirelessWiFiStateMachine.cs" />
+    <EmbeddedResource Include="Form\AutomatedTestingForm.resx">
       <DependentUpon>AutomatedTestingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -134,7 +139,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
-    <None Include="packages.config" />
+    <None Include="Form\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -147,9 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WirelessBase_StateMachine\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

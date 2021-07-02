@@ -16,15 +16,15 @@ namespace StateMachine
 	{
 		public AutoWebTestingContext(string name, CommonBase basicTool, BrowserControl browser, WebAccountControl webAccount,
 								WebFunctionControl webFunction, WebSystemControl webSystem,
-								WifiControl wifi, NetworkAdapterControl networkAdapter, Communication status)
+								WifiControl wifi, NetworkAdapterControl networkAdapter, Communication status, string option="")
 		{
-			SimpleFactory(name, basicTool, browser, webAccount, webFunction, webSystem, wifi, networkAdapter, status);
+			SimpleFactory(name, basicTool, browser, webAccount, webFunction, webSystem, wifi, networkAdapter, status, option);
 		}
 
 		public StateMachinesBase stateMachines = null;
 		public void SimpleFactory(string name, CommonBase basicTool, BrowserControl browser, WebAccountControl webAccount,
 								WebFunctionControl webFunction, WebSystemControl webSystem,
-								WifiControl wifi, NetworkAdapterControl networkAdapter, Communication status)
+								WifiControl wifi, NetworkAdapterControl networkAdapter, Communication status,string option="")
 		{
 			try
 			{
@@ -54,6 +54,17 @@ namespace StateMachine
 					case "PPTPStateMachine":
 						stateMachines = new PPTPStateMachine(name, basicTool, browser, webAccount,
 									webFunction, webSystem, wifi, networkAdapter, status);
+						break;
+					#endregion
+
+					#region WirelessBasic
+					case "WirelessWiFiStateMachine":
+						stateMachines = new WirelessWiFiStateMachine(name, basicTool, browser, webAccount,
+									webFunction, webSystem, wifi, networkAdapter, status, option);
+						break;
+					case "WirelessSSIDStateMachine":
+						stateMachines = new WirelessSSIDStateMachine(name, basicTool, browser, webAccount,
+									webFunction, webSystem, wifi, networkAdapter, status, option);
 						break;
 					#endregion
 					default:

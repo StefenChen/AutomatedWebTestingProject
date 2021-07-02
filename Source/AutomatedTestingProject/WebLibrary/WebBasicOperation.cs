@@ -138,6 +138,22 @@ namespace WebLibrary
 				return false;
 			}
 		}
+		public bool SelectDropDownMenu(string idName, string innerText)
+		{
+			string findElementCommand, selectTargetCommand;
+			try
+			{
+				findElementCommand = js.UsedIDNameToFindElement(idName);
+				selectTargetCommand = "elements.childNodes[2].childNodes[2].childNodes.forEach(function(element) {{if (element.innerText == '" + innerText + "') element.click();}})";
+				js.SendCommandToGUI(new string[] { findElementCommand, selectTargetCommand }, ref errMsg);
+				return true;
+			}
+			catch (Exception ex)
+			{
+				basicTool.messageLog.WriteLog(Category.WebBasicOperation, ex.ToString(), "SelectDropdownMenu");
+				return false;
+			}
+		}
 		public bool ClickGeneralButton(string idName)
 		{
 			string findElementCommand = "", clickCommand;

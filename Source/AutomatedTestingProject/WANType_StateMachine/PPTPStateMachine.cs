@@ -21,8 +21,9 @@ namespace StateMachine
 		}
 
 		#region para
-		protected override void VariableSetting()
+		protected override bool VariableSetting()
 		{
+			return true;
 		}
 		#endregion
 
@@ -139,6 +140,7 @@ namespace StateMachine
 					break;
 			}
 		}
+		#endregion
 		protected override void AutoSequence()
 		{
 			switch (autoState)
@@ -210,10 +212,10 @@ namespace StateMachine
 						GoToNewAutoState(PPTPProcessState.Done);
 					break;
 				case PPTPProcessState.Done:
+					Stop();
 					communicationStatus = CommunicationStatus.Done;
 					break;
 			}
 		}
-		#endregion
 	}
 }

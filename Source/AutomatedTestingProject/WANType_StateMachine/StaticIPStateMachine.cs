@@ -18,12 +18,12 @@ namespace StateMachine
 								WifiControl wifi, NetworkAdapterControl networkAdapter,Communication status)
 			: base(Name, basicTool, browserControl, webAccount, webFunction, webSystem, wifi, networkAdapter, status)
 		{
-
+			VariableSetting();
 		}
 
 		#region para
 		private List<string> staticIPBasic;
-		protected override void VariableSetting()
+		protected override bool VariableSetting()
 		{
 			staticIPBasic = new List<string>();
 			staticIPBasic.Add(config.StaticIPAddress);
@@ -31,6 +31,7 @@ namespace StateMachine
 			staticIPBasic.Add(config.StaticDefaultGateway);
 			staticIPBasic.Add(config.StaticPrimaryDNS);
 			staticIPBasic.Add(config.StaticSecondaryDNS);
+			return true;
 		}
 		#endregion
 
@@ -229,6 +230,7 @@ namespace StateMachine
 						GoToNewAutoState(StaticIPProcessState.Done);
 					break;
 				case StaticIPProcessState.Done:
+					Stop();
 					communicationStatus = CommunicationStatus.Done;
 					break;
 			}

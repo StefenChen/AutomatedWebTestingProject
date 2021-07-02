@@ -16,7 +16,7 @@ namespace BasicLIbrary
 		WifiProfile,
 		NetworkCard,
 		DHCPStateMachine,
-
+		StateMachineBase,
 	}
 	public class CommonBase
 	{

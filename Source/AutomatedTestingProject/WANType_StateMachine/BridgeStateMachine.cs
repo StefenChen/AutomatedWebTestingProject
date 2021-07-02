@@ -22,8 +22,9 @@ namespace StateMachine
 		}
 
 		#region para
-		protected override void VariableSetting()
+		protected override bool VariableSetting()
 		{
+			return true;
 		}
 		#endregion
 
@@ -95,9 +96,6 @@ namespace StateMachine
 				case BridgeProcessState.SetComputerNetworkToStaticIP:
 					msgLog.WriteLog(BridgeProcessState.SetComputerNetworkToStaticIP, optionalString, Name);
 					break;
-				case BridgeProcessState.RebootComputerNetworkCardAgain:
-					msgLog.WriteLog(BridgeProcessState.RebootComputerNetworkCardAgain, optionalString, Name);
-					break;
 				case BridgeProcessState.LoginWebsite:
 					msgLog.WriteLog(BridgeProcessState.LoginWebsite, optionalString, Name);
 					break;
@@ -121,6 +119,9 @@ namespace StateMachine
 					break;
 				case BridgeProcessState.SetComputerNetworkToDHCPAgain:
 					msgLog.WriteLog(BridgeProcessState.SetComputerNetworkToDHCPAgain, optionalString, Name);
+					break;
+				case BridgeProcessState.RebootComputerNetworkCardAgain:
+					msgLog.WriteLog(BridgeProcessState.RebootComputerNetworkCardAgain, optionalString, Name);
 					break;
 				case BridgeProcessState.Done:
 					msgLog.WriteLog(BridgeProcessState.Done, "Done", Name);
@@ -180,6 +181,7 @@ namespace StateMachine
 					break;
 			}
 		}
+		
 		protected override void ErrorHandle()
 		{
 			switch (errorState)
@@ -212,6 +214,7 @@ namespace StateMachine
 					break;
 			}
 		}
+		#endregion
 		protected override void AutoSequence()
 		{
 			switch (autoState)
@@ -229,9 +232,9 @@ namespace StateMachine
 					if (webFunction.IsElementDisplayed("domain")==false)
 						GoToNewAutoState(BridgeProcessState.SwitchToAdvancedInternetPage);
 					else if (!webFunction.ClickSelectBox("dhcpEn", 2))
-						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: deleteAll");
+						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: dhcpEn");
 					else if (!webFunction.ClickGeneralButton("saveIPv4Ng"))
-						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: deleteAll");
+						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: saveIPv4Ng");
 					else
 						GoToNewAutoState(BridgeProcessState.SwitchToAdvancedInternetPage);
 					break;
@@ -253,14 +256,14 @@ namespace StateMachine
 						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: addConnIcon");
 						break;
 					}
-					Thread.Sleep(500);
+					Thread.Sleep(1000);
 					if (!webFunction.SelectDropDownMenu("_link_type", 6))
-						GoToErrorState(BridgeProcessErrorState.SelectDropDownListError, "AddABridgeInterface");
+						GoToErrorState(BridgeProcessErrorState.SelectDropDownListError, "Add A Bridge Interface");
 					else if (!webFunction.ClickGeneralButton("saveConnBtn"))
 						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: saveConnBtn");
 					else
 					{
-						Thread.Sleep(1000);
+						Thread.Sleep(10000);
 						GoToNewAutoState(BridgeProcessState.SetComputerNetworkToDHCP);
 					}
 					break;
@@ -269,7 +272,7 @@ namespace StateMachine
 						GoToErrorState(BridgeProcessErrorState.SetNetworkOfDHCPError, config.WiredNetworkName);
 					else
 					{
-						Thread.Sleep(2000);
+						Thread.Sleep(5000);
 						GoToNewAutoState(BridgeProcessState.RebootComputerNetworkCard);
 					}
 					break;
@@ -293,7 +296,10 @@ namespace StateMachine
 				case BridgeProcessState.CheckComputerNetworkCardInformation:
 					IPInterfaceProperties temp;
 					if ((temp = networkAdapter.GetNetWorkCardIPInformation(config.WiredNetworkName)) == null)
+					{
 						GoToErrorState(BridgeProcessErrorState.GetNetWorkCardIPInformationError, config.WiredNetworkName + " change to true");
+						break;
+					}
 
 					foreach (var element in temp.UnicastAddresses)
 					{
@@ -316,25 +322,7 @@ namespace StateMachine
 					if (!networkAdapter.SetNetworkOfStaticIP(config.WiredNetworkName, config.StaticIPForBridge,config.StaticSubnetMaskForBridge))
 						GoToErrorState(BridgeProcessErrorState.SetNetworkOfStaticIPError, config.WiredNetworkName);
 					else
-						GoToNewAutoState(BridgeProcessState.RebootComputerNetworkCardAgain);
-					break;
-				case BridgeProcessState.RebootComputerNetworkCardAgain:
-					if (!networkAdapter.EnableInterface(config.WiredNetworkName, false))
-					{
-						GoToErrorState(BridgeProcessErrorState.EnableInterfaceError, config.WiredNetworkName + " change to false");
-						break;
-					}
-					Thread.Sleep(5000);
-					if (!networkAdapter.EnableInterface(config.WiredNetworkName, true))
-					{
-						GoToErrorState(BridgeProcessErrorState.EnableInterfaceError, config.WiredNetworkName + " change to true");
-						break;
-					}
-					else
-					{
-						Thread.Sleep(5000);
 						GoToNewAutoState(BridgeProcessState.LoginWebsite);
-					}
 					break;
 				case BridgeProcessState.LoginWebsite:
 					string tempStr="";
@@ -347,17 +335,23 @@ namespace StateMachine
 					if (!webFunction.MoveToSpecificSidePage(2, "internet", "LANSettings"))
 						GoToErrorState(BridgeProcessErrorState.MoveToSpecificSidePageError, "SwitchToAdvancedLANSettingPageAgain");
 					else
+					{
+						Thread.Sleep(1000);
 						GoToNewAutoState(BridgeProcessState.DHCPServerOpenDHCPFunction);
+					}
 					break;
 				case BridgeProcessState.DHCPServerOpenDHCPFunction:
 					if (webFunction.IsElementDisplayed("domain") == true)
 						GoToNewAutoState(BridgeProcessState.SwitchToAdvancedInternetPageAgain);
 					else if (!webFunction.ClickSelectBox("dhcpEn", 2))
-						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: deleteAll");
+						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: dhcpEn");
 					else if (!webFunction.ClickGeneralButton("saveIPv4Ng"))
-						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: deleteAll");
+						GoToErrorState(BridgeProcessErrorState.ClickGeneralButtonError, "Button id: saveIPv4Ng");
 					else
+					{
 						GoToNewAutoState(BridgeProcessState.SwitchToAdvancedInternetPageAgain);
+					}
+						
 					break;
 				case BridgeProcessState.SwitchToAdvancedInternetPageAgain:
 					if (!webFunction.MoveToSpecificSidePage(2, "internet", "Internet"))
@@ -396,14 +390,33 @@ namespace StateMachine
 					else
 					{
 						Thread.Sleep(10000);
+						GoToNewAutoState(BridgeProcessState.RebootComputerNetworkCardAgain);
+					}
+					break;
+				case BridgeProcessState.RebootComputerNetworkCardAgain:
+					if (!networkAdapter.EnableInterface(config.WiredNetworkName, false))
+					{
+						GoToErrorState(BridgeProcessErrorState.EnableInterfaceError, config.WiredNetworkName + " change to false");
+						break;
+					}
+					Thread.Sleep(5000);
+					if (!networkAdapter.EnableInterface(config.WiredNetworkName, true))
+					{
+						GoToErrorState(BridgeProcessErrorState.EnableInterfaceError, config.WiredNetworkName + " change to true");
+						break;
+					}
+					else
+					{
+						Thread.Sleep(5000);
 						GoToNewAutoState(BridgeProcessState.Done);
 					}
 					break;
 				case BridgeProcessState.Done:
+					Stop();
 					communicationStatus = CommunicationStatus.Done;
 					break;
 			}
 		}
-		#endregion
+		
 	}
 }

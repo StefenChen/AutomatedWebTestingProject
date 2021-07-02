@@ -72,42 +72,101 @@ namespace BasicLIbrary
 
 
 		#region Wi-Fi Section
-
-
 		public string WifiName
 		{
-			get { return configIni.GetValue("Wi-Fi", "WifiName", "Wi-Fi"); }
-			set { configIni.SetValue("Wi-Fi", "WifiName", value); }
+			get { return configIni.GetValue("Wi-Fi", "WifiAdapterName", "Wi-Fi"); }
+			set { configIni.SetValue("Wi-Fi", "WifiAdapterName", value); }
 		}
-		public string Ssid1Name
+		public string SsidName_2g
 		{
-			get { return configIni.GetValue("Wi-Fi", "Ssid1Name", "a_AStefen_Test_2.4G"); }
-			set { configIni.SetValue("Wi-Fi", "Ssid1Name", value); }
+			get { return configIni.GetValue("Wi-Fi", "DUT2G_SsidName", "TpLink_2g_Testing"); }
+			set { configIni.SetValue("Wi-Fi", "DUT2G_SsidName", value); }
 		}
-		public string Ssid1Passwd
+		public string SsidPasswd_2g
 		{
-			get { return configIni.GetValue("Wi-Fi", "Ssid1Passwd", "0985599568"); }
-			set { configIni.SetValue("Wi-Fi", "Ssid1Passwd", value); }
+			get { return configIni.GetValue("Wi-Fi", "DUT2G_SsidPasswd", "88888888"); }
+			set { configIni.SetValue("Wi-Fi", "DUT2G_SsidPasswd", value); }
 		}
-		public string Ssid2Name
+		public string Ssid1Name_2g
 		{
-			get { return configIni.GetValue("Wi-Fi", "Ssid2Name", "a_AStefen_Test_2.4G"); }
-			set { configIni.SetValue("Wi-Fi", "Ssid2Name", value); }
+			get { return configIni.GetValue("Wi-Fi", "DUT2G_Ssid1Name", "2g_DutSsidTesting_1"); }
+			set { configIni.SetValue("Wi-Fi", "DUT2G_Ssid1Name", value); }
 		}
-		public string Ssid2Passwd
+		public string Ssid1Passwd_2g
 		{
-			get { return configIni.GetValue("Wi-Fi", "Ssid2Passwd", "0985599568"); }
-			set { configIni.SetValue("Wi-Fi", "Ssid2Passwd", value); }
+			get { return configIni.GetValue("Wi-Fi", "DUT2G_Ssid1Passwd", "abcdeABCDE!@#$%12345()<>?:\"{ }+12"); }
+			//set { configIni.SetValue("Wi-Fi", "DUT2G_Ssid1Passwd", value); }
 		}
-		public string Ssid3Name
+		public string Ssid2Name_2g
 		{
-			get { return configIni.GetValue("Wi-Fi", "Ssid3Name", "a_AStefen_Test_2.4G"); }
-			set { configIni.SetValue("Wi-Fi", "Ssid3Name", value); }
+			get { return configIni.GetValue("Wi-Fi", "DUT2G_Ssid2Name", "2g_DutSsidTesting_2"); }
+			set { configIni.SetValue("Wi-Fi", "DUT2G_Ssid2Name", value); }
 		}
-		public string Ssid3Passwd
+		public string Ssid2Passwd_2g
 		{
-			get { return configIni.GetValue("Wi-Fi", "Ssid3Passwd", "0985599568"); }
-			set { configIni.SetValue("Wi-Fi", "Ssid3Passwd", value); }
+			get { return configIni.GetValue("Wi-Fi", "DUT2G_Ssid2Passwd", " "); }
+			//set { configIni.SetValue("Wi-Fi", "DUT2G_Ssid1Passwd", value); }
+		}
+		public string Ssid3Name_2g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT2G_Ssid3Name", "2g_DutSsidTesting_3"); }
+			set { configIni.SetValue("Wi-Fi", "DUT2G_Ssid3Name", value); }
+		}
+		public string Ssid3Passwd_2g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT2G_Ssid3Passwd", " abc ABC <>? 123 "); }
+			//set { configIni.SetValue("Wi-Fi", "DUT2G_Ssid1Passwd", value); }
+		}
+
+		public string SsidName_5g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT5G_SsidName", "TpLink_5g_Testing"); }
+			set { configIni.SetValue("Wi-Fi", "DUT5G_SsidName", value); }
+		}
+		public string SsidPasswd_5g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT5G_SsidPasswd", "88888888"); }
+			set { configIni.SetValue("Wi-Fi", "DUT5G_SsidPasswd", value); }
+		}
+		public string Ssid1Name_5g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT5G_Ssid1Name", "5g_DutSsidTesting_1"); }
+			set { configIni.SetValue("Wi-Fi", "DUT5G_Ssid1Name", value); }
+		}
+		public string Ssid1Passwd_5g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT5G_Ssid1Passwd", "abcdeABCDE!@#$%12345()<>?:\"{ }+12"); }
+			//set { configIni.SetValue("Wi-Fi", "DUT5G_Ssid1Passwd", value); }
+		}
+		public string Ssid2Name_5g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT5G_Ssid2Name", "5g_DutSsidTesting_2"); }
+			set { configIni.SetValue("Wi-Fi", "DUT5G_Ssid2Name", value); }
+		}
+		public string Ssid2Passwd_5g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT5G_Ssid2Passwd", " "); }
+			//set { configIni.SetValue("Wi-Fi", "DUT5G_Ssid1Passwd", value); }
+		}
+		public string Ssid3Name_5g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT5G_Ssid3Name", "5g_DutSsidTesting_3"); }
+			set { configIni.SetValue("Wi-Fi", "DUT5G_Ssid3Name", value); }
+		}
+		public string Ssid3Passwd_5g
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT5G_Ssid3Passwd", " abc ABC <>? 123 "); }
+			//set { configIni.SetValue("Wi-Fi", "DUT5G_Ssid1Passwd", value); }
+		}
+		public string DUT2G_Channel
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT2G_Channel", ""); }
+			set { configIni.SetValue("Wi-Fi", "DUT2G_Channel", value); }
+		}
+		public string DUT5G_Channel
+		{
+			get { return configIni.GetValue("Wi-Fi", "DUT5G_Channel", ""); }
+			set { configIni.SetValue("Wi-Fi", "DUT5G_Channel", value); }
 		}
 		#endregion
 

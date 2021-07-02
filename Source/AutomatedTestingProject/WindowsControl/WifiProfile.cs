@@ -14,6 +14,13 @@ namespace WindowsControl
 			this.basicTool = basicTool;
 			this._type = _type;
 		}
+		/// <summary>
+		/// 有密碼的Profile
+		/// </summary>
+		/// <param name="profileName"></param>
+		/// <param name="ssidString"></param>
+		/// <param name="passwd"></param>
+		/// <returns></returns>
 		public static string CreateProfileXml(string profileName, string ssidString, string passwd)
 		{
 			return
@@ -47,11 +54,52 @@ $@"<?xml version=""1.0""?>
 	</MacRandomization>
 </WLANProfile>";
 		}
+		/// <summary>
+		/// 無密碼的Profile
+		/// </summary>
+		/// <param name="profileName"></param>
+		/// <param name="ssidString"></param>
+		/// <returns></returns>
+		public static string CreateProfileXml(string profileName, string ssidString)
+		{
+			return
+$@"<?xml version=""1.0""?>
+<WLANProfile xmlns=""http://www.microsoft.com/networking/WLAN/profile/v1"">
+	<name>{profileName}</name>
+	<SSIDConfig>
+		<SSID>
+			<hex>{HexadecimalStringConverter.ToHexadecimalString(ssidString)}</hex>
+			<name>{ssidString}</name>
+		</SSID>
+	</SSIDConfig>
+	<connectionType>ESS</connectionType>
+	<connectionMode>manual</connectionMode>
+	<MSM>
+		<security>
+			<authEncryption>
+				<authentication>open</authentication>
+				<encryption>none</encryption>
+				<useOneX>false</useOneX>
+			</authEncryption>
+		</security>
+	</MSM>
+	<MacRandomization xmlns=""http://www.microsoft.com/networking/WLAN/profile/v3"">
+		<enableRandomization>false</enableRandomization>
+		<randomizationSeed>1987186106</randomizationSeed>
+	</MacRandomization>
+</WLANProfile>
+";
 
-		public bool SetProfile(Guid interfaceId, string ssidString, string passwd, string profileName = "")
+		}
+		public bool SetProfile(Guid interfaceId, string ssidString, string passwd="", string profileName = "")
 		{
 			bool result;
-			var profileXml = WifiProfile.CreateProfileXml(ssidString, ssidString, passwd);
+			string profileXml;
+			if (passwd!="")
+				profileXml =WifiProfile.CreateProfileXml(ssidString, ssidString, passwd);
+			else
+				profileXml = WifiProfile.CreateProfileXml(ssidString, ssidString);
+
 			if (!(result = NativeWifi.SetProfile(interfaceId, ProfileType.AllUser, profileXml, null, true)))
 				basicTool.messageLog.WriteLog(Category.WifiProfile, "設定Profile檔案失敗。", "SetProfile");
 			else if (!(result &= NativeWifi.EnumerateProfileNames().Contains(ssidString)))

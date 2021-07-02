@@ -23,6 +23,7 @@ namespace StateMachine
 		public MainState mainState;
 		protected string Name = null;
 		private System.Timers.Timer timer = null; //Timer
+		private int errorCounter = 0; 
 		private bool stop = false; //State Flag
 		protected Communication status;
 		protected virtual object AutoState { get; set; }
@@ -51,7 +52,7 @@ namespace StateMachine
 			this.status = status;
 			//Initial
 			stop = true;
-			timer = new System.Timers.Timer(1000);
+			timer = new System.Timers.Timer(1500);
 			timer.AutoReset = false;
 			timer.Stop();
 			timer.Elapsed += new System.Timers.ElapsedEventHandler(ThreadTask);
@@ -70,7 +71,6 @@ namespace StateMachine
 		/// <returns></returns>
 		public bool IsReady(ref string errStr)
 		{
-			VariableSetting();
 			if (browser.OpenNewWeb(config.URL, 5))
 			{
 				Thread.Sleep(1000);
@@ -79,7 +79,7 @@ namespace StateMachine
 					case 0:
 						if (!webAccount.SettingPwd())
 						{
-							msgLog.WriteLog(Category.DHCPStateMachine, "IsReady() is failed, because SettingPwd() error!", Name);
+							msgLog.WriteLog(Category.StateMachineBase, "IsReady() is failed, because SettingPwd() error!", Name);
 							return false;
 						}
 						else if (!LoginNPassWarning())
@@ -96,7 +96,7 @@ namespace StateMachine
 					case 2:
 						break;
 					default:
-						msgLog.WriteLog(Category.DHCPStateMachine, "IsReady() is failed, because CheckLoginStatus() error!", Name);
+						msgLog.WriteLog(Category.StateMachineBase, "IsReady() is failed, because CheckLoginStatus() error!", Name);
 						return false;
 				}
 			}else
@@ -125,9 +125,9 @@ namespace StateMachine
 		#endregion
 
 		#region for children use
-		protected virtual void VariableSetting()
+		protected virtual bool VariableSetting()
 		{
-
+			return true;
 		}
 		/// <summary>
 		/// Customize auto sequence
@@ -181,6 +181,7 @@ namespace StateMachine
 		protected void GoToNewAutoState(object state, string optionalString = "")
 		{
 			AutoState = state;
+			errorCounter = 0;
 			WriteLogWhenAuto(state, optionalString);
 		}
 		/// <summary>
@@ -190,6 +191,11 @@ namespace StateMachine
 		{
 			mainState = MainState.Auto;
 		}
+
+		protected void Stop()
+		{
+			stop = true;
+		}
 		#endregion
 
 		#region only owner can use them
@@ -197,16 +203,17 @@ namespace StateMachine
 		{
 			if (!webAccount.Login())
 			{
-				msgLog.WriteLog(Category.DHCPStateMachine, "IsReady() is failed, because Login() error!", Name);
+				msgLog.WriteLog(Category.StateMachineBase, "IsReady() is failed, because Login() error!", Name);
 				return false;
 			}
 			else
 			{
 				Thread.Sleep(200);
 				webAccount.LoginWarning();
+				Thread.Sleep(100);
 				if (webAccount.CheckLoginStatus() != 2)
 				{
-					msgLog.WriteLog(Category.DHCPStateMachine, "IsReady() is failed, because CheckLoginStatus() still error!", Name);
+					msgLog.WriteLog(Category.StateMachineBase, "IsReady() is failed, because CheckLoginStatus() still error!", Name);
 					return false;
 				}
 				return true;
@@ -232,31 +239,32 @@ namespace StateMachine
 						//Go To Error Hanle
 						if (mainState == MainState.Error)
 						{
-
+							errorCounter++;
 						}
 						break;
 					case MainState.Pause:
-
+						Thread.Sleep(1000);
 						break;
 					case MainState.Error:
 						ErrorHandle();
 						//Error Solved, Back to Auto
 						if (mainState == MainState.Auto)
 						{
-
+							
 						}
 						break;
 				}
-
+				if (errorCounter > 5)
+					communicationStatus = CommunicationStatus.Error;
 				//Check if stop
-				if ((!stop) && timer!=null)
+				else if ((!stop) && timer != null)
 				{
 					timer.Start();
 				}
 			}
 			catch (Exception ex)
 			{
-
+				msgLog.WriteLog(Category.StateMachineBase, ex.ToString());
 			}
 		}
 		private void ThreadTask(object sender, System.Timers.ElapsedEventArgs e)

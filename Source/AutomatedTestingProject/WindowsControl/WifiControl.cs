@@ -15,7 +15,19 @@ namespace WindowsControl
 		{
 
 		}
-		public bool ConnectWifi()
+		public bool FindWifiName(string ssidName)
+		{
+			RefreshAsync();
+			foreach (var ssid in EnumerateNetworkSsids())
+			{
+				if (ssid == ssidName)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+		public bool ConnectWifi(string ssidName,string ssidPasswd="")
 		{
 			try
 			{
@@ -24,12 +36,12 @@ namespace WindowsControl
 				//Set interfaceId.
 				SetInterfaceId();
 				//Overwrote Profile.
-				SetProfile(interfaceId, basicTool.accessConfig.Ssid1Name, basicTool.accessConfig.Ssid1Passwd);
+				SetProfile(interfaceId, ssidName, ssidPasswd);
 				foreach (var ssid in EnumerateNetworkSsids())
 				{
-					if (ssid == basicTool.accessConfig.Ssid1Name)
+					if (ssid == ssidName)
 					{
-						ConnectAsync(basicTool.accessConfig.Ssid1Name);
+						ConnectAsync(ssidName);
 						RefreshAsync();
 						return true;
 					}
@@ -161,7 +173,7 @@ namespace WindowsControl
 					interfaceId: availableNetwork.Interface.Id,
 					profileName: availableNetwork.ProfileName,
 					bssType: availableNetwork.BssType,
-					timeout: TimeSpan.FromSeconds(10));
+					timeout: TimeSpan.FromSeconds(20));
 			}
 			catch (Exception ex)
 			{

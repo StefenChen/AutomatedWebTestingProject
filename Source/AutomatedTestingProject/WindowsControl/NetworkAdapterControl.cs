@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
+using System.Threading;
 // System.Net.NetworkInformation;
 
 namespace WindowsControl
@@ -46,6 +47,7 @@ namespace WindowsControl
 		/// <returns></returns>
 		public bool SetNetworkOfDHCP(string idName, bool enable)
 		{
+			bool temp;
 			try
 			{
 				//查詢當前狀態的Power Shell指令
@@ -53,7 +55,9 @@ namespace WindowsControl
 				process = new Process();
 				psi = new ProcessStartInfo("PowerShell", "Set-NetIPInterface -InterfaceAlias \'" + idName + "\' -Dhcp " + (enable ? "Enable" : "Disable"));
 				process.StartInfo = psi;
-				return process.Start();
+				temp = process.Start();
+				Thread.Sleep(3000);
+				return temp;
 			}
 			catch (Exception ex)
 			{
@@ -69,12 +73,15 @@ namespace WindowsControl
 		/// <returns></returns>
 		public bool EnableInterface(string idName, bool enable)
 		{
+			bool temp;
 			try
 			{
 				process = new Process();
 				psi = new ProcessStartInfo("netsh", "interface set interface \"" + idName + "\" " + (enable ? "Enable" : "Disable"));
 				process.StartInfo = psi;
-				return process.Start();
+				Thread.Sleep(3000);
+				temp =  process.Start();
+				return temp;
 			}
 			catch (Exception ex)
 			{

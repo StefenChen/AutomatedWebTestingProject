@@ -57,8 +57,46 @@ namespace StateMachine
 			get { return _PPTPStatus; }
 			set { _PPTPStatus = value; }
 		}
+		#endregion
 
+		#region WirelessBasic
+		private static CommunicationStatus _WirelessWiFi_2G_ONOFFStatus = CommunicationStatus.Idle;
+		public CommunicationStatus WirelessWiFi_2G_ONOFFStatus
+		{
+			get { return _WirelessWiFi_2G_ONOFFStatus; }
+			set { _WirelessWiFi_2G_ONOFFStatus = value; }
+		}
+		private static CommunicationStatus _WirelessWiFi_5G_ONOFFStatus = CommunicationStatus.Idle;
+		public CommunicationStatus WirelessWiFi_5G_ONOFFStatus
+		{
+			get { return _WirelessWiFi_5G_ONOFFStatus; }
+			set { _WirelessWiFi_5G_ONOFFStatus = value; }
+		}
+		private static CommunicationStatus _WirelessWiFi_2G_ChannelStatus = CommunicationStatus.Idle;
+		public CommunicationStatus WirelessWiFi_2G_ChannelStatus
+		{
+			get { return _WirelessWiFi_2G_ChannelStatus; }
+			set { _WirelessWiFi_2G_ChannelStatus = value; }
+		}
+		private static CommunicationStatus _WirelessWiFi_5G_ChannelStatus = CommunicationStatus.Idle;
+		public CommunicationStatus WirelessWiFi_5G_ChannelStatus
+		{
+			get { return _WirelessWiFi_5G_ChannelStatus; }
+			set { _WirelessWiFi_5G_ChannelStatus = value; }
+		}
 
+		private static CommunicationStatus _WirelessSSID_2GStatus = CommunicationStatus.Idle;
+		public CommunicationStatus WirelessSSID_2GStatus
+		{
+			get { return _WirelessSSID_2GStatus; }
+			set { _WirelessSSID_2GStatus = value; }
+		}
+		private static CommunicationStatus _WirelessSSID_5GStatus = CommunicationStatus.Idle;
+		public CommunicationStatus WirelessSSID_5GStatus
+		{
+			get { return _WirelessSSID_5GStatus; }
+			set { _WirelessSSID_5GStatus = value; }
+		}
 		#endregion
 	}
 }

@@ -28,7 +28,7 @@ namespace WebLibrary
 			}
 			catch (Exception ex)
 			{
-				basicTool.messageLog.WriteLog(Category.WebBasicOperation, errStr = ex.ToString(), "SendCommandToGUI");
+				basicTool.messageLog.WriteLog(Category.WebBasicOperation, tempStr, "SendCommandToGUIError");
 				return null;
 			}
 		}
